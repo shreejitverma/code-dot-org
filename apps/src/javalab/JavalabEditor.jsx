@@ -7,7 +7,7 @@ import PaneHeader, {
   PaneButton
 } from '@cdo/apps/templates/PaneHeader';
 import {EditorView} from '@codemirror/view';
-import {editorSetup, light} from './editorSetup';
+import {editorSetup, lightMode} from './editorSetup';
 import {EditorState, tagExtension} from '@codemirror/state';
 import {renameProjectFile, onProjectChanged} from './JavalabFileManagement';
 import {oneDark} from '@codemirror/theme-one-dark';
@@ -34,6 +34,8 @@ const style = {
     alignItems: 'center'
   }
 };
+
+const darkTabColor = '#282c34';
 
 class JavalabEditor extends React.Component {
   static propTypes = {
@@ -64,12 +66,11 @@ class JavalabEditor extends React.Component {
   componentDidMount() {
     const {isDarkMode} = this.props;
     const extensions = [...editorSetup];
-    console.log(oneDark);
-    console.log(light);
+
     if (isDarkMode) {
       extensions.push(tagExtension('style', oneDark));
     } else {
-      extensions.push(tagExtension('style', light));
+      extensions.push(tagExtension('style', lightMode));
     }
     this.editor = new EditorView({
       state: EditorState.create({
@@ -82,7 +83,6 @@ class JavalabEditor extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.editor);
     if (prevProps.isDarkMode !== this.props.isDarkMode) {
       if (this.props.isDarkMode) {
         this.editor.dispatch({
@@ -90,7 +90,7 @@ class JavalabEditor extends React.Component {
         });
       } else {
         this.editor.dispatch({
-          reconfigure: {style: light}
+          reconfigure: {style: lightMode}
         });
       }
     }
@@ -132,7 +132,9 @@ class JavalabEditor extends React.Component {
           <div
             style={{
               ...style.tab,
-              backgroundColor: this.props.isDarkMode ? '#282c34' : color.white
+              backgroundColor: this.props.isDarkMode
+                ? darkTabColor
+                : color.white
             }}
           >
             <input
@@ -159,7 +161,7 @@ class JavalabEditor extends React.Component {
         <div
           style={{
             ...style.tab,
-            backgroundColor: this.props.isDarkMode ? '#282c34' : color.white
+            backgroundColor: this.props.isDarkMode ? darkTabColor : color.white
           }}
         >
           {this.props.filename}
@@ -199,7 +201,7 @@ class JavalabEditor extends React.Component {
           ref={el => (this._codeMirror = el)}
           style={{
             ...style.editor,
-            backgroundColor: this.props.isDarkMode ? '#282c34' : color.white
+            backgroundColor: this.props.isDarkMode ? darkTabColor : color.white
           }}
         />
       </div>

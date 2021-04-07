@@ -9,18 +9,9 @@ const styles = {
   main: {
     display: 'inline-block'
   },
-  icon: {
-    fontSize: 24,
-    // we want our icon text to be a different size than our button text, which
-    // requires we manually offset to get it centered properly
-    position: 'relative',
-    top: 3
-  },
   dropdown: {
     border: `1px solid ${color.charcoal}`,
-    position: 'absolute',
-    // without this, this will be below some content, such as ProgressBubble.
-    zIndex: 1000
+    position: 'absolute'
   },
   anchor: {
     padding: 10,
@@ -53,7 +44,7 @@ export const JavalabSettings = class JavalabSettingsComponent extends Component 
         if (child.type !== 'a') {
           throw new Error('only accepts children of type <a/>');
         }
-        if (!child.props.href && !child.props.onClick) {
+        if (!child.props.onClick) {
           throw new Error('each child must have an href or onclick');
         }
       });
@@ -87,19 +78,8 @@ export const JavalabSettings = class JavalabSettingsComponent extends Component 
   };
 
   onClickChild = (event, childProps) => {
-    /*
-      In LessonNavigationDropdown we create sections which we want
-      to be able to expand and collapse. Use the no-navigation class
-      name allows us to mark when we want the dropdown to collapse for
-      each click component
-     */
-    if (childProps.className !== 'no-navigation') {
-      this.collapseDropdown();
-    }
-
-    if (childProps.onClick) {
-      childProps.onClick(event);
-    }
+    this.collapseDropdown();
+    childProps.onClick(event);
   };
 
   render() {
