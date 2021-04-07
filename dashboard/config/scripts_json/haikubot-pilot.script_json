@@ -9,7 +9,7 @@
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-04-05 21:29:55 UTC",
+    "serialized_at": "2021-04-05 18:01:29 UTC",
     "seeding_key": {
       "script.name": "haikubot-pilot"
     }
@@ -695,21 +695,21 @@
       "properties": {
         "progression": "Poem Bot Prototype",
         "level_keys": [
-          "Poem Bot_Choice1_Background"
+          "poembot_lesson 5_markdown"
         ]
       },
       "named_level": null,
       "bonus": null,
       "seeding_key": {
         "script_level.level_keys": [
-          "Poem Bot_Choice1_Background"
+          "poembot_lesson 5_markdown"
         ],
         "lesson.key": "poetry circle",
         "lesson_group.key": "Peom Bot",
         "script.name": "haikubot-pilot"
       },
       "level_keys": [
-        "Poem Bot_Choice1_Background"
+        "poembot_lesson 5_markdown"
       ]
     }
   ],
@@ -969,9 +969,9 @@
     },
     {
       "seeding_key": {
-        "level.key": "Poem Bot_Choice1_Background",
+        "level.key": "poembot_lesson 5_markdown",
         "script_level.level_keys": [
-          "Poem Bot_Choice1_Background"
+          "poembot_lesson 5_markdown"
         ],
         "lesson.key": "poetry circle",
         "lesson_group.key": "Peom Bot",

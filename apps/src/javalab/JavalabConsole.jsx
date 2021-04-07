@@ -8,15 +8,9 @@ import color from '@cdo/apps/util/color';
 import PaneHeader, {PaneSection} from '@cdo/apps/templates/PaneHeader';
 
 const style = {
-  darkMode: {
-    backgroundColor: color.black,
-    color: color.white
-  },
-  lightMode: {
-    backgroundColor: color.white,
-    color: color.black
-  },
   consoleStyle: {
+    backgroundColor: color.black,
+    color: color.white,
     height: '200px',
     overflowY: 'auto',
     padding: 5
@@ -43,6 +37,8 @@ const style = {
     flexGrow: 1,
     marginBottom: 0,
     boxShadow: 'none',
+    backgroundColor: color.black,
+    color: color.white,
     border: 'none'
   }
 };
@@ -69,7 +65,6 @@ function moveCaretToEndOfDiv(element) {
 
 class JavalabConsole extends React.Component {
   static propTypes = {
-    isDarkMode: PropTypes.bool.isRequired,
     // populated by redux
     consoleLogs: PropTypes.array,
     appendInputLog: PropTypes.func
@@ -135,14 +130,7 @@ class JavalabConsole extends React.Component {
         <PaneHeader hasFocus={true}>
           <PaneSection>Console</PaneSection>
         </PaneHeader>
-        <div
-          style={{
-            ...style.consoleStyle,
-            ...(this.props.isDarkMode && style.darkMode),
-            ...(!this.props.isDarkMode && style.lightMode)
-          }}
-          ref={el => (this._consoleLogs = el)}
-        >
+        <div style={style.consoleStyle} ref={el => (this._consoleLogs = el)}>
           <div style={style.consoleLogs}>{this.displayConsoleLogs()}</div>
           <div style={style.consoleInputWrapper}>
             <span style={style.consoleInputPrompt} onClick={this.focus}>
@@ -151,11 +139,7 @@ class JavalabConsole extends React.Component {
             <input
               type="text"
               spellCheck="false"
-              style={{
-                ...style.consoleInput,
-                ...(this.props.isDarkMode && style.darkMode),
-                ...(!this.props.isDarkMode && style.lightMode)
-              }}
+              style={style.consoleInput}
               onKeyDown={this.onInputKeyDown}
               aria-label="console input"
             />

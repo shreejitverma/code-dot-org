@@ -115,9 +115,7 @@ def get_i18n_strings(level)
       end
 
       ## Variable Names
-      variables_get = blocks.xpath("//block[@type=\"variables_get\"]")
-      variables_set = blocks.xpath("//block[@type=\"variables_set\"]")
-      variables = variables_get + variables_set
+      variables = blocks.xpath("//block[@type=\"variables_get\"]")
       i18n_strings['variable_names'] = Hash.new unless variables.empty?
       variables.each do |variable|
         name = variable.at_xpath('./title[@name="VAR"]')
