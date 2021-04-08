@@ -75,3 +75,27 @@ Resources:
       LoggingConfiguration:
         DestinationBucketName: 'cdo-logs'
         LogFilePrefix: 's3/cdo-curriculum-devel'
+  # Foorm (in-house survey system) analytics data export bucket
+  FoormAnalyticsExportBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'cdo-foorm-analytics-export'
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: 'aws:kms'
+      VersioningConfiguration:
+        Status: 'Suspended'
+      LoggingConfiguration:
+        DestinationBucketName: 'cdo-logs'
+        LogFilePrefix: 's3/cdo-foorm-analytics-export'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: DeleteContentAfter1Day
+            Status: 'Enabled'
+            ExpirationInDays: 1
