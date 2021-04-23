@@ -18,6 +18,10 @@ export const commands = {
     });
   },
 
+  addToDataLog(obj) {
+    coreLibrary.dataLog.push(obj);
+  },
+
   bounceOff(spriteArg, targetArg) {
     let sprites = coreLibrary.getSpriteArray(spriteArg);
     let targets = coreLibrary.getSpriteArray(targetArg);

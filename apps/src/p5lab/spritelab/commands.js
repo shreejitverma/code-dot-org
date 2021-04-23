@@ -39,6 +39,10 @@ export const commands = {
     actionCommands.addTarget(spriteArg, targetArg, targetType);
   },
 
+  addToDataLog(obj) {
+    actionCommands.addToDataLog(obj);
+  },
+
   bounceOff(spriteArg, targetArg) {
     actionCommands.bounceOff(spriteArg, targetArg);
   },

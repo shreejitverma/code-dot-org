@@ -16,6 +16,7 @@ function draw() {
  */
 function beginCollectingData(valueFn, label) {
   collectData(function() {
+    addToDataLog({time: getTime("seconds"), datum: valueFn()});
     printText(['Time: ',getTime("seconds"),' sec. | ', label || '', ': ', valueFn()].join(''));
   });
 }

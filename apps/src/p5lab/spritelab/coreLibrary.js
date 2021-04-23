@@ -14,6 +14,7 @@ export var defaultSpriteSize = 100;
 export var printLog = [];
 export var promptVars = {};
 export var eventLog = [];
+export var dataLog = [];
 
 export function reset() {
   spriteId = 0;
