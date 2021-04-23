@@ -982,6 +982,9 @@ P5Lab.prototype.onReportComplete = function(response) {
  * Click the run button.  Start the program.
  */
 P5Lab.prototype.runButtonClick = function() {
+  if (this.isSpritelab) {
+    this.clearDataLog();
+  }
   this.studioApp_.toggleRunReset('reset');
   // document.getElementById('spinner').style.visibility = 'visible';
   if (this.studioApp_.isUsingBlockly()) {

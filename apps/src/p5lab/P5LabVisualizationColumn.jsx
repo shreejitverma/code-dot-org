@@ -22,6 +22,7 @@ import {toggleGridOverlay} from './actions';
 import GridOverlay from './gamelab/GridOverlay';
 import TextConsole from './spritelab/TextConsole';
 import SpritelabInput from './spritelab/SpritelabInput';
+import SpritelabDataView from './spritelab/SpritelabDataView';
 import {
   cancelLocationSelection,
   selectLocation,
@@ -214,6 +215,7 @@ class P5LabVisualizationColumn extends React.Component {
 
           {!isSpritelab && !isShareView && this.renderGridCheckbox()}
         </GameButtons>
+        {isSpritelab && <SpritelabDataView />}
         {!isSpritelab && this.renderAppSpaceCoordinates()}
         <ProtectedStatefulDiv
           id={GAMELAB_DPAD_CONTAINER_ID}

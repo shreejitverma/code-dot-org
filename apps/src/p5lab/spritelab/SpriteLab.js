@@ -16,6 +16,10 @@ SpriteLab.prototype = Object.create(P5Lab.prototype);
 
 module.exports = SpriteLab;
 
+SpriteLab.prototype.clearDataLog = function() {
+  coreLibrary.dataLog = [];
+};
+
 SpriteLab.prototype.preview = function() {
   if (getStore().getState().runState.isRunning) {
     return;
