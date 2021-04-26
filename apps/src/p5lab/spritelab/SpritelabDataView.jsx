@@ -1,4 +1,5 @@
 import React from 'react';
+import {Chart} from 'react-google-charts';
 import BaseDialog from '@cdo/apps/templates/BaseDialog.jsx';
 import * as coreLibrary from './coreLibrary';
 
@@ -19,6 +20,9 @@ class SpritelabDataView extends React.Component {
   handleClose = () => this.setState({isVisualizerOpen: false});
 
   render() {
+    const chartData = coreLibrary.dataLog.map(x => [x.time, x.datum]);
+    chartData.unshift(['time', 'datum']);
+
     return (
       <span>
         <button type="button" onClick={this.handleOpen}>
@@ -30,20 +34,44 @@ class SpritelabDataView extends React.Component {
           fullWidth
           fullHeight
         >
-          <table>
-            <tbody>
-              <tr>
-                <th>Time</th>
-                <th>Value</th>
-              </tr>
-              {coreLibrary.dataLog.map((logItem, index) => (
-                <tr key={index}>
-                  <td>{logItem.time}</td>
-                  <td>{logItem.datum}</td>
+          <div style={{display: 'inline-block', height: '300px'}}>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Time</th>
+                  <th>Value</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+                {coreLibrary.dataLog.map((logItem, index) => (
+                  <tr key={index}>
+                    <td>{logItem.time}</td>
+                    <td>{logItem.datum}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div style={{display: 'inline-block'}}>
+            <Chart
+              width={'600px'}
+              height={'400px'}
+              chartType="LineChart"
+              loader={<div>Loading Chart</div>}
+              data={chartData}
+              options={{
+                colors: ['#00adbc'],
+                hAxis: {
+                  title: 'Time',
+                  showTextEvery: 1
+                },
+                vAxis: {
+                  title: 'Value'
+                },
+                legend: 'none',
+                lineWidth: 5,
+                pointSize: 10
+              }}
+            />
+          </div>
         </BaseDialog>
       </span>
     );
