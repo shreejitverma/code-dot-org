@@ -1,10 +1,51 @@
 import React from 'react';
 import {Chart} from 'react-google-charts';
+import color from '@cdo/apps/util/color';
 import BaseDialog from '@cdo/apps/templates/BaseDialog.jsx';
 import * as coreLibrary from './coreLibrary';
 
 export const INITIAL_STATE = {
-  isVisualizerOpen: false
+  isVisualizerOpen: false,
+  selectedTab: 'TABLE'
+};
+
+const dataVizTabs = [
+  {
+    key: 'TABLE',
+    headerText: 'Table'
+  },
+  {
+    key: 'CHART',
+    headerText: 'Chart'
+  }
+];
+
+const styles = {
+  container: {
+    margin: 'auto',
+    textAlign: 'center'
+  },
+  pill: {
+    ':hover': {
+      color: color.teal
+    },
+    border: 'none',
+    borderRadius: 50,
+    fontSize: 20,
+    backgroundColor: color.lightest_gray,
+    color: color.charcoal,
+    margin: '0 0 0 20px',
+    padding: '8px 18px',
+    float: 'left',
+    cursor: 'pointer'
+  },
+  selectedPill: {
+    ':hover': {
+      color: color.white
+    },
+    backgroundColor: color.teal,
+    color: color.white
+  }
 };
 
 class SpritelabDataView extends React.Component {
@@ -13,7 +54,6 @@ class SpritelabDataView extends React.Component {
   state = {...INITIAL_STATE};
 
   handleOpen = () => {
-    console.log(coreLibrary.dataLog);
     this.setState({isVisualizerOpen: true});
   };
 
@@ -34,8 +74,25 @@ class SpritelabDataView extends React.Component {
           fullWidth
           fullHeight
         >
-          <div style={{display: 'inline-block', height: '300px'}}>
-            <table>
+          <h1>Simulation Data Visualizer</h1>
+          <div style={{height: '36px'}}>
+            {dataVizTabs.map(tab => (
+              <div
+                key={tab.key}
+                style={
+                  this.state.selectedTab === tab.key
+                    ? {...styles.pill, ...styles.selectedPill}
+                    : styles.pill
+                }
+                onClick={() => this.setState({selectedTab: tab.key})}
+              >
+                {tab.headerText}
+              </div>
+            ))}
+          </div>
+
+          {this.state.selectedTab === 'TABLE' && (
+            <table style={styles.container}>
               <tbody>
                 <tr>
                   <th>Time</th>
@@ -49,16 +106,17 @@ class SpritelabDataView extends React.Component {
                 ))}
               </tbody>
             </table>
-          </div>
-          <div style={{display: 'inline-block'}}>
+          )}
+          {this.state.selectedTab === 'CHART' && (
             <Chart
+              style={styles.container}
               width={'600px'}
               height={'400px'}
               chartType="LineChart"
               loader={<div>Loading Chart</div>}
               data={chartData}
               options={{
-                colors: ['#00adbc'],
+                colors: [color.purple],
                 hAxis: {
                   title: 'Time',
                   showTextEvery: 1
@@ -67,11 +125,11 @@ class SpritelabDataView extends React.Component {
                   title: 'Value'
                 },
                 legend: 'none',
-                lineWidth: 5,
-                pointSize: 10
+                lineWidth: 3,
+                pointSize: 9
               }}
             />
-          </div>
+          )}
         </BaseDialog>
       </span>
     );
