@@ -36,6 +36,7 @@ class DeleteAccountsHelperTest < ActionView::TestCase
     [SourceBucket, AssetBucket, AnimationBucket, FileBucket].each do |bucket|
       bucket.any_instance.stubs(:hard_delete_channel_content)
     end
+    AWS::S3.stubs(:delete_from_bucket).returns(true)
 
     # Skip real Firebase operations
     FirebaseHelper.stubs(:delete_channel)
@@ -1817,6 +1818,21 @@ class DeleteAccountsHelperTest < ActionView::TestCase
         assert_logged "Deleting Firebase contents for 2 channels"
       end
     end
+  end
+
+  #
+  # Table: dashboard.user_ml_models
+  #
+
+  test "purges models trained by purged user" do
+    user_ml_model = create :user_ml_model
+    assert UserMlModel.with_deleted.exists? id: user_ml_model.id
+
+    purge_user user_ml_model.user
+
+    refute UserMlModel.with_deleted.exists? id: user_ml_model.id
+
+    assert_logged 'Deleted 1 models'
   end
 
   #

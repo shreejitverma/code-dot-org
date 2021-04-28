@@ -59,6 +59,29 @@ class DeleteAccountsHelper
     @log.puts "Deleted #{channel_count} channels" if channel_count > 0
   end
 
+  # Deletes all trained ml models associated with a user.
+  # @param [UserId] user id Id of user who trained the ml models to be deleted.
+  def delete_trained_ml_models(user_id)
+    return unless user_id
+
+    @log.puts "Deleting trained machine learning models"
+
+    model_ids = UserMlModel.where(user_id: user_id).pluck(:id)
+
+    model_count = model_ids.count
+
+    @log.puts "Deleting #{model_count} trained models from the database"
+    UserMlModel.where(id: model_ids).destroy_all
+
+    # Clear S3 contents for user's models
+    @log.puts "Deleting #{model_count} trained models from S3"
+    model_ids.each do |model_id|
+      AWS::S3.delete_from_bucket('cdo-v3-trained-ml-models', model_id)
+    end
+
+    @log.puts "Deleted #{model_count} models" if model_count > 0
+  end
+
   # Removes the link between the user's level-backed progress and the progress itself.
   # @param [Integer] user_id The user to clean the LevelSource-backed progress of.
   def clean_level_source_backed_progress(user_id)
@@ -329,6 +352,7 @@ class DeleteAccountsHelper
     clean_level_source_backed_progress(user.id)
     clean_pegasus_forms_for_user(user)
     delete_project_backed_progress(user)
+    delete_trained_ml_models(user.id)
     clean_and_destroy_pd_content(user.id)
     clean_user_sections(user.id)
     remove_user_from_sections_as_student(user)
