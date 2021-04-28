@@ -37,6 +37,7 @@ class ProgressLessonTeacherInfo extends React.Component {
   static propTypes = {
     lesson: lessonType.isRequired,
     lessonUrl: PropTypes.string,
+    onClickStudentLessonPlan: PropTypes.func,
 
     // redux provided
     section: sectionShape,
@@ -44,7 +45,8 @@ class ProgressLessonTeacherInfo extends React.Component {
     hiddenStageState: PropTypes.object.isRequired,
     scriptName: PropTypes.string.isRequired,
     hasNoSections: PropTypes.bool.isRequired,
-    toggleHiddenStage: PropTypes.func.isRequired
+    toggleHiddenStage: PropTypes.func.isRequired,
+    lockableAuthorized: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -84,6 +86,7 @@ class ProgressLessonTeacherInfo extends React.Component {
       scriptAllowsHiddenStages,
       hiddenStageState,
       hasNoSections,
+      lockableAuthorized,
       lesson,
       lessonUrl
     } = this.props;
@@ -121,8 +124,24 @@ class ProgressLessonTeacherInfo extends React.Component {
             />
           </div>
         )}
-        {lesson.lockable && !hasNoSections && <StageLock lesson={lesson} />}
-        {lessonUrl && (
+        {lesson.student_lesson_plan_html_url && (
+          <div style={styles.buttonContainer}>
+            <Button
+              __useDeprecatedTag
+              href={lesson.student_lesson_plan_html_url}
+              text={i18n.studentResources()}
+              icon="file-text"
+              color="purple"
+              target="_blank"
+              style={styles.button}
+              onClick={this.props.onClickStudentLessonPlan}
+            />
+          </div>
+        )}
+        {lesson.lockable && lockableAuthorized && !hasNoSections && (
+          <StageLock lesson={lesson} />
+        )}
+        {lessonUrl && !(lesson.lockable && !lockableAuthorized) && (
           <div style={styles.buttonContainer}>
             <SendLesson
               lessonUrl={loginRequiredLessonUrl}
@@ -153,6 +172,7 @@ export default connect(
     scriptAllowsHiddenStages: state.hiddenStage.hideableStagesAllowed,
     hiddenStageState: state.hiddenStage,
     scriptName: state.progress.scriptName,
+    lockableAuthorized: state.stageLock.lockableAuthorized,
     hasNoSections:
       state.teacherSections.sectionsAreLoaded &&
       state.teacherSections.sectionIds.length === 0

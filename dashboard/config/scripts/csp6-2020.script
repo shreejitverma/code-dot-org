@@ -39,7 +39,11 @@ level 'CSP U6L5 SFLP 20-21', progression: 'Lesson Overview'
 level 'U6L5 CFU Calculate Speedup', progression: 'Check For Understanding', assessment: true
 level 'U6 L05 Speedup Forever', progression: 'Check For Understanding', assessment: true
 
-lesson 'Lesson 6: Assessment Day', display_name: 'Lesson 6: Assessment Day', lockable: true, has_lesson_plan: false
+lesson 'Lesson 6: Assessment Day', display_name: 'Assessment Day', lockable: true, has_lesson_plan: true
 level 'CSP U6L6 SFLP 20-21', progression: 'Lesson Overview'
 level 'CSP Unit 6 AP-Style Assessment _2020', progression: 'Unit 6 Exam', assessment: true
+
+lesson_group 'cspSurvey2020', display_name: 'Post-Course Survey'
+lesson 'CS Principles Post-Course Survey', display_name: 'CS Principles Post-Course Survey', has_lesson_plan: false
+level 'csp-post-survey-2020-markdown-with-link-to-survey', progression: 'Post-Course Survey Instructions', assessment: true
 

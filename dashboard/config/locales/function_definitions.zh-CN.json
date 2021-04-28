@@ -780,7 +780,8 @@
             "parameters": {
               "length": "长度",
               "sides": "边"
-            }
+            },
+            "description": "形状的变化取决于它当前有多少个边。它有两个参数，长度和边数。长度 "
           },
           "draw a loop": {
             "name": "画一个循环",
@@ -805,7 +806,8 @@
             }
           },
           "n-sided shape": {
-            "name": "n边形"
+            "name": "n边形",
+            "description": "形状的变化取决于它当前有多少个边。它有两个参数，长度和边数。长度 "
           },
           "draw spiral circle": {
             "name": "画螺旋圈",
@@ -3844,6 +3846,56 @@
           },
           "draw bit": {
             "name": "绘制比特"
+          }
+        },
+        "CourseD_EOC_artist": {
+          "draw a star": {
+            "name": "画一个星星",
+            "description": "用所给予的点和指定长度的边画一个星星",
+            "parameters": {
+              "points": "分数",
+              "length": "长度"
+            }
+          },
+          "draw a circle": {
+            "name": "画一个圆圈",
+            "description": "用给予的半径画一个圆圈",
+            "parameters": {
+              "radius": "半径"
+            }
+          },
+          "draw a pinwheel": {
+            "name": "画一个风车",
+            "parameters": {
+              "sides": "边",
+              "length": "长度",
+              "repeat": "重复"
+            }
+          },
+          "draw a triangle": {
+            "name": "画一个三角形",
+            "parameters": {
+              "length": "长度"
+            }
+          },
+          "draw a shape": {
+            "name": "画一个图形",
+            "parameters": {
+              "sides": "边",
+              "length": "长度"
+            }
+          },
+          "draw a house": {
+            "name": "画一个房子",
+            "parameters": {
+              "length": "长度"
+            }
+          },
+          "draw a square": {
+            "name": "画一个正方形",
+            "parameters": {
+              "length": "长度"
+            }
           }
         }
       }

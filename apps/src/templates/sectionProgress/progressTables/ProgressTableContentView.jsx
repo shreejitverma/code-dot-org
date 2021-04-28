@@ -3,9 +3,11 @@ import * as Table from 'reactabular-table';
 import * as Sticky from 'reactabular-sticky';
 import * as Virtualized from 'reactabular-virtualized';
 import PropTypes from 'prop-types';
-import {studentLevelProgressType} from '@cdo/apps/templates/progress/progressTypes';
-import {sectionDataPropType} from '@cdo/apps/redux/sectionDataRedux';
-import {scriptDataPropType, scrollbarWidth} from '../sectionProgressConstants';
+import {
+  scriptDataPropType,
+  studentTableRowType,
+  scrollbarWidth
+} from '../sectionProgressConstants';
 import {lessonIsAllAssessment} from '@cdo/apps/templates/progress/progressHelpers';
 import progressTableStyles from './progressTableStyles.scss';
 import ProgressTableLessonNumber from './ProgressTableLessonNumber';
@@ -26,15 +28,13 @@ const styles = {
 // which are passed in through props.
 export default class ProgressTableContentView extends React.Component {
   static propTypes = {
-    section: sectionDataPropType.isRequired,
+    rows: PropTypes.arrayOf(studentTableRowType).isRequired,
+    onRow: PropTypes.func.isRequired,
     scriptData: scriptDataPropType.isRequired,
     lessonOfInterest: PropTypes.number.isRequired,
-    levelProgressByStudent: PropTypes.objectOf(
-      PropTypes.objectOf(studentLevelProgressType)
-    ).isRequired,
     onClickLesson: PropTypes.func.isRequired,
     columnWidths: PropTypes.arrayOf(PropTypes.number),
-    lessonCellFormatter: PropTypes.func.isRequired,
+    lessonCellFormatters: PropTypes.arrayOf(PropTypes.func).isRequired,
     extraHeaderFormatters: PropTypes.arrayOf(PropTypes.func),
     needsGutter: PropTypes.bool.isRequired,
     onScroll: PropTypes.func.isRequired,
@@ -57,8 +57,10 @@ export default class ProgressTableContentView extends React.Component {
     this.scrollToSelectedLesson();
   }
 
-  componentDidUpdate() {
-    this.scrollToSelectedLesson();
+  componentDidUpdate(prevProps) {
+    if (prevProps.lessonOfInterest !== this.props.lessonOfInterest) {
+      this.scrollToSelectedLesson();
+    }
   }
 
   scrollToSelectedLesson() {
@@ -93,11 +95,9 @@ export default class ProgressTableContentView extends React.Component {
   }
 
   contentCellFormatter(_, {rowData, columnIndex}) {
-    const {scriptData, levelProgressByStudent} = this.props;
-    return this.props.lessonCellFormatter(
-      scriptData.stages[columnIndex],
-      rowData,
-      levelProgressByStudent[rowData.id]
+    return this.props.lessonCellFormatters[rowData.expansionIndex](
+      this.props.scriptData.stages[columnIndex],
+      rowData.student
     );
   }
 
@@ -156,7 +156,6 @@ export default class ProgressTableContentView extends React.Component {
     if (this.props.needsGutter) {
       headerRows.forEach(headerRow => headerRow.push(gutterHeader));
     }
-    const rows = [...this.props.section.students];
 
     return (
       <Table.Provider
@@ -175,7 +174,8 @@ export default class ProgressTableContentView extends React.Component {
           headerRows={headerRows}
         />
         <Virtualized.Body
-          rows={rows}
+          rows={this.props.rows}
+          onRow={this.props.onRow}
           rowKey={'id'}
           onScroll={this.props.onScroll}
           style={{

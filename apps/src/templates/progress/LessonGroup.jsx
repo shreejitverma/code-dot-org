@@ -15,6 +15,7 @@ import LessonGroupInfoDialog from '@cdo/apps/templates/progress/LessonGroupInfoD
 import firehoseClient from '@cdo/apps/lib/util/firehose';
 import {lessonIsVisible} from './progressHelpers';
 import {ViewType} from '@cdo/apps/code-studio/viewAsRedux';
+import LessonGroupInfo from '@cdo/apps/templates/progress/LessonGroupInfo';
 
 const styles = {
   main: {
@@ -35,6 +36,9 @@ const styles = {
   },
   headingText: {
     marginLeft: 10
+  },
+  headingTextRTL: {
+    marginRight: 10
   },
   contents: {
     backgroundColor: color.lighter_purple,
@@ -67,7 +71,8 @@ class LessonGroup extends React.Component {
     // redux provided
     scriptId: PropTypes.number,
     lessonIsVisible: PropTypes.func.isRequired,
-    viewAs: PropTypes.oneOf(Object.values(ViewType)).isRequired
+    viewAs: PropTypes.oneOf(Object.values(ViewType)).isRequired,
+    isRtl: PropTypes.bool
   };
 
   state = {
@@ -115,8 +120,12 @@ class LessonGroup extends React.Component {
       isSummaryView,
       isPlc,
       lessonIsVisible,
-      viewAs
+      viewAs,
+      isRtl
     } = this.props;
+
+    // Adjust styles if locale is RTL
+    const headingTextStyle = isRtl ? styles.headingTextRTL : styles.headingText;
 
     const TableType = isSummaryView
       ? SummaryProgressTable
@@ -129,7 +138,7 @@ class LessonGroup extends React.Component {
     }
 
     return (
-      <div style={styles.main}>
+      <div style={styles.main} className="lesson-group">
         <div
           style={[
             styles.header,
@@ -141,7 +150,7 @@ class LessonGroup extends React.Component {
           <FontAwesome
             icon={this.state.collapsed ? 'caret-right' : 'caret-down'}
           />
-          <span style={styles.headingText}>{lessonGroup.displayName}</span>
+          <span style={headingTextStyle}>{lessonGroup.displayName}</span>
           {(lessonGroup.description || lessonGroup.bigQuestions) && (
             <FontAwesome
               icon="info-circle"
@@ -149,6 +158,12 @@ class LessonGroup extends React.Component {
               onClick={this.openLessonGroupInfoDialog}
             />
           )}
+          <div className="print-only">
+            <LessonGroupInfo
+              description={lessonGroup.description}
+              bigQuestions={lessonGroup.bigQuestions}
+            />
+          </div>
           <LessonGroupInfoDialog
             isOpen={this.state.lessonGroupInfoDialogOpen}
             displayName={lessonGroup.displayName}
@@ -178,5 +193,6 @@ export const UnconnectedLessonGroup = LessonGroup;
 export default connect(state => ({
   scriptId: state.progress.scriptId,
   lessonIsVisible: lesson => lessonIsVisible(lesson, state, state.viewAs),
-  viewAs: state.viewAs
+  viewAs: state.viewAs,
+  isRtl: state.isRtl
 }))(Radium(LessonGroup));

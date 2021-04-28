@@ -7,10 +7,9 @@ import {unitCalendarLesson} from '@cdo/apps/templates/progress/unitCalendarLesso
 import FontAwesome from '@cdo/apps/templates/FontAwesome';
 import color from '@cdo/apps/util/color';
 
-const WEEK_WIDTH = 592;
 const styles = {
   weekColumn: {
-    minWidth: 100,
+    width: 100,
     backgroundColor: color.purple,
     color: 'white',
     textAlign: 'center',
@@ -22,12 +21,11 @@ const styles = {
   scheduleColumn: {
     border: '1px solid ' + color.purple,
     borderCollapse: 'collapse',
-    width: WEEK_WIDTH,
     display: 'flex',
-    minHeight: 50
+    minHeight: 50,
+    margin: 0
   },
   table: {
-    border: '1px solid ' + color.purple,
     borderCollapse: 'collapse',
     width: '100%'
   },
@@ -52,7 +50,8 @@ const styles = {
 export default class UnitCalendar extends React.Component {
   static propTypes = {
     weeklyInstructionalMinutes: PropTypes.number.isRequired,
-    lessons: PropTypes.arrayOf(unitCalendarLesson).isRequired
+    lessons: PropTypes.arrayOf(unitCalendarLesson).isRequired,
+    weekWidth: PropTypes.number.isRequired
   };
 
   constructor(props) {
@@ -95,7 +94,7 @@ export default class UnitCalendar extends React.Component {
             lessonClone.isStart = true;
           }
           lessonClone.duration = weeklyInstructionalMinutes - currMinutes;
-          if (lesson.duration - lessonClone.duration < lessonClone.duration) {
+          if (lesson.duration - lessonClone.duration <= lessonClone.duration) {
             lessonClone.isMajority = true;
           }
           currWeek.push(lessonClone);
@@ -118,7 +117,8 @@ export default class UnitCalendar extends React.Component {
   };
 
   renderWeek = (week, weekNumber) => {
-    const minuteWidth = WEEK_WIDTH / this.props.weeklyInstructionalMinutes;
+    const minuteWidth =
+      this.props.weekWidth / this.props.weeklyInstructionalMinutes;
     return week.map((lessonChunk, index) => (
       <UnitCalendarLessonChunk
         key={`week-${weekNumber}-lesson-chunk-${index}`}

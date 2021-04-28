@@ -4,8 +4,7 @@ import ScriptSelector from './ScriptSelector';
 import FontAwesome from '@cdo/apps/templates/FontAwesome';
 import SectionProgressToggle from '@cdo/apps/templates/sectionProgress/SectionProgressToggle';
 import StandardsView from '@cdo/apps/templates/sectionProgress/standards/StandardsView';
-import ProgressTableSummaryView from '@cdo/apps/templates/sectionProgress/progressTables/ProgressTableSummaryView';
-import ProgressTableDetailView from '@cdo/apps/templates/sectionProgress/progressTables/ProgressTableDetailView';
+import ProgressTableContainer from '@cdo/apps/templates/sectionProgress/progressTables/ProgressTableContainer';
 import LessonSelector from './LessonSelector';
 import {connect} from 'react-redux';
 import i18n from '@cdo/locale';
@@ -15,7 +14,7 @@ import {
   setLessonOfInterest,
   setCurrentView
 } from './sectionProgressRedux';
-import {loadScript} from './sectionProgressLoader';
+import {loadScriptProgress} from './sectionProgressLoader';
 import {ViewType, scriptDataPropType} from './sectionProgressConstants';
 import {sectionDataPropType} from '@cdo/apps/redux/sectionDataRedux';
 import {
@@ -86,12 +85,12 @@ class SectionProgress extends Component {
   }
 
   componentDidMount() {
-    loadScript(this.props.scriptId, this.props.section.id);
+    loadScriptProgress(this.props.scriptId, this.props.section.id);
   }
 
   onChangeScript(scriptId) {
     this.props.setScriptId(scriptId);
-    loadScript(scriptId, this.props.section.id);
+    loadScriptProgress(scriptId, this.props.section.id);
 
     firehoseClient.putRecord(
       {
@@ -154,10 +153,6 @@ class SectionProgress extends Component {
     const lessons = scriptData ? scriptData.stages : [];
     const scriptWithStandardsSelected =
       levelDataInitialized && scriptData.hasStandards;
-    const summaryStyle =
-      currentView === ViewType.SUMMARY ? styles.show : styles.hide;
-    const detailStyle =
-      currentView === ViewType.DETAIL ? styles.show : styles.hide;
     const standardsStyle =
       currentView === ViewType.STANDARDS ? styles.show : styles.hide;
     return (
@@ -196,16 +191,11 @@ class SectionProgress extends Component {
               className="fa-pulse fa-3x"
             />
           )}
-          {levelDataInitialized && currentView === ViewType.SUMMARY && (
-            <div id="uitest-summary-view" style={summaryStyle}>
-              <ProgressTableSummaryView />
-            </div>
-          )}
-          {levelDataInitialized && currentView === ViewType.DETAIL && (
-            <div id="uitest-detail-view" style={detailStyle}>
-              <ProgressTableDetailView />
-            </div>
-          )}
+          {levelDataInitialized &&
+            (currentView === ViewType.SUMMARY ||
+              currentView === ViewType.DETAIL) && (
+              <ProgressTableContainer currentView={currentView} />
+            )}
           {levelDataInitialized && currentView === ViewType.STANDARDS && (
             <div id="uitest-standards-view" style={standardsStyle}>
               <StandardsView

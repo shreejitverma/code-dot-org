@@ -4,8 +4,8 @@ FactoryGirl.allow_class_lookup = false
 
 FactoryGirl.define do
   factory :course_offering do
-    sequence(:key) {|n| "bogus-course-offering-#{n}"}
-    sequence(:display_name) {|n| "bogus-course-offering-#{n}"}
+    sequence(:key, 'a') {|c| "bogus-course-offering-#{c}"}
+    sequence(:display_name, 'a') {|c| "bogus-course-offering-#{c}"}
   end
 
   factory :course_version do
@@ -722,6 +722,13 @@ FactoryGirl.define do
     storage_app_id {456}
   end
 
+  factory :user_ml_model do
+    user
+    model_id "1234AIBot"
+    metadata "Model details"
+    name "Model name"
+  end
+
   factory :script_level do
     script
 
@@ -780,6 +787,7 @@ FactoryGirl.define do
 
   factory :lesson_group do
     sequence(:key) {|n| "Bogus Lesson Group #{n}"}
+    display_name(&:key)
     script
 
     position do |lesson_group|
@@ -818,7 +826,7 @@ FactoryGirl.define do
 
   factory :vocabulary do
     association :course_version
-    sequence(:key) {|n| "vocab-#{n}"}
+    sequence(:key, 'a') {|char| "vocab_#{char}"}
     word 'word'
     definition 'definition'
   end
@@ -829,7 +837,8 @@ FactoryGirl.define do
 
   factory :programming_expression do
     association :programming_environment
-    sequence(:name) {|n| "programming-expression-#{n}"}
+    sequence(:name) {|n| "programming expression #{n}"}
+    sequence(:key) {|n| "programming-expression-#{n}"}
   end
 
   factory :callout do
@@ -854,6 +863,29 @@ FactoryGirl.define do
     level
     user
     level_source {create :level_source, level: level}
+  end
+
+  factory :framework do
+    sequence(:shortcode) {|n| "framework-#{n}"}
+    sequence(:name) {|n| "Framework #{n}"}
+  end
+
+  factory :standard_category do
+    sequence(:shortcode) {|n| "category-#{n}"}
+    sequence(:description) {|n| "fake category description #{n}"}
+    category_type 'fake category type'
+  end
+
+  factory :standard do
+    framework
+    sequence(:shortcode) {|n| "standard-#{n}"}
+    sequence(:description) {|n| "fake description #{n}"}
+
+    trait :with_category do
+      after(:create) do |s|
+        s.category = create :standard_category, framework: s.framework
+      end
+    end
   end
 
   factory :concept do
@@ -1327,8 +1359,10 @@ FactoryGirl.define do
     association :level
     association :script
 
-    script_level do |tf|
-      create :script_level, script: tf.script, levels: [tf.level]
+    trait :with_script_level do
+      after(:build) do |tf|
+        create :script_level, script: tf.script, levels: [tf.level]
+      end
     end
   end
 

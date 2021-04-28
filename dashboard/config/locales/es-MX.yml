@@ -135,7 +135,7 @@ es-MX:
       Por favor, inicia sesión a través de tu Portal Clever.
     invalid_provider: Disculpe, Las cuentas de %{provider} no pueden ser ligadas a
       cuentas de Code.org.
-    migration_required: Disculpe, no podemos conectar o desconectar cuentas que aun
+    migration_required: Disculpe, no podemos conectar o desconectar cuentas que aún
       estén usando la versión antigua de cuentas. Por favor, actualice a la nueva
       experiencia de cuenta.
     unable_to_connect_provider: No se pudo conectar tu cuenta de Code.org a tu %{provider}.
@@ -232,10 +232,10 @@ es-MX:
     email_preference_yes: Sí
     email_preference_no: 'No'
     email_preference_required: Debes especificar una preferencia de correo electrónico.
-    parent_account_checkbox: Soy padre o tutor registrándome en lugar de mi hijo
+    parent_account_checkbox: Soy padre o tutor registrándose en lugar de mi hijo
     parent_account_email_progress_permission: "¿Podríamos enviarte emails con actualizaciones
-      ocasionales para el progreso y proyectos de tus hijos, y actualizaciones sobre
-      sus cursos de ciencias de la computación?"
+      ocasionales del progreso y proyectos de tus hijos, y actualizaciones sobre sus
+      cursos de ciencias de la computación? [(Mira nuestra política de privacidad)](%{privacy_policy_url})"
     parent_account_email_label: Correo electrónico del padre o tutor
   school_info:
     title: Información de la escuela (opcional)
@@ -332,6 +332,7 @@ es-MX:
     invite_sent: Se envió la invitación
     added_teacher: "%{name} añadido como tu docente"
     registered: Te has registrado en %{section_name}.
+    captcha_required: Por favor, rellene el CAPTCHA para entrar en esta sección.
     error:
       signed_in: Cierra la sesión antes de proceder
       username_not_found: No se encontró el usuario %{username}
@@ -395,6 +396,7 @@ es-MX:
       game_lab_tutorials: Tutoriales del Laboratorio de juegos
       sprite_lab_documentation: Documentación del Laboratorio de sprites
       sprite_lab_tutorials: Tutoriales del Laboratorio de sprites
+      web_lab_documentation: Documentación del Laboratorio Web
       educate_overview: Descripción del educador
       educate_elementary: Escuela primaria
       educate_middle: Escuela secundaria
@@ -420,6 +422,7 @@ es-MX:
       help_us: Ayúdanos
       teach: Enseñar
       about: Acerca de
+      legal: Privacidad y Legalidad
       legal_privacy: Política de privacidad
       legal_tos: Términos de uso
     user:
@@ -508,6 +511,8 @@ es-MX:
       worked_with: Trabajado con
       update_lock_settings: Actualiza la configuración de bloqueo aquí.
       clear_response: Respuesta clara
+    student_code_view_diabled: El código del alumno no puede ser consultado para esta
+      actividad.
   user:
     email_confirm_needed: 'No se pudo confirmar la dirección de correo electrónico:'
     email_confirm_needed_required: 'Tu dirección de correo electrónico %{email} no
@@ -696,6 +701,9 @@ es-MX:
     code_from_html: Code.org utiliza p5.play, bajo la licencia <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1-standalone.html">GNU
       LGPL 2.1</a>.
     powered_by_aws: Impulsado por Amazon Web Services
+    built_on_github: Creado en GitHub de Microsoft
+    google_copyright: "&copy; Google Inc. utilizado con permiso. Google Classroom
+      es una marca comercial de Google Inc."
     trademark: "© Code.org, %{current_year}. Code.org®, el logotipo de CODE y el de
       Hora de Código ® son marcas registradas de Code.org."
     copyright: Derechos de autor
@@ -707,6 +715,7 @@ es-MX:
     tos_short: Términos
     tos: Términos de uso
     privacy: Política de privacidad
+    privacy_updated: Política de privacidad (actualizada)
     secure: Versión segura
     report_abuse: Reportar Abuso
     built_on_code_studio: Desarrolla en Code Studio
@@ -1355,9 +1364,9 @@ es-MX:
         mientras conoces el plan de estudios y las herramientas de Code.org. Si quieres
         compartir tus dudas y sugerencias con nosotros, ¡puedes escribirnos a [support@code.org](%{support_email_url})
         o publicar en el [foro de docentes](%{teacher_forum_url})!"
-      facilitator_not_listed: Mi facilitados no está listado
+      facilitator_not_listed: Mi facilitador no está enlistado/a
       facilitator_not_applicable: No Aplicable
-      organizer_not_listed: Mi organizador no estpa listado
+      organizer_not_listed: Mi organizador/a no esta enlistado/a
     logged_out:
       heading: "¡Gracias por tu interés en el Programa de Aprendizaje Profesional!"
       body: Para empezar, necesitas iniciar sesión en tu cuenta de Code.org. Si quieres
@@ -1386,6 +1395,7 @@ es-MX:
     la dirección web y vuelve a enviarla, o regresa a nuestra página de inicio.
   page_not_found_button: Volver a la página de inicio
   copy: Copiar
+  confirm: Confirmar
   maker:
     google_oauth:
       login_with_google: Inicia sesión en la aplicación Maker con Google
@@ -1399,6 +1409,7 @@ es-MX:
         Google.
       error_invalid_user: ID de usuario inválida. Intenta iniciar sesión de nuevo.
       error_no_code: Por favor, ingresa tu código de inicio de sesión.
+      confirm_login: Selecciona "Confirmar" para iniciar sesión con tu cuenta de Google.
   parent_email_banner:
     text: "**¿Eres un padre o tutor?** ¡Conecta tu correo electrónico a esta cuenta
       para mantenerte al tanto del progreso y proyectos de tu hijo!"
@@ -1406,3 +1417,5 @@ es-MX:
     not_now: Ahora no
   behaviors:
     this_sprite: este sprite
+  unit_prefix: Unidad %{n}
+  code_org_logo_alt: Inicio de Code.org

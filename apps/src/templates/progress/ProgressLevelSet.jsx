@@ -6,6 +6,8 @@ import color from '@cdo/apps/util/color';
 import {levelType} from './progressTypes';
 import {getIconForLevel} from './progressHelpers';
 import ProgressPill from './ProgressPill';
+import i18n from '@cdo/locale';
+import {connect} from 'react-redux';
 
 const styles = {
   table: {
@@ -22,6 +24,9 @@ const styles = {
   },
   col2: {
     paddingLeft: 20
+  },
+  col2RTL: {
+    paddingRight: 20
   },
   linesAndDot: {
     whiteSpace: 'nowrap',
@@ -64,21 +69,43 @@ class ProgressLevelSet extends React.Component {
     name: PropTypes.string,
     levels: PropTypes.arrayOf(levelType).isRequired,
     disabled: PropTypes.bool.isRequired,
-    selectedSectionId: PropTypes.string
+    selectedSectionId: PropTypes.string,
+    onBubbleClick: PropTypes.func,
+    // Redux
+    isRtl: PropTypes.bool
   };
 
   render() {
-    const {name, levels, disabled, selectedSectionId} = this.props;
+    const {
+      name,
+      levels,
+      disabled,
+      selectedSectionId,
+      onBubbleClick,
+      isRtl
+    } = this.props;
 
     const multiLevelStep = levels.length > 1;
-    const url = multiLevelStep ? undefined : levels[0].url;
+    const url = multiLevelStep || onBubbleClick ? undefined : levels[0].url;
+    const onClick = multiLevelStep ? undefined : () => onBubbleClick(levels[0]);
 
-    let pillText;
+    // Adjust column styles if locale is RTL
+    const col2Style = isRtl ? styles.col2RTL : styles.col2;
+
+    let pillText, icon;
+    let progressStyle = false;
     if (levels[0].isUnplugged || levels[levels.length - 1].isUnplugged) {
       // We explicitly don't want any text in this case
-      pillText = '';
+      if (multiLevelStep) {
+        pillText = '';
+        icon = getIconForLevel(levels[0]);
+      } else {
+        pillText = i18n.unpluggedActivity();
+        progressStyle = true;
+      }
     } else {
       pillText = levels[0].levelNumber.toString();
+      icon = getIconForLevel(levels[0]);
       if (multiLevelStep) {
         pillText += `-${levels[levels.length - 1].levelNumber}`;
       }
@@ -91,14 +118,16 @@ class ProgressLevelSet extends React.Component {
             <td style={styles.col1}>
               <ProgressPill
                 levels={levels}
-                icon={getIconForLevel(levels[0])}
+                icon={icon}
                 text={pillText}
                 disabled={disabled}
                 selectedSectionId={selectedSectionId}
+                progressStyle={progressStyle}
+                onSingleLevelClick={onBubbleClick}
               />
             </td>
-            <td style={styles.col2}>
-              <a href={url}>
+            <td style={col2Style}>
+              <a href={url} onClick={onClick}>
                 <div style={{...styles.nameText, ...styles.text}}>{name}</div>
               </a>
             </td>
@@ -117,6 +146,7 @@ class ProgressLevelSet extends React.Component {
                   levels={levels}
                   disabled={disabled}
                   selectedSectionId={selectedSectionId}
+                  onBubbleClick={onBubbleClick}
                 />
               </td>
             </tr>
@@ -127,4 +157,8 @@ class ProgressLevelSet extends React.Component {
   }
 }
 
-export default Radium(ProgressLevelSet);
+export const UnconnectedProgressLevelSet = ProgressLevelSet;
+
+export default connect(state => ({
+  isRtl: state.isRtl
+}))(Radium(ProgressLevelSet));

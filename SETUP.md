@@ -50,6 +50,7 @@ You can do Code.org development using OSX, Ubuntu, or Windows (running Ubuntu in
    1. Some functionality will not work on your local site without this, for example, some project-backed level types such as https://studio.code.org/projects/gamelab. This setup is only available to Code.org engineers for now, but it is recommended for Code.org engineers.
 1. Run the website `bin/dashboard-server`
 1. Visit http://localhost-studio.code.org:3000/ to verify it is running.
+1. Install necessary plugins described in the [Editor configuration](#editor-configuration) section below.
 
 After setup, read about our [code styleguide](./STYLEGUIDE.md), our [test suites](./TESTING.md), or find more docs on [the wiki](https://github.com/code-dot-org/code-dot-org/wiki/For-Developers).
 
@@ -223,6 +224,10 @@ It is worthwhile to make sure that you are using WSL 2. Attempting to use WSL 1 
 
 From here, you can follow the [Ubuntu procedure above](#ubuntu-1604-download-iso), _with the following observations_...
 * In step 2, you may run into the error `E: Unable to locate package openjdk-9-jre-headless`. This is because openjdk-9 has been superseded by openjdk-11. Replace `openjdk-9-jre-headless` with `openjdk-11-jre-headless`. If you want, you can first check to see if this replacement package is available on your distro using `sudo apt-cache search openjdk` as per [this StackOverflow thread](https://stackoverflow.com/questions/51141224/how-to-install-openjdk-9-jdk-on-ubuntu-18-04/51141421).
+* `chromium-browser` might not work with the error message `Command '/usr/bin/chromium-browser' requires the chromium snap to be installed.`. You can instead install chrome by running the following:
+   1. `wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`
+   2. `sudo apt install ./google-chrome-stable_current_amd64.deb`
+   3. modify step 8 of the Ubuntu instructions to read `export CHROME_BIN=$(which google-chrome)`
 * Before step 9, you may have to restart MySQL using `sudo /etc/init.d/mysql restart`
 
 ...followed by the [overview instructions](#overview), _with the following observation_:
@@ -295,7 +300,7 @@ Our lint configuration uses formatting rules provided by [Prettier](https://pret
 
 ### Ruby
 
-We use [RuboCop](https://docs.rubocop.org/en/latest/) to lint our Ruby; see [the official integrations guide](https://docs.rubocop.org/en/latest/integration_with_other_tools/) for instructions for your editor of choice.
+We use [RuboCop](https://docs.rubocop.org/rubocop/index) to lint our Ruby; see [the official integrations guide](https://docs.rubocop.org/rubocop/integration_with_other_tools) for instructions for your editor of choice.
 
 ## More Information
 Please also see our other documentation, including our:
@@ -318,7 +323,7 @@ If rmagick doesn't install, check your version of imagemagick, and downgrade if 
 - `brew link imagemagick@6 --force`
 If you continue to have issues with rmagick, after changing your imagemagick version, you may need to uninstall/reinstall the gem
 - `gem uninstall rmagick`
-- `gem install rmagick -v 2.15.4`
+- `gem install rmagick -v 2.16.0`
 
 ### ImageMagick with Pango
 
@@ -421,6 +426,14 @@ If you run into error messages about `implicit declaration of function thin_xxx`
 - `gem install thin -v THIN_VERSION -- --with-cflags="-Wno-error=implicit-function-declaration"` where THIN_VERSION is the current version of thin in [Gemfile.lock](./Gemfile.lock)).
 
 (More info [here](https://github.com/macournoyer/thin/pull/364))
+
+#### mimemagic
+
+If you run into an error message about `Could not find MIME type database in the following locations...` while installing the `mimemagic` gem, try:
+
+- `brew install shared-mime-info`
+
+(More info on mimemagic dependencies [here](https://github.com/mimemagicrb/mimemagic#dependencies), including help for OSes that don't support Homebrew.)
 
 #### Xcode Set Up
 

@@ -581,6 +581,7 @@ en:
     tos_short: 'Terms'
     tos: 'Terms of Service'
     privacy: 'Privacy Policy'
+    privacy_updated: 'Privacy Policy (updated)'
     secure: 'Secure Version'
     report_abuse: 'Report Abuse'
     built_on_code_studio: 'Built on Code Studio'
@@ -1073,6 +1074,7 @@ en:
         malaysia: 'Malaysia'
         mexico: 'Mexico'
         thailand: 'Thailand'
+        uzbekistan: 'Uzbekistan'
       ages:
         ages_under_6: '< 6 years old'
         ages_7_8: '7-8 years old'

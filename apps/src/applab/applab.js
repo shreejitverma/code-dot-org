@@ -66,6 +66,7 @@ import SmallFooter from '@cdo/apps/code-studio/components/SmallFooter';
 import {outputError, injectErrorHandler} from '../lib/util/javascriptMode';
 import {actions as jsDebugger} from '../lib/tools/jsdebugger/redux';
 import JavaScriptModeErrorHandler from '../JavaScriptModeErrorHandler';
+import * as aiConfig from '@cdo/apps/applab/ai/dropletConfig';
 import * as makerToolkit from '../lib/kits/maker/toolkit';
 import * as makerToolkitRedux from '../lib/kits/maker/redux';
 import project from '../code-studio/initApp/project';
@@ -311,6 +312,19 @@ function handleExecutionError(err, lineNumber, outputString, libraryName) {
 
 Applab.getCode = function() {
   return studioApp().getCode();
+};
+
+/**
+ * Helper function for levelbuilders to get the level html to copy into a widget
+ * mode level.
+ */
+Applab.getHtmlForWidgetMode = function() {
+  const dom = new DOMParser().parseFromString(Applab.levelHtml, 'text/html');
+  // Make screens the width of widget mode, not regular app mode
+  Array.from(dom.getElementsByClassName('screen')).forEach(
+    screen => (screen.style.width = `${applabConstants.WIDGET_WIDTH}px`)
+  );
+  return dom.getElementById('designModeViz').outerHTML;
 };
 
 Applab.getHtml = function() {
@@ -677,6 +691,9 @@ Applab.init = function(config) {
     isSubmittable: !!config.level.submittable,
     isSubmitted: !!config.level.submitted,
     librariesEnabled: !!config.level.librariesEnabled,
+    aiEnabled: !!config.level.aiEnabled,
+    aiModelId: config.level.aiModelId,
+    aiModelName: config.level.aiModelName,
     showDebugButtons: showDebugButtons,
     showDebugConsole: showDebugConsole,
     showDebugSlider: showDebugConsole,
@@ -690,6 +707,13 @@ Applab.init = function(config) {
   });
 
   config.dropletConfig = dropletConfig;
+
+  if (config.level.aiEnabled && experiments.isEnabled(experiments.APPLAB_ML)) {
+    config.dropletConfig = utils.deepMergeConcatArrays(
+      config.dropletConfig,
+      aiConfig
+    );
+  }
 
   if (config.level.makerlabEnabled) {
     makerToolkit.enable();

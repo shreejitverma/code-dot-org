@@ -9,7 +9,8 @@ import {
 } from './sectionProgressRedux';
 import {
   processedLevel,
-  processServerSectionProgress
+  processServerSectionProgress,
+  lessonProgressForSection
 } from '@cdo/apps/templates/progress/progressHelpers';
 import {
   fetchStandardsCoveredForScript,
@@ -20,7 +21,7 @@ import _ from 'lodash';
 
 const NUM_STUDENTS_PER_PAGE = 50;
 
-export function loadScript(scriptId, sectionId) {
+export function loadScriptProgress(scriptId, sectionId) {
   const state = getStore().getState().sectionProgress;
   const sectionData = getStore().getState().sectionData.section;
 
@@ -43,6 +44,7 @@ export function loadScript(scriptId, sectionId) {
   let sectionProgress = {
     scriptDataByScript: {},
     studentLevelProgressByScript: {},
+    studentLessonProgressByScript: {},
     studentLastUpdateByScript: {}
   };
 
@@ -84,7 +86,7 @@ export function loadScript(scriptId, sectionId) {
         sectionProgress.studentLastUpdateByScript = {
           [scriptId]: {
             ...sectionProgress.studentLastUpdateByScript[scriptId],
-            ...processStudentTimestamps(data.student_last_updates)
+            ...data.student_last_updates
           }
         };
       });
@@ -93,6 +95,13 @@ export function loadScript(scriptId, sectionId) {
   // Combine and transform the data
   requests.push(scriptRequest);
   Promise.all(requests).then(() => {
+    sectionProgress.studentLessonProgressByScript = {
+      ...sectionProgress.studentLessonProgressByScript,
+      [scriptId]: lessonProgressForSection(
+        sectionProgress.studentLevelProgressByScript[scriptId],
+        sectionProgress.scriptDataByScript[scriptId].stages
+      )
+    };
     getStore().dispatch(addDataByScript(sectionProgress));
     getStore().dispatch(finishLoadingProgress());
     getStore().dispatch(finishRefreshingProgress());
@@ -102,11 +111,6 @@ export function loadScript(scriptId, sectionId) {
       getStore().dispatch(fetchStudentLevelScores(scriptId, sectionId));
     }
   });
-}
-
-function processStudentTimestamps(timestamps) {
-  const studentTimestamps = _.mapValues(timestamps, seconds => seconds * 1000);
-  return studentTimestamps;
 }
 
 function postProcessDataByScript(scriptData) {

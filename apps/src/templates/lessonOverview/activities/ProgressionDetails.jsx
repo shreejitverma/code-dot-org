@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import ProgressLevelSet from '@cdo/apps/templates/progress/ProgressLevelSet';
-import color from '@cdo/apps/util/color';
 import {LevelStatus} from '@cdo/apps/util/sharedConstants';
+import LevelDetailsDialog from './LevelDetailsDialog';
+import firehoseClient from '@cdo/apps/lib/util/firehose';
 
 const styles = {
   progressionBox: {
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: color.lighter_gray,
     margin: '10px, 0px',
-    width: '95%',
-    backgroundColor: color.lightest_gray,
     padding: '0px 10px 10px 10px'
   },
   description: {
@@ -24,6 +20,25 @@ export default class ProgressionDetails extends Component {
     section: PropTypes.object
   };
 
+  state = {
+    previewingLevel: null
+  };
+
+  handleBubbleClick = level => {
+    this.setState({previewingLevel: level});
+    firehoseClient.putRecord(
+      {
+        study: 'lesson-plan',
+        study_group: 'teacher-lesson-plan',
+        event: 'click-level-preview',
+        data_json: JSON.stringify({
+          scriptLevelId: level.id
+        })
+      },
+      {includeUserId: true}
+    );
+  };
+
   convertScriptLevelForProgression = scriptLevel => {
     const activeLevel =
       scriptLevel.levels.length > 1
@@ -31,7 +46,6 @@ export default class ProgressionDetails extends Component {
             return level.id === scriptLevel.activeId;
           })[0]
         : scriptLevel.levels[0];
-
     return {
       id: activeLevel.id,
       status: LevelStatus.not_tried,
@@ -44,7 +58,9 @@ export default class ProgressionDetails extends Component {
       isConceptLevel: activeLevel.isConceptLevel,
       isUnplugged: scriptLevel.display_as_unplugged,
       levelNumber: scriptLevel.levelNumber,
-      bonus: scriptLevel.bonus
+      bonus: scriptLevel.bonus,
+      level: activeLevel,
+      sublevels: scriptLevel.sublevels
     };
   };
 
@@ -52,15 +68,24 @@ export default class ProgressionDetails extends Component {
     const {section} = this.props;
 
     return (
-      <div style={styles.progressionBox}>
-        <ProgressLevelSet
-          name={section.progressionName}
-          levels={section.scriptLevels.map(scriptLevel =>
-            this.convertScriptLevelForProgression(scriptLevel)
-          )}
-          disabled={false}
-          selectedSectionId={null}
-        />
+      <div>
+        {this.state.previewingLevel && (
+          <LevelDetailsDialog
+            scriptLevel={this.state.previewingLevel}
+            handleClose={() => this.setState({previewingLevel: null})}
+          />
+        )}
+        <div style={styles.progressionBox}>
+          <ProgressLevelSet
+            name={section.progressionName}
+            levels={section.scriptLevels.map(scriptLevel =>
+              this.convertScriptLevelForProgression(scriptLevel)
+            )}
+            disabled={false}
+            selectedSectionId={null}
+            onBubbleClick={this.handleBubbleClick}
+          />
+        </div>
       </div>
     );
   }
