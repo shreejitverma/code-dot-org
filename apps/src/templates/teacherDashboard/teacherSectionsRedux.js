@@ -298,6 +298,12 @@ export const finishEditingSection = () => (dispatch, getState) => {
           serverSection: result
         });
         resolve(result);
+        /* If user is creating a new section, re-route the user to
+        the appropriate location:
+          - If creating from the teacher homepage, send user to the
+            "Manage Students" tab of the newly-created section.
+          - Else send user back to the page where they triggered
+            the Create/Edit Section dialog. */
         if (section.id < 0) {
           window.history.back();
           let lastUrl = window.location.href;
