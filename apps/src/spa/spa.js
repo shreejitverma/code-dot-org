@@ -389,6 +389,8 @@ var config = {
   },
   wireframeShare: false
 };
+
+document.getElementById("main").setAttribute("data-appoptions", JSON.stringify(config));
 //
 // var onMount = function() {
 //     studioApp().init(config);
@@ -408,7 +410,10 @@ var config = {
 //         </Provider>,
 //     document.getElementById("root")
 // );
+import loadFlappy from '../sites/studio/pages/init/loadFlappy';
+import loadAppOptions from '@cdo/apps/code-studio/initApp/loadApp';
 
+loadAppOptions().then(loadFlappy);
 var flappy = require('../flappy/flappy.js');
 console.log(flappy);
 flappy.init(config);

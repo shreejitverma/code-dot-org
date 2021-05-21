@@ -1,34 +1,34 @@
-/**
- * Blockly App: Flappy
- *
- * Copyright 2013 Code.org
- *
- */
-
-var React = require('react');
-var ReactDOM = require('react-dom');
+// /**
+//  * Blockly App: Flappy
+//  *
+//  * Copyright 2013 Code.org
+//  *
+//  */
+//
+// var React = require('react');
+// var ReactDOM = require('react-dom');
 var studioApp = require('../StudioApp').singleton;
 var commonMsg = require('@cdo/locale');
 var flappyMsg = require('./locale');
-import CustomMarshalingInterpreter from '../lib/tools/jsinterpreter/CustomMarshalingInterpreter';
+// import CustomMarshalingInterpreter from '../lib/tools/jsinterpreter/CustomMarshalingInterpreter';
 var api = require('./api');
-var Provider = require('react-redux').Provider;
+// var Provider = require('react-redux').Provider;
 import AppView from '../templates/AppView';
-var FlappyVisualizationColumn = require('./FlappyVisualizationColumn');
-var dom = require('../dom');
+// var FlappyVisualizationColumn = require('./FlappyVisualizationColumn');
+// var dom = require('../dom');
 var constants = require('./constants');
 var utils = require('../utils');
 import {getRandomDonorTwitter} from '../util/twitterHelper';
-import {getStore} from '../redux';
-
-import {TestResults, ResultType} from '../constants';
-import placeholder from '../../static/flappy/placeholder.jpg';
-import {dataURIFromURI} from '../imageUtils';
-import {SignInState} from '@cdo/apps/templates/currentUserRedux';
-
-/**
- * Create a namespace for the application.
- */
+// import {getStore} from '../redux';
+//
+// import {TestResults, ResultType} from '../constants';
+// import placeholder from '../../static/flappy/placeholder.jpg';
+// import {dataURIFromURI} from '../imageUtils';
+// import {SignInState} from '@cdo/apps/templates/currentUserRedux';
+//
+// /**
+//  * Create a namespace for the application.
+//  */
 var Flappy = module.exports;
 
 Flappy.GameStates = {
@@ -602,373 +602,373 @@ Flappy.init = function(config) {
   config.makeUrl = 'http://code.org/flappy';
   config.makeImage = studioApp().assetUrl('media/flappy_promo.png');
 
-  config.enableShowCode = false;
-  config.enableShowBlockCount = false;
+  // config.enableShowCode = false;
+  // config.enableShowBlockCount = false;
 
-  if (level.isK1) {
-    // k1 blocks are taller
-    constants.WORKSPACE_ROW_HEIGHT *= 1.5;
-  }
+  // if (level.isK1) {
+  //   // k1 blocks are taller
+  //   constants.WORKSPACE_ROW_HEIGHT *= 1.5;
+  // }
+  //
+  // // define how our blocks should be arranged
+  // var col1 = constants.WORKSPACE_BUFFER;
+  // var col2 = col1 + constants.WORKSPACE_COL_WIDTH;
+  // var row1 = constants.WORKSPACE_BUFFER;
+  // var row2 = row1 + constants.WORKSPACE_ROW_HEIGHT;
+  // var row3 = row2 + constants.WORKSPACE_ROW_HEIGHT;
+  //
+  // config.blockArrangement = {
+  //   flappy_whenClick: {x: col1, y: row1},
+  //   when_run: {x: col1, y: row1},
+  //   flappy_whenCollideGround: {x: col2, y: row1},
+  //   flappy_whenCollideObstacle: {x: col2, y: row2},
+  //   flappy_whenEnterObstacle: {x: col2, y: row3}
+  // };
+  //
+  // // if we dont have collide events, have enter obstacle in top row
+  // if (level.startBlocks.indexOf('whenCollide') === -1) {
+  //   config.blockArrangement.flappy_whenEnterObstacle = {x: col2, y: row1};
+  // }
+  //
+  // // when we have when_run and when_click, put when_run in top row
+  // if (level.startBlocks.indexOf('when_run') !== -1) {
+  //   config.blockArrangement.flappy_whenClick.y = row2;
+  // }
+  //
+  // var onMount = function() {
+  //   studioApp().init(config);
+  //
+  //   var rightButton = document.getElementById('rightButton');
+  //   if (rightButton) {
+  //     dom.addClickTouchEvent(rightButton, Flappy.onPuzzleComplete);
+  //   }
+  // };
+//
+//   studioApp().setPageConstants(config);
+//
+//   ReactDOM.render(
+//     <Provider store={getStore()}>
+//       <AppView
+//         visualizationColumn={
+//           <FlappyVisualizationColumn
+//             showFinishButton={!config.level.isProjectLevel}
+//           />
+//         }
+//         onMount={onMount}
+//       />
+//     </Provider>,
+//     document.getElementById(config.containerId)
+//   );
+};
 
-  // define how our blocks should be arranged
-  var col1 = constants.WORKSPACE_BUFFER;
-  var col2 = col1 + constants.WORKSPACE_COL_WIDTH;
-  var row1 = constants.WORKSPACE_BUFFER;
-  var row2 = row1 + constants.WORKSPACE_ROW_HEIGHT;
-  var row3 = row2 + constants.WORKSPACE_ROW_HEIGHT;
-
-  config.blockArrangement = {
-    flappy_whenClick: {x: col1, y: row1},
-    when_run: {x: col1, y: row1},
-    flappy_whenCollideGround: {x: col2, y: row1},
-    flappy_whenCollideObstacle: {x: col2, y: row2},
-    flappy_whenEnterObstacle: {x: col2, y: row3}
+  /**
+   * Clear the event handlers and stop the onTick timer.
+   */
+  Flappy.clearEventHandlersKillTickLoop = function () {
+    Flappy.whenClick = null;
+    Flappy.whenCollideGround = null;
+    Flappy.whenCollideObstacle = null;
+    Flappy.whenEnterObstacle = null;
+    Flappy.whenRunButton = null;
+    if (Flappy.intervalId) {
+      window.clearInterval(Flappy.intervalId);
+    }
+    Flappy.intervalId = 0;
   };
 
-  // if we dont have collide events, have enter obstacle in top row
-  if (level.startBlocks.indexOf('whenCollide') === -1) {
-    config.blockArrangement.flappy_whenEnterObstacle = {x: col2, y: row1};
-  }
+  /**
+   * Reset the app to the start position and kill any pending animation tasks.
+   * @param {boolean} first True if an opening animation is to be played.
+   */
+  Flappy.reset = function (first) {
+    Flappy.clearEventHandlersKillTickLoop();
 
-  // when we have when_run and when_click, put when_run in top row
-  if (level.startBlocks.indexOf('when_run') !== -1) {
-    config.blockArrangement.flappy_whenClick.y = row2;
-  }
+    Flappy.gameState = Flappy.GameStates.WAITING;
 
-  var onMount = function() {
-    studioApp().init(config);
+    // Reset the score.
+    Flappy.playerScore = 0;
 
-    var rightButton = document.getElementById('rightButton');
-    if (rightButton) {
-      dom.addClickTouchEvent(rightButton, Flappy.onPuzzleComplete);
+    Flappy.avatarVelocity = 0;
+
+    // Reset obstacles
+    Flappy.obstacles.forEach(function (obstacle, index) {
+      obstacle.reset(Flappy.MAZE_WIDTH * 1.5 + index * Flappy.OBSTACLE_SPACING);
+    });
+
+    // reset configurable values
+    Flappy.SPEED = 0;
+    Flappy.FLAP_VELOCITY = -11;
+    Flappy.setBackground('flappy');
+    Flappy.setObstacle('flappy');
+    Flappy.setPlayer('flappy');
+    Flappy.setGround('flappy');
+    Flappy.setGapHeight(api.GapHeight.NORMAL);
+    Flappy.gravity = api.Gravity.NORMAL;
+
+    // Move Avatar into position.
+    Flappy.avatarX = 110;
+    Flappy.avatarY = 150;
+
+    if (level.goal && level.goal.startX) {
+      Flappy.goalX = level.goal.startX;
+      Flappy.goalY = level.goal.startY;
+    }
+
+    document.getElementById('avatar').setAttribute('transform', '');
+    document.getElementById('score').setAttribute('visibility', 'hidden');
+    document.getElementById('instructions').setAttribute('visibility', 'hidden');
+    document.getElementById('clickrun').setAttribute('visibility', 'visible');
+    document.getElementById('getready').setAttribute('visibility', 'hidden');
+    document.getElementById('gameover').setAttribute('visibility', 'hidden');
+
+    Flappy.displayAvatar(Flappy.avatarX, Flappy.avatarY);
+    Flappy.displayObstacles();
+    Flappy.displayGround(0);
+    Flappy.displayGoal();
+  };
+
+  /**
+   * Click the run button.  Start the program.
+   */
+// XXX This is the only method used by the templates!
+  Flappy.runButtonClick = function () {
+    if (level.edit_blocks) {
+      Flappy.onPuzzleComplete();
+    }
+
+    var runButton = document.getElementById('runButton');
+    var resetButton = document.getElementById('resetButton');
+    // Ensure that Reset button is at least as wide as Run button.
+    if (!resetButton.style.minWidth) {
+      resetButton.style.minWidth = runButton.offsetWidth + 'px';
+    }
+    document.getElementById('clickrun').setAttribute('visibility', 'hidden');
+    document.getElementById('instructions').setAttribute('visibility', 'visible');
+    document.getElementById('getready').setAttribute('visibility', 'visible');
+
+    studioApp().toggleRunReset('reset');
+    Blockly.mainBlockSpace.traceOn(true);
+    // studioApp().reset(false);
+    studioApp().attempts++;
+    Flappy.execute();
+
+    if (level.freePlay && !level.isProjectLevel) {
+      var rightButtonCell = document.getElementById('right-button-cell');
+      rightButtonCell.className = 'right-button-cell-enabled';
+    }
+    if (level.score) {
+      document.getElementById('score').setAttribute('visibility', 'visible');
+      Flappy.displayScore();
     }
   };
 
-  studioApp().setPageConstants(config);
-
-  ReactDOM.render(
-    <Provider store={getStore()}>
-      <AppView
-        visualizationColumn={
-          <FlappyVisualizationColumn
-            showFinishButton={!config.level.isProjectLevel}
-          />
-        }
-        onMount={onMount}
-      />
-    </Provider>,
-    document.getElementById(config.containerId)
-  );
-};
-
-/**
- * Clear the event handlers and stop the onTick timer.
- */
-Flappy.clearEventHandlersKillTickLoop = function() {
-  Flappy.whenClick = null;
-  Flappy.whenCollideGround = null;
-  Flappy.whenCollideObstacle = null;
-  Flappy.whenEnterObstacle = null;
-  Flappy.whenRunButton = null;
-  if (Flappy.intervalId) {
-    window.clearInterval(Flappy.intervalId);
-  }
-  Flappy.intervalId = 0;
-};
-
-/**
- * Reset the app to the start position and kill any pending animation tasks.
- * @param {boolean} first True if an opening animation is to be played.
- */
-Flappy.reset = function(first) {
-  Flappy.clearEventHandlersKillTickLoop();
-
-  Flappy.gameState = Flappy.GameStates.WAITING;
-
-  // Reset the score.
-  Flappy.playerScore = 0;
-
-  Flappy.avatarVelocity = 0;
-
-  // Reset obstacles
-  Flappy.obstacles.forEach(function(obstacle, index) {
-    obstacle.reset(Flappy.MAZE_WIDTH * 1.5 + index * Flappy.OBSTACLE_SPACING);
-  });
-
-  // reset configurable values
-  Flappy.SPEED = 0;
-  Flappy.FLAP_VELOCITY = -11;
-  Flappy.setBackground('flappy');
-  Flappy.setObstacle('flappy');
-  Flappy.setPlayer('flappy');
-  Flappy.setGround('flappy');
-  Flappy.setGapHeight(api.GapHeight.NORMAL);
-  Flappy.gravity = api.Gravity.NORMAL;
-
-  // Move Avatar into position.
-  Flappy.avatarX = 110;
-  Flappy.avatarY = 150;
-
-  if (level.goal && level.goal.startX) {
-    Flappy.goalX = level.goal.startX;
-    Flappy.goalY = level.goal.startY;
-  }
-
-  document.getElementById('avatar').setAttribute('transform', '');
-  document.getElementById('score').setAttribute('visibility', 'hidden');
-  document.getElementById('instructions').setAttribute('visibility', 'hidden');
-  document.getElementById('clickrun').setAttribute('visibility', 'visible');
-  document.getElementById('getready').setAttribute('visibility', 'hidden');
-  document.getElementById('gameover').setAttribute('visibility', 'hidden');
-
-  Flappy.displayAvatar(Flappy.avatarX, Flappy.avatarY);
-  Flappy.displayObstacles();
-  Flappy.displayGround(0);
-  Flappy.displayGoal();
-};
-
-/**
- * Click the run button.  Start the program.
- */
-// XXX This is the only method used by the templates!
-Flappy.runButtonClick = function() {
-  if (level.edit_blocks) {
-    Flappy.onPuzzleComplete();
-  }
-
-  var runButton = document.getElementById('runButton');
-  var resetButton = document.getElementById('resetButton');
-  // Ensure that Reset button is at least as wide as Run button.
-  if (!resetButton.style.minWidth) {
-    resetButton.style.minWidth = runButton.offsetWidth + 'px';
-  }
-  document.getElementById('clickrun').setAttribute('visibility', 'hidden');
-  document.getElementById('instructions').setAttribute('visibility', 'visible');
-  document.getElementById('getready').setAttribute('visibility', 'visible');
-
-  studioApp().toggleRunReset('reset');
-  Blockly.mainBlockSpace.traceOn(true);
-  // studioApp().reset(false);
-  studioApp().attempts++;
-  Flappy.execute();
-
-  if (level.freePlay && !level.isProjectLevel) {
-    var rightButtonCell = document.getElementById('right-button-cell');
-    rightButtonCell.className = 'right-button-cell-enabled';
-  }
-  if (level.score) {
-    document.getElementById('score').setAttribute('visibility', 'visible');
-    Flappy.displayScore();
-  }
-};
-
-/**
- * App specific displayFeedback function that calls into
- * studioApp().displayFeedback when appropriate
- */
-var displayFeedback = function() {
-  const isSignedIn =
-    getStore().getState().currentUser.signInState === SignInState.SignedIn;
-  if (!Flappy.waitingForReport) {
-    dataURIFromURI(placeholder).then(feedbackImageUri => {
-      studioApp().displayFeedback({
-        feedbackType: Flappy.testResults,
-        response: Flappy.response,
-        level: level,
-        showingSharing: level.freePlay && level.shareable,
-        twitter: twitterOptions,
-        appStrings: {
-          reinfFeedbackMsg: flappyMsg.reinfFeedbackMsg(),
-          sharingText: flappyMsg.shareGame()
-        },
-        saveToProjectGallery: true,
-        feedbackImage: feedbackImageUri,
-        disableSaveToGallery: !isSignedIn
-      });
-    });
-  }
-};
-
-/**
- * Function to be called when the service report call is complete
- * @param {MilestoneResponse} response - JSON response (if available)
- */
-Flappy.onReportComplete = function(response) {
-  Flappy.response = response;
-  Flappy.waitingForReport = false;
-  studioApp().onReportComplete(response);
-  displayFeedback();
-};
-
-/**
- * Execute the user's code.  Heaven help us...
- */
-Flappy.execute = function() {
-  Flappy.result = ResultType.UNSET;
-  Flappy.testResults = TestResults.NO_TESTS_RUN;
-  Flappy.waitingForReport = false;
-  Flappy.response = null;
-
-  // Map event handler hooks (e.g. Flappy.whenClick) to the generated code.
-  const generator = Blockly.Generator.blockSpaceToCode.bind(
-    Blockly.Generator,
-    'JavaScript'
-  );
-  const events = {
-    whenClick: {code: generator('flappy_whenClick')},
-    whenCollideGround: {code: generator('flappy_whenCollideGround')},
-    whenEnterObstacle: {code: generator('flappy_whenEnterObstacle')},
-    whenCollideObstacle: {code: generator('flappy_whenCollideObstacle')},
-    whenRunButton: {code: generator('when_run')}
-  };
-
-  CustomMarshalingInterpreter.evalWithEvents(
-    {Flappy: api},
-    events
-  ).hooks.forEach(hook => {
-    Flappy[hook.name] = hook.func;
-  });
-
-  studioApp().playAudio('start');
-
-  Flappy.tickCount = 0;
-  Flappy.firstActiveTick = -1;
-  Flappy.gameOverTick = 0;
-  if (Flappy.intervalId) {
-    window.clearInterval(Flappy.intervalId);
-  }
-  Flappy.intervalId = window.setInterval(Flappy.onTick, Flappy.scale.stepSpeed);
-};
-
-Flappy.onPuzzleComplete = function() {
-  if (level.freePlay) {
-    Flappy.result = ResultType.SUCCESS;
-  }
-
-  // Stop everything on screen
-  Flappy.clearEventHandlersKillTickLoop();
-
-  // If we know they succeeded, mark levelComplete true
-  // Note that we have not yet animated the succesful run
-  var levelComplete = Flappy.result === ResultType.SUCCESS;
-
-  // If the current level is a free play, always return the free play
-  // result type
-  if (level.freePlay) {
-    Flappy.testResults = TestResults.FREE_PLAY;
-  } else {
-    Flappy.testResults = studioApp().getTestResults(levelComplete);
-  }
-
-  // Special case for Flappy level 1 where you have the right blocks, but you
-  // don't flap to the goal.  Note: See pivotal item 66362504 for why we
-  // check for both TOO_FEW_BLOCKS_FAIL and LEVEL_INCOMPLETE_FAIL here.
-  if (
-    level.appSpecificFailError &&
-    (Flappy.testResults === TestResults.TOO_FEW_BLOCKS_FAIL ||
-      Flappy.testResults === TestResults.LEVEL_INCOMPLETE_FAIL)
-  ) {
-    // Feedback message is found in level.other1StarError.
-    Flappy.testResults = TestResults.APP_SPECIFIC_FAIL;
-  }
-
-  if (Flappy.testResults >= TestResults.FREE_PLAY) {
-    studioApp().playAudioOnWin();
-  } else {
-    studioApp().playAudioOnFailure();
-  }
-
-  if (level.editCode) {
-    Flappy.testResults = levelComplete
-      ? TestResults.ALL_PASS
-      : TestResults.TOO_FEW_BLOCKS_FAIL;
-  }
-
-  sendReport();
-};
-
-function sendReport() {
-  const xml = Blockly.Xml.blockSpaceToDom(Blockly.mainBlockSpace);
-  const textBlocks = Blockly.Xml.domToText(xml);
-
-  Flappy.waitingForReport = true;
-
-  // Report result to server.
-  studioApp().report({
-    app: 'flappy',
-    level: level.id,
-    result: Flappy.result === ResultType.SUCCESS,
-    testResult: Flappy.testResults,
-    program: encodeURIComponent(textBlocks),
-    onComplete: Flappy.onReportComplete
-  });
-}
-
-/**
- * Display Avatar at the specified location
- * @param {number} x Horizontal Pixel location.
- * @param {number} y Vertical Pixel location.
- */
-Flappy.displayAvatar = function(x, y) {
-  var avatarIcon = document.getElementById('avatar');
-  avatarIcon.setAttribute('x', x);
-  avatarIcon.setAttribute('y', y);
-};
-
-/**
- * display moving goal
- */
-Flappy.displayGoal = function() {
-  if (!Flappy.goalX) {
-    return;
-  }
-  var goal = document.getElementById('goal');
-  goal.setAttribute('x', Flappy.goalX);
-  goal.setAttribute('y', Flappy.goalY);
-};
-
-/**
- * Display ground at given tickCount
- */
-Flappy.displayGround = function(tickCount) {
-  if (!level.ground) {
-    return;
-  }
-  var offset = tickCount * Flappy.SPEED;
-  offset = offset % Flappy.GROUND_WIDTH;
-  for (var i = 0; i < Flappy.MAZE_WIDTH / Flappy.GROUND_WIDTH + 1; i++) {
-    var ground = document.getElementById('ground' + i);
-    ground.setAttribute('x', -offset + i * Flappy.GROUND_WIDTH);
-    ground.setAttribute('y', Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT);
-  }
-};
-
-/**
- * Display all obstacles
- */
-Flappy.displayObstacles = function() {
-  for (var i = 0; i < Flappy.obstacles.length; i++) {
-    var obstacle = Flappy.obstacles[i];
-    var topIcon = document.getElementById('obstacle_top' + i);
-    topIcon.setAttribute('x', obstacle.x);
-    topIcon.setAttribute('y', obstacle.gapStart - Flappy.OBSTACLE_HEIGHT);
-
-    var bottomIcon = document.getElementById('obstacle_bottom' + i);
-    bottomIcon.setAttribute('x', obstacle.x);
-    bottomIcon.setAttribute('y', obstacle.gapStart + Flappy.GAP_SIZE);
-  }
-};
-
-Flappy.displayScore = function() {
-  var score = document.getElementById('score');
-  score.textContent = Flappy.playerScore;
-};
-
-Flappy.flap = function(amount) {
-  var defaultFlap = level.defaultFlap || 'NORMAL';
-  Flappy.avatarVelocity = amount || api.FlapHeight[defaultFlap];
-};
-
+// /**
+//  * App specific displayFeedback function that calls into
+//  * studioApp().displayFeedback when appropriate
+//  */
+// var displayFeedback = function() {
+//   const isSignedIn =
+//     getStore().getState().currentUser.signInState === SignInState.SignedIn;
+//   if (!Flappy.waitingForReport) {
+//     dataURIFromURI(placeholder).then(feedbackImageUri => {
+//       studioApp().displayFeedback({
+//         feedbackType: Flappy.testResults,
+//         response: Flappy.response,
+//         level: level,
+//         showingSharing: level.freePlay && level.shareable,
+//         twitter: twitterOptions,
+//         appStrings: {
+//           reinfFeedbackMsg: flappyMsg.reinfFeedbackMsg(),
+//           sharingText: flappyMsg.shareGame()
+//         },
+//         saveToProjectGallery: true,
+//         feedbackImage: feedbackImageUri,
+//         disableSaveToGallery: !isSignedIn
+//       });
+//     });
+//   }
+// };
+//
+// /**
+//  * Function to be called when the service report call is complete
+//  * @param {MilestoneResponse} response - JSON response (if available)
+//  */
+// Flappy.onReportComplete = function(response) {
+//   Flappy.response = response;
+//   Flappy.waitingForReport = false;
+//   studioApp().onReportComplete(response);
+//   displayFeedback();
+// };
+//
+// /**
+//  * Execute the user's code.  Heaven help us...
+//  */
+// Flappy.execute = function() {
+//   Flappy.result = ResultType.UNSET;
+//   Flappy.testResults = TestResults.NO_TESTS_RUN;
+//   Flappy.waitingForReport = false;
+//   Flappy.response = null;
+//
+//   // Map event handler hooks (e.g. Flappy.whenClick) to the generated code.
+//   const generator = Blockly.Generator.blockSpaceToCode.bind(
+//     Blockly.Generator,
+//     'JavaScript'
+//   );
+//   const events = {
+//     whenClick: {code: generator('flappy_whenClick')},
+//     whenCollideGround: {code: generator('flappy_whenCollideGround')},
+//     whenEnterObstacle: {code: generator('flappy_whenEnterObstacle')},
+//     whenCollideObstacle: {code: generator('flappy_whenCollideObstacle')},
+//     whenRunButton: {code: generator('when_run')}
+//   };
+//
+//   CustomMarshalingInterpreter.evalWithEvents(
+//     {Flappy: api},
+//     events
+//   ).hooks.forEach(hook => {
+//     Flappy[hook.name] = hook.func;
+//   });
+//
+//   studioApp().playAudio('start');
+//
+//   Flappy.tickCount = 0;
+//   Flappy.firstActiveTick = -1;
+//   Flappy.gameOverTick = 0;
+//   if (Flappy.intervalId) {
+//     window.clearInterval(Flappy.intervalId);
+//   }
+//   Flappy.intervalId = window.setInterval(Flappy.onTick, Flappy.scale.stepSpeed);
+// };
+//
+// Flappy.onPuzzleComplete = function() {
+//   if (level.freePlay) {
+//     Flappy.result = ResultType.SUCCESS;
+//   }
+//
+//   // Stop everything on screen
+//   Flappy.clearEventHandlersKillTickLoop();
+//
+//   // If we know they succeeded, mark levelComplete true
+//   // Note that we have not yet animated the succesful run
+//   var levelComplete = Flappy.result === ResultType.SUCCESS;
+//
+//   // If the current level is a free play, always return the free play
+//   // result type
+//   if (level.freePlay) {
+//     Flappy.testResults = TestResults.FREE_PLAY;
+//   } else {
+//     Flappy.testResults = studioApp().getTestResults(levelComplete);
+//   }
+//
+//   // Special case for Flappy level 1 where you have the right blocks, but you
+//   // don't flap to the goal.  Note: See pivotal item 66362504 for why we
+//   // check for both TOO_FEW_BLOCKS_FAIL and LEVEL_INCOMPLETE_FAIL here.
+//   if (
+//     level.appSpecificFailError &&
+//     (Flappy.testResults === TestResults.TOO_FEW_BLOCKS_FAIL ||
+//       Flappy.testResults === TestResults.LEVEL_INCOMPLETE_FAIL)
+//   ) {
+//     // Feedback message is found in level.other1StarError.
+//     Flappy.testResults = TestResults.APP_SPECIFIC_FAIL;
+//   }
+//
+//   if (Flappy.testResults >= TestResults.FREE_PLAY) {
+//     studioApp().playAudioOnWin();
+//   } else {
+//     studioApp().playAudioOnFailure();
+//   }
+//
+//   if (level.editCode) {
+//     Flappy.testResults = levelComplete
+//       ? TestResults.ALL_PASS
+//       : TestResults.TOO_FEW_BLOCKS_FAIL;
+//   }
+//
+//   sendReport();
+// };
+//
+// function sendReport() {
+//   const xml = Blockly.Xml.blockSpaceToDom(Blockly.mainBlockSpace);
+//   const textBlocks = Blockly.Xml.domToText(xml);
+//
+//   Flappy.waitingForReport = true;
+//
+//   // Report result to server.
+//   studioApp().report({
+//     app: 'flappy',
+//     level: level.id,
+//     result: Flappy.result === ResultType.SUCCESS,
+//     testResult: Flappy.testResults,
+//     program: encodeURIComponent(textBlocks),
+//     onComplete: Flappy.onReportComplete
+//   });
+// }
+//
+// /**
+//  * Display Avatar at the specified location
+//  * @param {number} x Horizontal Pixel location.
+//  * @param {number} y Vertical Pixel location.
+//  */
+// Flappy.displayAvatar = function(x, y) {
+//   var avatarIcon = document.getElementById('avatar');
+//   avatarIcon.setAttribute('x', x);
+//   avatarIcon.setAttribute('y', y);
+// };
+//
+// /**
+//  * display moving goal
+//  */
+// Flappy.displayGoal = function() {
+//   if (!Flappy.goalX) {
+//     return;
+//   }
+//   var goal = document.getElementById('goal');
+//   goal.setAttribute('x', Flappy.goalX);
+//   goal.setAttribute('y', Flappy.goalY);
+// };
+//
+// /**
+//  * Display ground at given tickCount
+//  */
+// Flappy.displayGround = function(tickCount) {
+//   if (!level.ground) {
+//     return;
+//   }
+//   var offset = tickCount * Flappy.SPEED;
+//   offset = offset % Flappy.GROUND_WIDTH;
+//   for (var i = 0; i < Flappy.MAZE_WIDTH / Flappy.GROUND_WIDTH + 1; i++) {
+//     var ground = document.getElementById('ground' + i);
+//     ground.setAttribute('x', -offset + i * Flappy.GROUND_WIDTH);
+//     ground.setAttribute('y', Flappy.MAZE_HEIGHT - Flappy.GROUND_HEIGHT);
+//   }
+// };
+//
+// /**
+//  * Display all obstacles
+//  */
+// Flappy.displayObstacles = function() {
+//   for (var i = 0; i < Flappy.obstacles.length; i++) {
+//     var obstacle = Flappy.obstacles[i];
+//     var topIcon = document.getElementById('obstacle_top' + i);
+//     topIcon.setAttribute('x', obstacle.x);
+//     topIcon.setAttribute('y', obstacle.gapStart - Flappy.OBSTACLE_HEIGHT);
+//
+//     var bottomIcon = document.getElementById('obstacle_bottom' + i);
+//     bottomIcon.setAttribute('x', obstacle.x);
+//     bottomIcon.setAttribute('y', obstacle.gapStart + Flappy.GAP_SIZE);
+//   }
+// };
+//
+// Flappy.displayScore = function() {
+//   var score = document.getElementById('score');
+//   score.textContent = Flappy.playerScore;
+// };
+//
+// Flappy.flap = function(amount) {
+//   var defaultFlap = level.defaultFlap || 'NORMAL';
+//   Flappy.avatarVelocity = amount || api.FlapHeight[defaultFlap];
+// };
+//
 Flappy.setGapHeight = function(value) {
   var minGapSize =
     Flappy.MAZE_HEIGHT - Flappy.MIN_OBSTACLE_HEIGHT - Flappy.OBSTACLE_HEIGHT;
@@ -978,85 +978,85 @@ Flappy.setGapHeight = function(value) {
   Flappy.GAP_SIZE = value;
 };
 
-var skinTheme = function(value) {
-  if (value === 'flappy') {
-    return skin;
-  }
-  return skin[value];
-};
-
-Flappy.setBackground = function(value) {
-  var element = document.getElementById('background');
-  element.setAttributeNS(
-    'http://www.w3.org/1999/xlink',
-    'xlink:href',
-    skinTheme(value).background
-  );
-};
-
-Flappy.setPlayer = function(value) {
-  var element = document.getElementById('avatar');
-  element.setAttributeNS(
-    'http://www.w3.org/1999/xlink',
-    'xlink:href',
-    skinTheme(value).avatar
-  );
-};
-
-Flappy.setObstacle = function(value) {
-  var element;
-  Flappy.obstacles.forEach(function(obstacle, index) {
-    element = document.getElementById('obstacle_top' + index);
-    element.setAttributeNS(
-      'http://www.w3.org/1999/xlink',
-      'xlink:href',
-      skinTheme(value).obstacle_top
-    );
-
-    element = document.getElementById('obstacle_bottom' + index);
-    element.setAttributeNS(
-      'http://www.w3.org/1999/xlink',
-      'xlink:href',
-      skinTheme(value).obstacle_bottom
-    );
-  });
-};
-
-Flappy.setGround = function(value) {
-  if (!level.ground) {
-    return;
-  }
-  var element, i;
-  for (i = 0; i < Flappy.MAZE_WIDTH / Flappy.GROUND_WIDTH + 1; i++) {
-    element = document.getElementById('ground' + i);
-    element.setAttributeNS(
-      'http://www.w3.org/1999/xlink',
-      'xlink:href',
-      skinTheme(value).ground
-    );
-  }
-};
-
-var checkFinished = function() {
-  // if we have a success condition and have accomplished it, we're done and successful
-  if (
-    level.goal &&
-    level.goal.successCondition &&
-    level.goal.successCondition()
-  ) {
-    Flappy.result = ResultType.SUCCESS;
-    return true;
-  }
-
-  // if we have a failure condition, and it's been reached, we're done and failed
-  if (
-    level.goal &&
-    level.goal.failureCondition &&
-    level.goal.failureCondition()
-  ) {
-    Flappy.result = ResultType.FAILURE;
-    return true;
-  }
-
-  return false;
-};
+// var skinTheme = function(value) {
+//   if (value === 'flappy') {
+//     return skin;
+//   }
+//   return skin[value];
+// };
+//
+// Flappy.setBackground = function(value) {
+//   var element = document.getElementById('background');
+//   element.setAttributeNS(
+//     'http://www.w3.org/1999/xlink',
+//     'xlink:href',
+//     skinTheme(value).background
+//   );
+// };
+//
+// Flappy.setPlayer = function(value) {
+//   var element = document.getElementById('avatar');
+//   element.setAttributeNS(
+//     'http://www.w3.org/1999/xlink',
+//     'xlink:href',
+//     skinTheme(value).avatar
+//   );
+// };
+//
+// Flappy.setObstacle = function(value) {
+//   var element;
+//   Flappy.obstacles.forEach(function(obstacle, index) {
+//     element = document.getElementById('obstacle_top' + index);
+//     element.setAttributeNS(
+//       'http://www.w3.org/1999/xlink',
+//       'xlink:href',
+//       skinTheme(value).obstacle_top
+//     );
+//
+//     element = document.getElementById('obstacle_bottom' + index);
+//     element.setAttributeNS(
+//       'http://www.w3.org/1999/xlink',
+//       'xlink:href',
+//       skinTheme(value).obstacle_bottom
+//     );
+//   });
+// };
+//
+// Flappy.setGround = function(value) {
+//   if (!level.ground) {
+//     return;
+//   }
+//   var element, i;
+//   for (i = 0; i < Flappy.MAZE_WIDTH / Flappy.GROUND_WIDTH + 1; i++) {
+//     element = document.getElementById('ground' + i);
+//     element.setAttributeNS(
+//       'http://www.w3.org/1999/xlink',
+//       'xlink:href',
+//       skinTheme(value).ground
+//     );
+//   }
+// };
+//
+// var checkFinished = function() {
+//   // if we have a success condition and have accomplished it, we're done and successful
+//   if (
+//     level.goal &&
+//     level.goal.successCondition &&
+//     level.goal.successCondition()
+//   ) {
+//     Flappy.result = ResultType.SUCCESS;
+//     return true;
+//   }
+//
+//   // if we have a failure condition, and it's been reached, we're done and failed
+//   if (
+//     level.goal &&
+//     level.goal.failureCondition &&
+//     level.goal.failureCondition()
+//   ) {
+//     Flappy.result = ResultType.FAILURE;
+//     return true;
+//   }
+//
+//   return false;
+// };
