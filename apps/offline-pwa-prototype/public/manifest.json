@@ -1,0 +1,16 @@
+{
+  "name": "Offline PWA Prototype",
+  "start_url": "/offline_pwa_prototype",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "Offline PWA prototype",
+  "theme_color": "#2A3443",
+  "icons": [
+    {
+      "src": "/hourofcode-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/"
+}
