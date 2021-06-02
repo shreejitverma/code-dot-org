@@ -1,10 +1,21 @@
 const cacheName = 'code-pwa-v1';
-const cachedFiles = [
+const cachedHTML = [
   '/s/express-2020',
+  '/s/express-2020/lessons/2/levels/2'
+];
+const cachedCSS = [
   '/assets/css/code-studio.css',
   '/assets/application.css',
   '/shared/css/hamburger.css',
   '/assets/css/scripts.css',
+  '/assets/css/maze.css',
+  '/assets/css/common.css',
+  '/assets/css/levels.css',
+  '/blockly/video-js/video-js.css',
+
+];
+
+const cachedJS = [
   '/assets/js/code-studio.js',
   '/assets/js/essential.js',
   '/assets/js/vendors.js',
@@ -13,16 +24,35 @@ const cachedFiles = [
   '/assets/js/code-studio-common.js',
   '/assets/js/scripts/show.js',
   '/assets/js/webpack-runtime.js',
-  '/assets/fontawesome-webfont.woff2',
-  '/assets/logo.svg'
+  '/assets/js/maze.js',
+  '/assets/js/en_us/maze_locale.js',
+  '/assets/js/blockly.js',
+  '/assets/js/common.js',
+  '/assets/js/en_us/blockly_locale.js',
+  '/assets/js/levels/show.js',
+  '/assets/js/layouts/_small_footer.js',
+  '/assets/js/levels/_teacher_panel.js',
+
+];
+
+const cachedImages = [
+  '/assets/logo.svg',
+  '/c/video_thumbnails/C2_maze_intro.jpg'
+];
+
+const cachedFonts = [
+  '/assets/fontawesome-webfont.woff2'
+];
+
+const cachedOther = [
+  '/manifest.webmanifest'
 ];
 
 self.addEventListener('install', (e) => {
   console.log('[Service Worker] Install');
   e.waitUntil((async () => {
     const cache = await caches.open(cacheName);
-    console.log('[Service Worker] Caching:', cachedFiles);
-    await cache.addAll(cachedFiles);
+    await cache.addAll(cachedHTML.concat(cachedJS, cachedCSS, cachedFonts, cachedImages, cachedOther));
   })());
 });
 
