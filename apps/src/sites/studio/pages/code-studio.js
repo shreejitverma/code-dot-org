@@ -129,3 +129,7 @@ checkForUnsupportedBrowsersOnLoad();
 initHamburger();
 initSigninState(userType);
 initResponsive();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+};

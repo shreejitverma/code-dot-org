@@ -1,0 +1,17 @@
+{
+  "name": "Code.org",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00adbc",
+  "description": "Our vision is that every student in every school has the opportunity to learn computer science as part of their core K-12 education.",
+  "theme_color": "#00adbc",
+  "icons": [
+    {
+      "src": "/pwa-logo.svg",
+      "purpose": "any",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "scope": "/"
+}
