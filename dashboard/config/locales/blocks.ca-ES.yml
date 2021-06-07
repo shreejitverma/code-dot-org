@@ -718,6 +718,7 @@ ca:
             '"scale"': mida
             '"rotation"': rotació
             '"direction"': direcció del moviment
+            '"speed"': velocitat
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -729,6 +730,7 @@ ca:
             '"scale"': mida
             '"rotation"': rotació
             '"direction"': direcció del moviment
+            '"speed"': velocitat
       gamelab_getTime:
         options:
           UNIT:
@@ -787,6 +789,11 @@ ca:
             '"scale"': mida
             '"rotation"': rotació
             '"direction"': direcció del moviment
+            '"speed"': velocitat
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': mida
       gamelab_setSizes:
         text: configurar {SPRITE} {PROPERTY} a {N}%
         options:
@@ -957,9 +964,12 @@ ca:
         text: gira a la dreta
       Vector_positionCenter:
         text: centre
-      aalab_starwars_playSound:
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
+            '"grid"': quadrícula
+            '"border"': frontera
+            '"row"': filera
             '"random"': atzar
       binary_move:
         options:

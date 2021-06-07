@@ -765,10 +765,11 @@ cs-CZ:
         - {}
       CSD U3 Sprites intro predict multi_2018_2019:
         answers:
-        - correct: true
-        - {}
-        - {}
-        - {}
+        - text: "![](https://images.code.org/8ca2c292184206f6b197b5818ac2af7c-image-1580245775794.png)"
+          correct: true
+        - text: "![](https://images.code.org/2176c09b3f0e422581bef15c4e6ec4eb-image-1580245775797.png)"
+        - text: "![](https://images.code.org/62791d20c9fb0acd71ae0d11edfb639b-image-1580245775799.png)"
+        - text: "![](https://images.code.org/3624e09a23ed5409b3dae36e82d79233-image-1580245775795.png)"
         questions:
         - {}
       CSD U3 drawSprites placement match:
@@ -2670,7 +2671,7 @@ cs-CZ:
         markdown: |
           # Sleduj digitální stopu
 
-          ## Jaké informace můžeš zanechávat ve svojí digitální stopě?
+          ## Jaké informace můžeš zanechávat ve své digitální stopě?
       csf_safety_in_my_online_neighborhood:
         markdown: |
           # Mé online sousedství
@@ -2764,12 +2765,6 @@ cs-CZ:
           obrázků, uvidíš je všechny pokaždé, když nahraješ soubor a můžeš používat
           *jakýkoliv* soubor, který jsi už nahrál.\n\n![](https://images.code.org/d64d7e3dadc882897e450b00a0fc6cb2-image-1476896824985.gif)\n\n###
           Klikni na Pokračovat a vyzkoušej si to!"
-      CSD User Centered Design Post-Project Test:
-        title: 'Design zaměřený na uživatele: Test po projektu'
-      CSD U1 Test:
-        title: Počítač a řešení problémů - test po projektu
-      CSD U5 test:
-        title: Data a společnost - test po projektu
       outbreak_freeplay_choice:
         display_name: Volná hra
         description: A to je konec kurzu. Pokračujte ve změnách a vylepšování projektu.
@@ -2805,3 +2800,341 @@ cs-CZ:
           očkování a další.\n\nO svůj simulační model se můžete podělit s ostatními
           nebo můžete sdílet své návrhy, co můžeme dělat, abychom pomohli ochránit
           zdravé obyvatele našeho města, až k nám virus dorazí. \n"
+      outbreak_story:
+        markdown: "# Šíření: napsání vlastního simulátoru\n\n## Vítejte ve Městě příšerek!\nMěsto
+          příšerek bývalo šťastným místem a příšerky, které ho obývají, se těšily
+          dobrému zdraví. Rády se procházely a setkávaly s kamarády. \n\n<img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\">\n\nJednoho dne se jedna z příšerek přestala cítit dobře.
+          Nakazila se virem. Ostatní příšerky to nijak zvlášť neznepokojilo. Dál navštěvovaly
+          svoje kamarády.\n\n<img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\">\n\nBrzy nato se nakazily další dvě příšerky. Byl to
+          ten samý virus! Zdálo se, že ho chytly od svého kamaráda.\n\n<img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\">\n\nVirus se pomalu šířil mezi ostatní příšerky v okolí.
+          Zdravé příšerky se začaly obávat, že se nákaze nikdo nevyhne. A ty nakažené
+          měly strach, že virem nakazí všechny ostatní.\n\n<img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/f30010a430a4189a734467094842b39d-image-1603134238257.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/3b55881f776348c6eb32379e4cbd34e1-image-1603133896503.png\"
+          style=\"width:8%\">\n\n\n<div style=\"display: inline-block\">\n<img src=\"https://images.code.org/89376b9ebd5fcee77545f13a7a444430-image-1603135356392.png\"
+          style=\"float:right; width:30%\">\n\n## Zastavení šíření\nNaštěstí po prostudování
+          viru učinili obyvatelé Města příšerek důležitý objev. Uvědomili si, že pravděpodobnost
+          šíření viru se sníží, když budou přes ústa nosit roušku. S nasazenými rouškami
+          bylo méně pravděpodobné, že by nakažené příšerky předaly virus těm zdravým.\n\n<img
+          src=\"https://images.code.org/c98f28f9bf6a027143592109d59ee484-image-1603134766360.png\"
+          style=\"width:8%\"> <img src=\"https://images.code.org/bac9dbfaf1815c6627fc24e8e6db396d-image-1603134760456.png\"
+          style=\"width:8%\">\n\n</div>\n\n<img src=\"https://images.code.org/ef7499758496b39bcccc24aabd2af5d7-image-1603137920037.2020-10-19
+          16_04_58.gif\" style=\"float:left; width:25%; padding-right:25px\">\n\n##
+          Co bude dál?\n\nDnes napíšete kód na vytvoření a spuštění vlastní **simulace**
+          šíření viru ve Městě příšerek. Simulace je počítačový model procesu nebo
+          systému. Naučte se kód a předpovězte, co bude dál s obyvateli Města příšerek.\n\n<img
+          src=\"https://images.code.org/fcbfd250d58652bdfd6393ec4f2fe2dd-image-1603134705074.png\"
+          style=\"float:right; width:15%\">\n\n* *Jak rychle se virus rozšíří?*\n\n*
+          *Nakazí se všichni?*\n\n* *Jak pomůžou roušky?*\n\n\nAž to budete mít, podělte
+          se o svou simulaci s ostatními. A šiřte zprávu o tom, co podle vás můžeme
+          udělat, abychom ochránili zdraví ostatních obyvatel, až virus dorazí k nám
+          do města. \n"
+      CSD U3 Entertainment:
+        markdown: |-
+          # Začni své hledání
+
+          Aby jsi nalez více o tom jakou roli hraje počítačová věda a programování v zábavě, musíš provést malý průzkum. Zkus vyhledat "Počítačová věda a &#95;&#95;&#95;&#95;&#95;&#95;", vyzkoušej vyhledání pro různé typy zábavy jako je film, televize, hudba, hry, animace, móda, atd.
+      CSD U3 Entertainment_2018_2019:
+        markdown: |-
+          # Začni své hledání
+
+          Aby jsi nalez více o tom jakou roli hraje počítačová věda a programování v zábavě, musíš provést malý průzkum. Zkus vyhledat "Počítačová věda a &#95;&#95;&#95;&#95;&#95;&#95;", vyzkoušej vyhledání pro různé typy zábavy jako je film, televize, hudba, hry, animace, móda, atd.
+        teacher_markdown: "Zde je několik webových stánek, kde mohou studenti začít.
+          Tyto stránky jsou obecně vhodné pro školy, ale jjich obsah se mění velice
+          často, proto **výrazně doporučujeme aby jste zkontrolovali každou stránku
+          na nevhodný obsah než ji budete sdílet se studenty**.\n\n[key]\n\n## Inside
+          the Magic - [insidethemagic.net](http://www.insidethemagic.net)\n\n### Přehled\n\nThis
+          site is focused on news about Disney, but you might be surprised by the
+          large role that CS plays in all of their different forms of entertainment.
+          Because this isn't a CS focused site, you'll need to use the search function
+          to find relevant articles.\n\n### Relevantní oblasti\n\n* Film/TV\n* Animace\n*
+          Robotika/Animatronika\n* Hry\n\n## Critical Path Videos - [criticalpathproject.com/explore/playlists/](http://www.criticalpathproject.com/explore/playlists/)\n\n###
+          Přehled\n\nVidea představující řadu lidí pracujících v různých oblastech
+          herního průmyslu a hovořících o tom, co dělají.\n\n### Relevantní oblasti\n\n*
+          Hry\n* Animace\n* Umění\n\n## Music Think Tank - [musicthinktank.com](http://www.musicthinktank.com/)\n\n###
+          Přehled\n\nMusic Think Tank je blog zaměřený na lidi pracující v hudebním
+          průmyslu. Není to stránka zaměřená na CS, ale vyhledáním hesla \"computer
+          science\" nebo \"programming\" si můžete najít zajímavé články.\n\n### Relevantní
+          oblasti\n\n* Hudba\n\n## Creative Coding Podcast - [creativecodingpodcast.com](http://creativecodingpodcast.com/)\n\n###
+          Přehled\n\nI když tento podcast příliš nepředstavuje běžné profesionální
+          programování (stejně jako lidi, kteří se tím živí), je skvělým zdrojem informací
+          o různých způsobech, jak si amatéři hrají s programováním. \n\n### Relevantní
+          oblasti\n\n* Vše\n\n[/key]\n"
+      MyLoopyRoboticFriends-Unplugged:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Zkrať své programy pomocí smyček!
+      MyLoopyRoboticFriends-Unplugged_2020:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Zkrať své programy pomocí smyček!
+      MyRoboticFriends-Unplugged:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Nauč se programovat psaním kódu pro své přátele!
+      MyRoboticFriends-Unplugged_2020:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Nauč se programovat psaním kódu pro své přátele!
+      PowerfulPasswords-Unplugged:
+        markdown: |-
+          # Silná hesla
+
+          Prozkoumej, proč lidé používají hesla, zjisti výhody používání hesel a najdi způsob, jak vytvářet a uchovávat silná, bezpečná hesla.
+
+          ![](https://images.code.org/9e082a5564a289bccc8e2dd79a2cae9f-image-1557869939256.png)
+      BigEvent-Unplugged_2021:
+        markdown: |
+          # Velká událost
+
+          V informatice jsou události akce, které počítač sleduje. V této lekci budeš reagovat různě podle toho, které tlačítko se zmáčkne.
+      CourseF_outbreak_story2:
+        markdown: "# Šíření: uvažujte jako vědec\n\n<img src=\"https://images.code.org/89376b9ebd5fcee77545f13a7a444430-image-1603135356392.png\"
+          style=\"float:right; width:30%\">\n\nSimulace jsou výborné na pochopení
+          jevů, jejichž pozorování může být v reálném světě obtížné. Pomáhají vědcům
+          bezpečně a účinně řešit problémy a testovat nové nápady. Vaše simulace představuje
+          způsob, jak znázornit možný scénář šíření viru ve Městě příšerek.\n\n##
+          Resetujte a spusťte znovu!\nI když jste sami autorem svého kódu, je nemožné
+          vědět přesně, co se stane, až stisknete tlačítko Spustit. Pohyb příšerek
+          je náhodný, takže nemůžete tušit, jestli se virus rozšíří rychle, nebo pomalu.
+          Kdykoli kód upravíte, spusťte simulaci více než jednou. Každé spuštění má
+          unikátní průběh!\n\n## Shromáždění dat\nDoporučujeme zapisovat si během
+          spuštěné simulace svá pozorování. Můžete počítat, kolik příšerek se nakazí,
+          nebo pomocí časovače zjistit, jak rychle se nákaza šíří. Zkusíte třeba zjistit,
+          jak dlouho obvykle trvá, než se nakazí všechny příšerky, pokud žádná z nich
+          nemá roušku? \n\n## Předvídání\nPokud svůj model dobře znáte, může vám pomoct
+          dělat předpovědi. Můžete dokonce měnit průběh simulace a odhadovat, jak
+          se průběh změní. Například:\n* Co by se stalo, kdyby bylo ve městě dvakrát
+          tolik příšerek?\n* Co by se stalo, kdyby se příšerky pohybovaly poloviční
+          rychlostí?\n\n<img src=\"https://images.code.org/2e83373ffd346ce3f42917a0624d441c-image-1603749526420.png\"
+          style=\"float:right\">\n\n## Podobá se Město příšerek reálnému světu?\nKaždý
+          model může být realistický jen do určité míry. \n* Co má simulace šíření
+          společného s šířením viru v reálném světě?\n* Jaké jsou rozdíly?\nAž tuhle
+          aktivitu dokončíte, proberte tyto otázky doma nebo s učitelem ve škole!\n\n##
+          Co dalšího by se dalo modelovat?\nVytvořili jste pracovní model šíření viru
+          ve Městě příšerek. Co vaše simulace nedokáže namodelovat nebo zobrazit,
+          ale vy byste chtěli, aby to uměla? Stiskněte Pokračovat a naučte se vytvářet
+          složitější model, například:\n* zvyšovat počet příšerek v simulaci,\n* pomoct
+          příšerkám, aby se z nákazy vyléčily,\n* řešit pravděpodobnost, imunitu,
+          očkování a další.\n\nO svůj simulační model se můžete podělit s ostatními
+          nebo můžete sdílet své návrhy, co můžeme dělat, abychom pomohli ochránit
+          zdravé obyvatele našeho města, až k nám virus dorazí. \n"
+      MyLoopyRoboticFriends-Unplugged_2021:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Zkrať své programy pomocí smyček!
+      MyRoboticFriends-Unplugged_2021:
+        markdown: |-
+          # Mí robotičtí přátelé
+
+          Nauč se programovat psaním kódu pro své přátele!
+      courseC_multi_artist_prog6_predict1_2021:
+        answers:
+        - text: Umělec nakreslí trojúhelník se třemi stejnými stranami.
+          feedback: Špatně. Umělec nakreslí čtverec.
+        - text: Umělec nakreslí jednu čáru.
+          feedback: Špatně. Umělec nakreslí čtverec.
+        - text: Umělec nakreslí čtverec.
+          correct: true
+          feedback: Správně!
+        - {}
+        questions:
+        - text: Podívej se pozorně na níže uvedený kód. Co se stane, když klikneš
+            na "Spustit"?
+      courseC_multi_harvester_loops11_predict1_2021:
+        answers:
+        - text: '4'
+        - text: '12'
+          correct: true
+          feedback: Správně!
+        - text: '15'
+        - text: '20'
+        questions:
+        - text: Podívej se pozorně na následující kód. Kolik dýní farmář sklidí, když
+            klikneš na "Spustit"?
+      courseC_multi_maze_debugging8_predict1_2021:
+        answers:
+        - {}
+        - correct: true
+        - correct: true
+        - {}
+        questions:
+        - {}
+      courseC_multi_maze_programming8_predict1_2021:
+        answers:
+        - text: Ptáček skončí jeden krok od prasátka.
+          feedback: Špatně. Tento kód perfektně dostane ptáčka k prasátku.
+        - text: Ptáček se dostane k prasátku.
+          correct: true
+          feedback: Správně!
+        - text: Ptáček narazí do TNT.
+          feedback: Špatně. Tento kód perfektně dostane ptáčka k prasátku.
+        - feedback: Špatně. Tento kód perfektně dostane ptáčka k prasátku.
+        questions:
+        - text: Přečti si níže uvedený kód velmi pozorně. Co se stane, když klikneš
+            na "Spustit"?
+      courseC_multi_starWars_predict1_2021:
+        answers:
+        - text: BB-8 se nepohne.
+        - text: BB-8 se pohne o jedno políčko.
+        - text: BB-8 se posune pět krát za sebou a sebere všechen šrot.
+          correct: true
+          feedback: Správně!
+        - {}
+        questions:
+        - text: Co se stane, když klikneš spustit?
+      courseC_multi_starWars_predict2_2021:
+        answers:
+        - text: BB-8 se v prvním cyklu dokutálí moc daleko.
+          feedback: Ne, to není správně. V prvním cyklu se BB-8 posune jen o dvě políčka,
+            ale potřebuje se posunout o tři.
+        - text: BB-8 se nedokutálí dost daleko, aby posbíral všechen šrot.
+          correct: true
+          feedback: Správně!
+        - text: BB-8 sesbírá všechen kovový šrot bez problémů.
+          feedback: Ne, to není správně. V prvním cyklu se BB-8 posune jen o dvě políčka,
+            ale potřebuje se posunout o tři.
+        - feedback: Ne, to není správně. V prvním cyklu se BB-8 posune jen o dvě políčka,
+            ale potřebuje se posunout o tři.
+        questions:
+        - text: Podívej se pořádně na tenhle kód. Co se stane, když dáš "Spustit"?
+      courseD_multi_bee_conditionals1_predict1_dani:
+        answers:
+        - text: Včela se posune k mraku, ať se děje, co se děje.
+        - text: Včela se posune k mraku a zkusí získat nektar, jen pokud je pod ním
+            květina.
+          correct: true
+          feedback: Správně!
+        - text: Včela se posune k mraku a neudělá nic, ať se dějě, co se děje.
+        - text: Nevím.
+        questions:
+        - text: Mrak ti blokuje výhled. Mohla by pod ním být ukrytá květina. Pokud
+            je tam květina, pak včela musí sebrat nektar **jednou**. Pokud tam květina
+            není, včela by neměla dělat nic. Dobře se podívej na kód dole. Co si myslíš,
+            že se stane, když klikneš na tlačítko "Spustit"?
+      courseE_prediction_artistFunction1_dani:
+        answers:
+        - {}
+        - {}
+        - {}
+        - correct: true
+        questions:
+        - {}
+      courseF_events_predict_multi:
+        answers:
+        - {}
+        - {}
+        - correct: true
+        - {}
+        questions:
+        - {}
+      courseF_labels_predict_multi:
+        answers:
+        - {}
+        - {}
+        - {}
+        - correct: true
+        - {}
+        questions:
+        - {}
+      courseF_multi_artist_variables3a_predict1_2021:
+        answers:
+        - correct: true
+          feedback: Správně!
+        - {}
+        - {}
+        - {}
+        questions:
+        - {}
+      courseF_multi_bee_for3_predict1_2021:
+        answers:
+        - {}
+        - correct: true
+          feedback: Správně!
+        - {}
+        - {}
+        questions:
+        - {}
+      courseF_sprites_predict_multi:
+        answers:
+        - {}
+        - correct: true
+        - {}
+        - {}
+        questions:
+        - {}
+      courseF_variables_predict_multi:
+        answers:
+        - {}
+        - correct: true
+        - {}
+        - {}
+        questions:
+        - {}
+      csf_digital_trails_2021:
+        markdown: |
+          # Sleduj digitální stopu
+
+          ## Jaké informace můžeš zanechávat ve své digitální stopě?
+      grade2_multi_collector_A_predict1_2021:
+        answers:
+        - text: Laurel pomocí tohoto kódu posbírá 4 kousky pokladu.
+          feedback: Špatně. Laurel se snaží sbírat poklad tam, kde žádný není, a to
+            způsobí chybu.
+        - text: Laurel se pokusí posbírat poklad tam, kde není, a to způsobí chybu.
+          correct: true
+          feedback: Správně!
+        - text: Laurel posbírá všechen poklad.
+          feedback: Špatně. Laurel se snaží sbírat poklad tam, kde žádný není, a to
+            způsobí chybu.
+        - feedback: Špatně. Laurel se snaží sbírat poklad tam, kde žádný není, a to
+            způsobí chybu.
+        questions:
+        - text: Podívej se pečlivě na tento kód. Co se podle tebe stane, když se program
+            spustí?

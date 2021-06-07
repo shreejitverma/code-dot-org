@@ -414,7 +414,7 @@ uz:
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": tasodifiy
       Dancelab_makeNewDanceSpriteGroup:
         text: |-
-           [LAYOUT][2] da [N][0] ta yangi [COSTUME][1]
+          [LAYOUT][2] da [N][0] ta yangi [COSTUME][1]
           yaratish
         options:
           'N':
@@ -979,6 +979,7 @@ uz:
             '"x"': x holati
             '"y"': y pozitsiyasi
             '"direction"': harakatlanish yo‘nalishi
+            '"speed"': tezlik
       gamelab_checkTouching:
         text: "[CONDITION][0] [SPRITE1][1][SPRITE2][2] ga tegadi "
         options:
@@ -1015,6 +1016,7 @@ uz:
             '"y"': y pozitsiyasi
             '"direction"': harakatlanish yo‘nalishi
             '"tint"': rang tusi
+            '"speed"': tezlik
       gamelab_getThisSprite:
         text: "[CHOICE][0] sprayt"
         options:
@@ -1156,6 +1158,8 @@ uz:
             '"West"': G'arb
       gamelab_moveToward:
         text: ' [SPRITE][0] ni [TARGET][2] tomon [DISTANCE][1] piksel masofaga siljitish'
+      gamelab_newSpritePointer:
+        text: "[SPRITE][0]"
       gamelab_objectSpritePointer:
         text: "[SPRITE][0]"
       gamelab_patrollingUpDown:
@@ -1208,6 +1212,13 @@ uz:
             undefined: hech biri
       gamelab_setBackgroundImageAs:
         text: orqa fonni [IMG][0] ga o'zgartirish
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': o‘rta
+            '100': large
       gamelab_setPrompt:
         text: '[VAR][1] o''zgaruvchisi uchun foydalanuvchidan [QUESTION][0] so''rovi'
       gamelab_setPromptWithChoices:
@@ -1221,6 +1232,16 @@ uz:
             '"x"': x holati
             '"y"': y pozitsiyasi
             '"direction"': harakatlanish yo‘nalishi
+            '"speed"': tezlik
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': kattalik
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': o‘rta
+            '100': large
       gamelab_setSizes:
         text: ' [SPRITE][0] [PROPERTY][1] qiymatini [N][2]% ga o''rnatish'
         options:
@@ -1535,6 +1556,12 @@ uz:
             '"x"': x holati
             '"y"': y pozitsiyasi
             '"direction"': harakatlanish yo‘nalishi
+      Mikelab_setupSim:
+        text: |-
+          [SPRITE3N][6][SPRITE3COSTUME][7] yig'ishda
+          [SPRITE1N][0][SPRITE1COSTUME][1] tezligi [SPRITE1SPEED][2]
+          [SPRITE2N][3][SPRITE2COSTUME][4] tezligi [SPRITE2SPEED][5] 
+          bilan simulyatsiya o'rnatish
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1630,49 +1657,27 @@ uz:
         options:
           PROPERTY:
             "'shapeColor'": rang
-      aalab_addBehaviorForDuration:
-        text: ' [SPRITE][0] sprayt [BEHAVIOR][1] harakati [SECONDS][2] sekund davomida bo''ladi'
-      aalab_addBehaviorUntilBoolean:
-        text: ' [SPRITE][0] sprayt [BEHAVIOR][1] xatti-harakatini [CONDITION][2] gacha boshlaydi'
-      aalab_createNewSpriteAnonReturn2:
-        text: yangi [SPRITE_NAME][0] sprayt [ANIMATION_NAME][1] kostyum bilan [LOCATION][2] da 
-      aalab_goToScene:
-        text: ' [SCENE][0] sahnasiga o‘tish'
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: '[SPRITE][0] piksel masofaga [DISTANCE][1] ga siljitish'
-        options:
-          DIRECTION:
-            '"North"': Shimol
-            '"East"': Sharq
-            '"South"': Janub
-            '"West"': G'arb
-      aalab_prompt:
-        text: savol berish [MESSAGE][0]
-      aalab_scene:
-        text: '[SCENE][0] sahnasi'
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: hikoyani o'rnatish
-      aalab_starwars_playSound:
-        text: '[OPTION][0] ovozni ijro etish'
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': panjara
+            '"border"': chegara
+            '"row"': satr
             '"random"': tasodifiy
-            '"R2-D2 random"': R2-D2 tasodifiy
-            '"R2-D2 1"': R2-D2 1
-            '"R2-D2 2"': R2-D2 2
-            '"R2-D2 3"': R2-D2 3
-            '"R2-D2 4"': R2-D2 4
-            '"R2-D2 5"': R2-D2 5
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': hamma
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': hamma
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: '[BIN][0] binar chizma qilish'
       binary_drawBinScreen:

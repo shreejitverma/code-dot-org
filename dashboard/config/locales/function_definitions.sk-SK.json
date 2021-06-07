@@ -70,7 +70,11 @@
             "name": "nakresli pravú nohu"
           },
           "draw body and arms": {
-            "name": "nakresli telo a ruky"
+            "name": "nakresli telo a ruky",
+            "parameters": {
+              "armlength": "dĺžkaruky",
+              "bodylength": "dĺžkatela"
+            }
           },
           "draw a head": {
             "name": "nakresli hlavu"
@@ -432,34 +436,53 @@
         },
         "Course 4 Bee Params 3": {
           "get 3 nectar": {
-            "name": "získať 3 nektáre"
+            "name": "získať 3 nektáre",
+            "parameters": {
+              "direction": "smer"
+            }
           }
         },
         "Course 4 Bee Params 4": {
           "get 3 nectar": {
-            "name": "získať 3 nektáre"
+            "name": "získať 3 nektáre",
+            "parameters": {
+              "direction": "smer"
+            }
           }
         },
         "Course 4 Bee Params 5": {
           "get 5 nectar": {
-            "name": "získaj 5 nektárov"
+            "name": "získaj 5 nektárov",
+            "parameters": {
+              "direction": "smer"
+            }
           }
         },
         "Course 4 Bee Params 6": {
           "get 5 nectar": {
-            "name": "získaj 5 nektárov"
+            "name": "získaj 5 nektárov",
+            "parameters": {
+              "direction": "smer",
+              "nectar units": "jednotky nektáru"
+            }
           }
         },
         "Course 4 Bee Params 7": {
           "get many nectar": {
-            "name": "získať veľa nektáru"
+            "name": "získať veľa nektáru",
+            "parameters": {
+              "direction": "smer",
+              "nectars": "nektár"
+            }
           }
         },
         "Course 4 Bee Params 8": {
           "get nectar make honey": {
             "name": "získaj nektár a vyrob med",
             "parameters": {
-              "honey": "med"
+              "honey": "med",
+              "direction": "smer",
+              "nectars": "nektár"
             }
           }
         },
@@ -574,7 +597,8 @@
           "get nectar": {
             "name": "získaj nektár",
             "parameters": {
-              "counter": "počítadlo"
+              "counter": "počítadlo",
+              "dir": "adr"
             }
           }
         },
@@ -588,7 +612,10 @@
             "name": "nakresli štvorec 20"
           },
           "draw octagons": {
-            "name": "nakresli osemuholníky"
+            "name": "nakresli osemuholníky",
+            "parameters": {
+              "numOctagons": "početOsemuholníkov"
+            }
           },
           "draw an octagon": {
             "name": "nakresli osemuholník"
@@ -720,7 +747,10 @@
         },
         "Guess The Number": {
           "check guess": {
-            "name": "skontroluj odhad"
+            "name": "skontroluj odhad",
+            "parameters": {
+              "theGuess": "Tip"
+            }
           }
         },
         "InspirationalArtwork": {
@@ -3771,6 +3801,56 @@
           },
           "draw bit": {
             "name": "nakresli bit"
+          }
+        },
+        "CourseD_EOC_artist": {
+          "draw a star": {
+            "name": "nakresli hviezdu",
+            "description": "nakresli hviezdu s danými vrcholmi a dĺžkami strán",
+            "parameters": {
+              "points": "body",
+              "length": "dĺžka"
+            }
+          },
+          "draw a circle": {
+            "name": "nakresli kružnicu",
+            "description": "nakresli kruh s daným polomerom",
+            "parameters": {
+              "radius": "polomer"
+            }
+          },
+          "draw a pinwheel": {
+            "name": "nakresli veterník",
+            "parameters": {
+              "sides": "Strany",
+              "length": "dĺžka",
+              "repeat": "opakuj"
+            }
+          },
+          "draw a triangle": {
+            "name": "nakresli trojuholník",
+            "parameters": {
+              "length": "dĺžka"
+            }
+          },
+          "draw a shape": {
+            "name": "nakresli tvar",
+            "parameters": {
+              "sides": "Strany",
+              "length": "dĺžka"
+            }
+          },
+          "draw a house": {
+            "name": "nakresli dom",
+            "parameters": {
+              "length": "dĺžka"
+            }
+          },
+          "draw a square": {
+            "name": "nakresli štvorec",
+            "parameters": {
+              "length": "dĺžka"
+            }
           }
         }
       }

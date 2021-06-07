@@ -369,7 +369,7 @@
         },
         "courseE_artist_concept_challenge1": {
           "do something": {
-            "name": "nimadir qiling"
+            "name": "nimadir qilish"
           }
         },
         "courseE_artist_concept_challenge1_2018": {
@@ -688,7 +688,7 @@
         },
         "courseE_playLab_scaffold1": {
           "do something": {
-            "name": "nimadir qiling"
+            "name": "nimadir qilish"
           }
         },
         "courseE_playLab_scaffold2": {
@@ -2182,6 +2182,61 @@
           },
           "draw eye": {
             "name": "koʻz chizish"
+          }
+        },
+        "Standalone_Artist_7": {
+          "draw a flower": {
+            "name": "gul chizish"
+          }
+        },
+        "CourseD_EOC_artist": {
+          "draw a star": {
+            "name": "yulduz chizish",
+            "description": "uchlari berilgan sonda va tomonlari berilgan uzunlikda bo'lgan yulduzcha chizish",
+            "parameters": {
+              "points": "ballar",
+              "length": "uzunlik"
+            }
+          },
+          "draw a circle": {
+            "name": "aylana chizish",
+            "description": "berilgan radiusda doira chizish",
+            "parameters": {
+              "radius": "radius"
+            }
+          },
+          "draw a pinwheel": {
+            "name": "parrak chizish",
+            "parameters": {
+              "sides": "tomonlar",
+              "length": "uzunlik",
+              "repeat": "takrorlash"
+            }
+          },
+          "draw a triangle": {
+            "name": "uchburchak chizish",
+            "parameters": {
+              "length": "uzunlik"
+            }
+          },
+          "draw a shape": {
+            "name": "shakl chizish",
+            "parameters": {
+              "sides": "tomonlar",
+              "length": "uzunlik"
+            }
+          },
+          "draw a house": {
+            "name": "uy chizish",
+            "parameters": {
+              "length": "uzunlik"
+            }
+          },
+          "draw a square": {
+            "name": "kvadrat chizish",
+            "parameters": {
+              "length": "uzunlik"
+            }
           }
         }
       }

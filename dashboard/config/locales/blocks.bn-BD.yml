@@ -132,6 +132,7 @@ bn:
         options:
           PROPERTY:
             '"scale"': আকার
+            '"speed"': গতি
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -141,6 +142,7 @@ bn:
         options:
           PROPERTY:
             '"scale"': আকার
+            '"speed"': গতি
       gamelab_getTime:
         options:
           UNIT:
@@ -188,6 +190,11 @@ bn:
               নিচে
             '"https://studio.code.org/blockly/media/skins/studio/background_winter.png"': শীতকাল
       gamelab_setProp:
+        options:
+          PROPERTY:
+            '"scale"': আকার
+            '"speed"': গতি
+      gamelab_setProp_dropdown:
         options:
           PROPERTY:
             '"scale"': আকার
@@ -305,9 +312,9 @@ bn:
         text: বামে যান
       RyanLab_turnRight:
         text: ডানে যান
-      aalab_starwars_playSound:
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
             '"random"': এলোমেলো
       binary_move:
         options:

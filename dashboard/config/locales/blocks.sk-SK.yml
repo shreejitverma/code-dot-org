@@ -955,14 +955,20 @@ sk:
         text: nastavenie
       gamelab_addBehaviorSimple:
         text: postava {SPRITE} začni {BEHAVIOR}
+      gamelab_addTarget:
+        text: "{SPRITE} dosiahne cieľ {TARGET}"
       gamelab_allSpritesWithAnimation:
         text: "{ANIMATION}"
       gamelab_atTime:
+        text: na {N} {UNIT}
         options:
           UNIT:
             '"seconds"': sekundy
+            '"frames"': rámce
+      gamelab_beginCollectingData:
+        text: pozbieraj {BREAK} hodnotu údajov {VALUE} so štítkom {LABEL}
       gamelab_bounceOff:
-        text: "{SPRITE} odrazí sa {TARGET}"
+        text: "{SPRITE} sa odrazí od {TARGET}"
       gamelab_changePropBy:
         text: zmeň {PROPERTY} {SPRITE} o {VAL}
         options:
@@ -972,6 +978,7 @@ sk:
             '"x"': pozícia x
             '"y"': pozícia y
             '"direction"': smeru pohybu
+            '"speed"': rýchlosť
       gamelab_checkTouching:
         text: "{CONDITION} sa {SPRITE1} dotýka {SPRITE2}"
         options:
@@ -984,6 +991,10 @@ sk:
         text: klikla {SPRITE}
       gamelab_comment:
         text: 'poznámka: {COMMENT}'
+      gamelab_costumeImage:
+        text: "{COSTUME}"
+      gamelab_countByAnimation:
+        text: počet {SPRITE}
       gamelab_createNewSprite:
         text: |-
           vytvor novú postavu
@@ -996,6 +1007,10 @@ sk:
         text: je posúvateľný
       gamelab_edgesDisplace:
         text: okraje blokujú pohyb {SPRITE}
+      gamelab_followingTargets:
+        text: nasledujúce ciele
+      gamelab_getAllSprites:
+        text: všetky postavy
       gamelab_getProp:
         text: "{SPRITE} {PROPERTY}"
         options:
@@ -1006,18 +1021,31 @@ sk:
             '"y"': pozícia y
             '"direction"': smeru pohybu
             '"tint"': sfarbenie
+            '"speed"': rýchlosť
       gamelab_getThisSprite:
         text: "{CHOICE} postava"
         options:
           CHOICE:
             '"this"': toto
+            '"other"': iné
       gamelab_getTime:
+        text: čas v {UNIT}
         options:
           UNIT:
             '"seconds"': sekundy
+            '"frames"': rámce
+      gamelab_hideHaiku:
+        text: ukry haiku
       gamelab_hideTitleScreen:
         text: schovať úvodnú obrazovku
+      gamelab_ifVarEquals:
+        text: |-
+          ak {NUM} ={VAL}
+          {STATEMENT}
+      gamelab_isCostumeEqual:
+        text: "{SPRITE} má kostým {COSTUME}"
       gamelab_isKeyPressed:
+        text: "{KEY} stlačíš "
         options:
           KEY:
             '"up"': hore
@@ -1098,6 +1126,7 @@ sk:
       gamelab_locationAt:
         text: 'poloha x: {X} y: {Y}'
       gamelab_locationModifier:
+        text: "{DISTANCE} pixelov {DIRECTION} od {LOCATION}"
         options:
           DIRECTION:
             '"North"': Sever
@@ -1112,6 +1141,8 @@ sk:
         text: "{LOCATION}"
       gamelab_makeNewSpriteAnon:
         text: vytvor novú postavu {ANIMATION_NAME} na {LOCATION}
+      gamelab_makeNumSprites:
+        text: vytvor {NUM} nových {ANIMATION_NAME} postáv
       gamelab_mirrorSprite:
         text: "{SPRITE} smeruje {DIRECTION}"
         options:
@@ -1134,6 +1165,8 @@ sk:
             '"West"': Západ
       gamelab_moveToward:
         text: pohni {SPRITE} o {DISTANCE} pixelov smerom k {TARGET}
+      gamelab_newSpritePointer:
+        text: klikla {SPRITE}
       gamelab_objectSpritePointer:
         text: klikla {SPRITE}
       gamelab_patrollingUpDown:
@@ -1148,6 +1181,9 @@ sk:
             '"East"': Východ
             '"South"': Juh
             '"West"': Západ
+      gamelab_printHaiku:
+        text: ukáž haiku {BREAK} názov básne{TITLE} autor básne {AUTHOR} riadok1 {LINE1}
+          riadok2 {LINE2} riadok3 {LINE3}
       gamelab_printText:
         text: tlačiť {TEXT}
       gamelab_randColor:
@@ -1187,6 +1223,18 @@ sk:
             undefined: žiadne
       gamelab_setBackgroundImageAs:
         text: nastav pozadie na {IMG}
+      gamelab_setDefaultSpriteSize:
+        text: nastav veľkost novej postavy na {SIZE}
+        options:
+          SIZE:
+            '25': veľmi malé
+            '50': Malé
+            '75': stredný
+            '100': Veľké
+      gamelab_setPrompt:
+        text: vyzvať používateľa {QUESTION} pre premennú {VAR}
+      gamelab_setPromptWithChoices:
+        text: vyzvi užívateľa {QUESTION} pre premennú {VAR} s možnosťami {A}{B}{C}
       gamelab_setProp:
         text: nastav {SPRITE} {PROPERTY} na {VAL}
         options:
@@ -1196,6 +1244,16 @@ sk:
             '"x"': pozícia x
             '"y"': pozícia y
             '"direction"': smeru pohybu
+            '"speed"': rýchlosť
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': veľkosť
+          SIZE:
+            '25': veľmi malé
+            '50': Malé
+            '75': stredný
+            '100': Veľké
       gamelab_setSizes:
         text: nastav {SPRITE} {PROPERTY} na {N}%
         options:
@@ -1215,8 +1273,14 @@ sk:
           CONDITION:
             '"when"': keď
             '"while"': pokiaľ
+      gamelab_stopCollectingData:
+        text: prestaň zbierať údaje
       gamelab_subjectSpritePointer:
         text: klikla {SPRITE}
+      gamelab_textJoin:
+        text: "{LEFT_QUOTE}{TEXT1}{RIGHT_QUOTE}{TEXT2}"
+      gamelab_textVariableJoin:
+        text: "{VAR}{TEXT2}"
       gamelab_tumbling:
         text: omieľanie
       gamelab_turn:
@@ -1244,8 +1308,12 @@ sk:
             '"d"': d
       gamelab_whenLeftArrow:
         text: pri stlačení šípky vľavo
+      gamelab_whenPromptAnswered:
+        text: keď {VAR} zodpovedaná
       gamelab_whenRightArrow:
         text: pri stlačení šípky vpravo
+      gamelab_whenSpriteCreated:
+        text: keď {SPRITE} vytvorená
       gamelab_whenTouching:
         text: keď sa {SPRITE1} dotkne {SPRITE2}
       gamelab_whenUpArrow:
@@ -1273,6 +1341,10 @@ sk:
         text: keď sa {SPRITE1} dotkne {SPRITE2}
       gamelab_whileUpArrow:
         text: pri stlačení šípky hore
+      gamelab_withPercentChance:
+        text: |-
+          ak {NUM}% šanca
+          {STATEMENT}
       gamelab_xLocationOf:
         text: x súradnica {SPRITE}
       gamelab_yLocationOf:
@@ -1290,6 +1362,10 @@ sk:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": nie je to ryba
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": môj-štítok
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": nie je môj-štítok
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
+      Mikelab_beginDataCollection:
+        text: vyzvi užívateľa {QUESTION} pre premennú {VAR} s možnosťami {A}{B}{C}
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1466,6 +1542,8 @@ sk:
           DANCE:
             MOVES.ClapHigh: ryba
             MOVES.Clown: nie je môj-štítok
+      Mikelab_joinText:
+        text: "{TEXT} {NEXT}"
       Mikelab_locationAt:
         text: 'poloha x: {X} y: {Y}'
       Mikelab_location_picker:
@@ -1492,6 +1570,8 @@ sk:
             '"x"': pozícia x
             '"y"': pozícia y
             '"direction"': smeru pohybu
+      Mikelab_setupSim:
+        text: "nastav simuláciu s \n{SPRITE1N}{SPRITE1COSTUME}rýchlosť{SPRITE1SPEED}\n{SPRITE2N}{SPRITE2COSTUME}rýchlosť{SPRITE2SPEED}\nzbieranie\n{SPRITE3N}{SPRITE3COSTUME}"
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1587,49 +1667,27 @@ sk:
         options:
           PROPERTY:
             "'shapeColor'": farba
-      aalab_addBehaviorForDuration:
-        text: aalab postava {SPRITE} začne {BEHAVIOR} po dobu {SECONDS} sekúnd
-      aalab_addBehaviorUntilBoolean:
-        text: postava {SPRITE} začni {BEHAVIOR} až kým {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: nova postava s menom{SPRITE_NAME} s kostýmom[ANIMATION_NAME] na mieste{LOCATION}
-      aalab_goToScene:
-        text: choď na miesto deja {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: pohni {SPRITE} o {DISTANCE} pixelov na {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Sever
-            '"East"': Východ
-            '"South"': Juh
-            '"West"': Západ
-      aalab_prompt:
-        text: položiť otázku {MESSAGE}
-      aalab_scene:
-        text: miesto deja {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: nastav príbeh
-      aalab_starwars_playSound:
-        text: prehraj zvuk {OPTION}
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': mriežka
+            '"border"': okraj
+            '"row"': riadok
             '"random"': náhodný
-            '"R2-D2 random"': R2-D2 náhodný
-            '"R2-D2 1"': R2-D2 1
-            '"R2-D2 2"': R2-D2 2
-            '"R2-D2 3"': R2-D2 3
-            '"R2-D2 4"': R2-D2 4
-            '"R2-D2 5"': R2-D2 5
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': všetky
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': všetky
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: kresliť dvojmo {BIN}
       binary_drawBinScreen:
@@ -1724,6 +1782,7 @@ sk:
             '"stoneBricks"': kamenné tehly
             '"mossyStoneBricks"': machové kamenné tehly
             '"crackedStoneBricks"': prasknuté kamenné tehly
+            '"chiseledStoneBricks"': dekoratívne kamenné tehly
             '"blueCoralBlock"': modrý koralový blok
             '"pinkCoralBlock"': ružový koralový blok
             '"magentaCoralBlock"': fialový koralový blok

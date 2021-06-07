@@ -1,4 +1,3 @@
----
 mk:
   data:
     blocks:
@@ -53,15 +52,19 @@ mk:
         options:
           KEY:
             '"w"': Запад
+            '"a"': А
             '"s"': Југ
+            '"d"': Д
       Mikelab_whenKeyReleased:
         options:
           KEY:
             '"w"': Запад
+            '"a"': А
             '"s"': Југ
-      aalab_starwars_playSound:
+            '"d"': Д
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
             '"random"': случајно
       craft_ifPath:
         options:

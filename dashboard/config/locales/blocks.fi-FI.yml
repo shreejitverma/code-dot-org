@@ -968,6 +968,7 @@ fi:
             '"x"': x:än paikka
             '"y"': y:n paikka
             '"direction"': liikkeen suunta
+            '"speed"': nopeus
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} koskettaa {SPRITE2}"
         options:
@@ -999,6 +1000,7 @@ fi:
             '"y"': y:n paikka
             '"direction"': liikkeen suunta
             '"tint"': sävy
+            '"speed"': nopeus
       gamelab_getThisSprite:
         text: "{CHOICE} sprite"
         options:
@@ -1123,6 +1125,8 @@ fi:
             '"West"': Länsi
       gamelab_moveToward:
         text: siirry {SPRITE} kuvapistettä {DISTANCE} kohti {TARGET}
+      gamelab_newSpritePointer:
+        text: napsautti {SPRITE}
       gamelab_objectSpritePointer:
         text: napsautti {SPRITE}
       gamelab_playSound:
@@ -1173,6 +1177,13 @@ fi:
             undefined: Ei yhtään
       gamelab_setBackgroundImageAs:
         text: aseta tausta {IMG}
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': keskipitkä
+            '100': large
       gamelab_setProp:
         text: aseta {SPRITE} {PROPERTY} arvoksi {VAL}
         options:
@@ -1182,6 +1193,16 @@ fi:
             '"x"': x:än paikka
             '"y"': y:n paikka
             '"direction"': liikkeen suunta
+            '"speed"': nopeus
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': koko
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': keskipitkä
+            '100': large
       gamelab_setSizes:
         text: aseta {SPRITE} {PROPERTY} – {N}%
         options:
@@ -1279,6 +1300,8 @@ fi:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": ei kalaa
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": my-label
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": ei my-etiketti
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1483,6 +1506,13 @@ fi:
             '"x"': x:än paikka
             '"y"': y:n paikka
             '"direction"': liikkeen suunta
+      Mikelab_setupSim:
+        text: |-
+          määritä simulointi käyttäen
+          {SPRITE1N}{SPRITE1COSTUME}nopeudella{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}nopeudella{SPRITE2SPEED}
+          keräten
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1578,42 +1608,27 @@ fi:
         options:
           PROPERTY:
             "'shapeColor'": väri
-      aalab_addBehaviorForDuration:
-        text: aalab sprite {SPRITE} alkaa {BEHAVIOR} varten {SECONDS} sekuntia
-      aalab_addBehaviorUntilBoolean:
-        text: sprite {SPRITE} alkaa {BEHAVIOR} asti {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: uusi sprite nimeltään{SPRITE_NAME} puku{ANIMATION_NAME} 123_321{LOCATION}
-      aalab_goToScene:
-        text: Siirry kohtaus {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: siirry {SPRITE} {DISTANCE} kuvapistettä {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Pohjoinen
-            '"East"': Itä
-            '"South"': Etelä
-            '"West"': Länsi
-      aalab_prompt:
-        text: kysyä kysymys {MESSAGE}
-      aalab_scene:
-        text: kohtaus {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: setup tarina
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': ruudukko
+            '"border"': raja
+            '"row"': rivi
             '"random"': satunnainen
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': kaikki
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': kaikki
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: piirtää binääri {BIN}
       binary_drawBinScreen:

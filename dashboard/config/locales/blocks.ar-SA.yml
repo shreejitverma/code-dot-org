@@ -3,7 +3,9 @@ ar:
   data:
     blocks:
       Dancelab_alternateMoves:
-        text: "{GROUP} كل بديل {N} التدابير \nبين {MOVE1} و {MOVE2}"
+        text: |-
+          {GROUP} بدل كل {N} مقياس
+          بين {MOVE1} و {MOVE2}
         options:
           GROUP:
             sprites: الكل
@@ -978,9 +980,10 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
+            '"speed"': السرعة
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} اللمسات {SPRITE2}"
         options:
@@ -1007,10 +1010,11 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
             '"tint"': لون خفيف
+            '"speed"': السرعة
       gamelab_getThisSprite:
         text: "{CHOICE} العفريت"
         options:
@@ -1136,6 +1140,8 @@ ar:
             '"West"': غرب
       gamelab_moveToward:
         text: نقل {SPRITE} العنصورات {DISTANCE} نحو {TARGET}
+      gamelab_newSpritePointer:
+        text: النقر {SPRITE}
       gamelab_objectSpritePointer:
         text: النقر {SPRITE}
       gamelab_playSound:
@@ -1189,15 +1195,32 @@ ar:
             undefined: لا شيء
       gamelab_setBackgroundImageAs:
         text: تعيين الخلفية إلى {IMG}
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': متوسط
+            '100': large
       gamelab_setProp:
         text: تعيين {SPRITE} {PROPERTY} ل {VAL}
         options:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
+            '"speed"': السرعة
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': الحجم
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': متوسط
+            '100': large
       gamelab_setSizes:
         text: عيّن {SPRITE} {PROPERTY} على {N}%
         options:
@@ -1293,13 +1316,15 @@ ar:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": مش سمكة
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": ملصق
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": لا تسميتي
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
       Mikelab_changePropBy:
         options:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
       Mikelab_createNewSprite:
         options:
@@ -1322,8 +1347,8 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
       Mikelab_groupChangeAnim:
         text: قم بتغيير {SELECT} {COSTUME} في {COSTUME2}
@@ -1340,8 +1365,8 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
       Mikelab_groupCreateNewSprite:
         text: قم بإنشاء {COSTUME} جديد في {LOCATION}
@@ -1375,8 +1400,8 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
       Mikelab_groupRemoveAllBehaviors:
         text: وقف {SELECT} {COSTUME} السلوكيات
@@ -1405,8 +1430,8 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
       Mikelab_groupSetTint:
         text: تغيير لون {SELECT} {COSTUME} ل {COLOR}
@@ -1497,9 +1522,16 @@ ar:
           PROPERTY:
             '"scale"': الحجم
             '"rotation"': الدوران
-            '"x"': الموضع س
-            '"y"': الموضع ص
+            '"x"': الموقع س
+            '"y"': الموقع ص
             '"direction"': اتجاه الحركة
+      Mikelab_setupSim:
+        text: |-
+          محاكاة الاعداد مع
+          {SPRITE1N}{SPRITE1COSTUME}سرعه{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}سرعه{SPRITE2SPEED}
+          جمع
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1595,42 +1627,27 @@ ar:
         options:
           PROPERTY:
             "'shapeColor'": لون
-      aalab_addBehaviorForDuration:
-        text: علاب العفريت {SPRITE} يبدا {BEHAVIOR} من أجل {SECONDS} ثانيه
-      aalab_addBehaviorUntilBoolean:
-        text: العفريت {SPRITE} يبدا {BEHAVIOR} حتي {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: شبح جديد اسمه{SPRITE_NAME} مع زي{ANIMATION_NAME} في الموقع{LOCATION}
-      aalab_goToScene:
-        text: الذهاب إلى المشهد {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: نقل {SPRITE} {DISTANCE} العنصورات {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': شمال
-            '"East"': شرق
-            '"South"': جنوب
-            '"West"': غرب
-      aalab_prompt:
-        text: طرح السؤال {MESSAGE}
-      aalab_scene:
-        text: المشهد {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: قصة الإعداد
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': شبكة
+            '"border"': الحدود
+            '"row"': صف
             '"random"': عشوائي
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': الكل
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': الكل
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: رسم ثنائي {BIN}
       binary_drawBinScreen:

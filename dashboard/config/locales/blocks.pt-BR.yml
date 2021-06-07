@@ -975,6 +975,7 @@ pt:
             '"x"': posição x
             '"y"': posição y
             '"direction"': direção do movimento
+            '"speed"': velocidade
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} toca {SPRITE2}"
         options:
@@ -1006,6 +1007,7 @@ pt:
             '"y"': posição y
             '"direction"': direção do movimento
             '"tint"': tonalidade
+            '"speed"': velocidade
       gamelab_getThisSprite:
         text: "{CHOICE} sprite"
         options:
@@ -1133,6 +1135,8 @@ pt:
             '"West"': Oeste
       gamelab_moveToward:
         text: mover {SPRITE} distância {DISTANCE} em direção a {TARGET}
+      gamelab_newSpritePointer:
+        text: clique {SPRITE}
       gamelab_objectSpritePointer:
         text: clique {SPRITE}
       gamelab_playSound:
@@ -1185,6 +1189,13 @@ pt:
             undefined: nenhum
       gamelab_setBackgroundImageAs:
         text: definir plano de fundo para {IMG}
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': médio
+            '100': large
       gamelab_setProp:
         text: definir {SPRITE} {PROPERTY} para {VAL}
         options:
@@ -1194,6 +1205,16 @@ pt:
             '"x"': posição x
             '"y"': posição y
             '"direction"': direção do movimento
+            '"speed"': velocidade
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': tamanho
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': médio
+            '100': large
       gamelab_setSizes:
         text: definir {SPRITE} {PROPERTY} para {N}%
         options:
@@ -1291,6 +1312,8 @@ pt:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": não peixe
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": meu-rotulo
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": não é meu rótulo
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1499,6 +1522,13 @@ pt:
             '"x"': posição x
             '"y"': posição y
             '"direction"': direção do movimento
+      Mikelab_setupSim:
+        text: |-
+          simulação de configuração com
+          {SPRITE1N}{SPRITE1COSTUME}velocidade{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}velocidade{SPRITE2SPEED}
+          coletando
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1595,43 +1625,27 @@ pt:
         options:
           PROPERTY:
             "'shapeColor'": cor
-      aalab_addBehaviorForDuration:
-        text: aalab elemento {SPRITE} começa a {BEHAVIOR} por {SECONDS} segundos
-      aalab_addBehaviorUntilBoolean:
-        text: aalab sprite {SPRITE} começa a {BEHAVIOR} até {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: novo sprite chamado {SPRITE_NAME} com traje {ANIMATION_NAME} no local
-          [LOCATION] [2]
-      aalab_goToScene:
-        text: vai para cena {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: mover {SPRITE} {DISTANCE} pixels {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Norte
-            '"East"': Leste
-            '"South"': Sul
-            '"West"': Oeste
-      aalab_prompt:
-        text: perguntar {MESSAGE}
-      aalab_scene:
-        text: cena {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: configurar estória
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': grade
+            '"border"': borda
+            '"row"': linha
             '"random"': aleatório
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': todos
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': todos
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: desenhar o binário {BIN}
       binary_drawBinScreen:

@@ -5,11 +5,12 @@ ar:
       'Artist: Variables': 'الفنان: المتغيرات'
       Binary Numbers: أرقام ثنائية
       Board Events: أحداث اللوحة
-      CS Discoveries Post-Course Survey: استطلاع رأي بعد انتهاء دورة استكشافات علوم الكمبيوتر
+      CS Discoveries Post-Course Survey: استطلاع رأي بعد انتهاء دورة مقدمات علوم الحاسوب
       Collisions: التصادمات
       Combining Representations: الجمع بين التمثيلات
       Debugging: تصحيح الأخطاء
       Design Mode: وضع التصميم
+      Designing for Accessibility: التصميم من أجل الوصول
       Drawing: الرسم
       Events: الأحداث
       Example Projects: مشاريع كمثال
@@ -21,7 +22,7 @@ ar:
       Headings: العناوين
       How to Make a Sprite: كيف تصنع "سبرايت"
       Introducing Sprite Lab: التعريف بمشروع Sprite Lab (مختبر سبرايت)
-      Introduction to Arrays: مقدمة عن المجموعات الوصفية
+      Introduction to Arrays: مقدمة عن المصفوفات
       Keeping Data Secret: الحفاظ على سرية البيانات
       Keyboard Input: مدخلات لوحة المفاتيح
       Lesson Extras: الدروس الإضافية
@@ -29,17 +30,22 @@ ar:
       Linking Screens: ربط الشاشات
       Lists: القوائم
       Measures: الإجراءات
+      'Mini-Project: About Me': 'نبذة عني مع مختبر النقوش المتحركة'
+      My Online Neighborhood: الحي الذي أقطنه عبر الإنترنت
       Pair Programming: البرمجة الزوجية
+      Picturing Data: البيانات المصوّرة
+      Planning: التخطيط
       Programming with Rey and BB-8: البرمجة مع Rey وBB-8
       Project: مشروع
       Properties: "خصائص\n"
       Reflection: تأملات
       Representing Images: تمثيل الصور
+      Review: مراجعة
       Sprite Lab Project: مشروع Sprite Lab
       Stopping the Outbreak with Masks: وقف الانتشار باستخدام الأقنعة
       The Harvester: عامِلة الحصاد
-      Using the Repeat Block: استخدام التعليمة البرمجية "كرر"
+      Using the Repeat Block: استخدام حلقة "التكرار"
       Velocity: السرعة
       Video: فيديو
-      While Loops with the Farmer: حلقات While مع المزارع
+      While Loops with the Farmer: حلقات "بينما" مع المزارع
       Wrap-up: الجلسة الختامية

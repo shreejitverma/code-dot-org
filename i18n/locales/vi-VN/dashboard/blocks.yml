@@ -971,6 +971,7 @@ vi:
             '"x"': hoành độ
             '"y"': tung độ
             '"direction"': phương hướng chuyển động
+            '"speed"': tốc độ
       gamelab_checkTouching:
         text: "[CONDITION][0] [SPRITE1][1] chạm [SPRITE2][2] 123_321"
         options:
@@ -1001,6 +1002,7 @@ vi:
             '"y"': tung độ
             '"direction"': phương hướng chuyển động
             '"tint"': sắc thái
+            '"speed"': tốc độ
       gamelab_getThisSprite:
         text: "[CHOICE][0] sprite"
         options:
@@ -1123,6 +1125,8 @@ vi:
             '"West"': Phía Tây
       gamelab_moveToward:
         text: di chuyển [SPRITE][0] pixel [DISTANCE][1] hướng [TARGET][2]
+      gamelab_newSpritePointer:
+        text: "nhấp [SPRITE][0]"
       gamelab_objectSpritePointer:
         text: "nhấp [SPRITE][0]"
       gamelab_playSound:
@@ -1173,6 +1177,13 @@ vi:
             undefined: không
       gamelab_setBackgroundImageAs:
         text: thiết lập nền để [IMG][0]
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': trung bình
+            '100': large
       gamelab_setProp:
         text: bộ [SPRITE][0] [PROPERTY]123_321[1] để [VAL][2]
         options:
@@ -1182,6 +1193,16 @@ vi:
             '"x"': hoành độ
             '"y"': tung độ
             '"direction"': phương hướng chuyển động
+            '"speed"': tốc độ
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': kích cỡ
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': trung bình
+            '100': large
       gamelab_setSizes:
         text: thiết lập {PROPERTY} {SPRITE} thành {N}%
         options:
@@ -1483,6 +1504,13 @@ vi:
             '"x"': hoành độ
             '"y"': tung độ
             '"direction"': phương hướng chuyển động
+      Mikelab_setupSim:
+        text: |-
+          thiết lập mô phỏng với
+          [SPRITE1N][0][SPRITE1COSTUME][1]Tốc độ[SPRITE1SPEED][2]
+          [SPRITE2N][3][SPRITE2COSTUME][4]Tốc độ[SPRITE2SPEED][5]
+          Thu thập
+          [SPRITE3N][6][SPRITE3COSTUME][7]
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1578,42 +1606,27 @@ vi:
         options:
           PROPERTY:
             "'shapeColor'": màu sắc
-      aalab_addBehaviorForDuration:
-        text: aalab sprite [SPRITE][0] bắt đầu [BEHAVIOR][1] cho [SECONDS][2] giây
-      aalab_addBehaviorUntilBoolean:
-        text: sprite [SPRITE][0] bắt đầu [BEHAVIOR][1] cho đến khi [CONDITION][2] 123_321
-      aalab_createNewSpriteAnonReturn2:
-        text: sprite mới tên[SPRITE_NAME][0] với trang phục[ANIMATION_NAME][1] tại vị trí[LOCATION][2]
-      aalab_goToScene:
-        text: đi đến cảnh [SCENE][0]
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: Di chuyển [SPRITE][0] [DISTANCE][1] Pixel [DIRECTION][2]
-        options:
-          DIRECTION:
-            '"North"': Phía Bắc
-            '"East"': Phía Đông
-            '"South"': Phía Nam
-            '"West"': Phía Tây
-      aalab_prompt:
-        text: đặt câu hỏi [MESSAGE][0]
-      aalab_scene:
-        text: cảnh [SCENE][0]
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: câu chuyện thiết lập
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': lưới
+            '"border"': đường biên
+            '"row"': hàng
             '"random"': ngẫu nhiên
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': tất cả
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': tất cả
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: vẽ nhị phân [BIN][0]
       binary_drawBinScreen:

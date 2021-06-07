@@ -57,6 +57,9 @@
           },
           "draw cord": {
             "name": "rajzolj kábelt"
+          },
+          "draw R pad": {
+            "name": "rajzold meg az R panelt"
           }
         },
         "2-3 Artist Debugging 5": {
@@ -550,7 +553,7 @@
           "draw an octagon": {
             "name": "rajzolj nyolcszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -658,13 +661,13 @@
           "n-sided shape": {
             "name": "n-oldalú síkidom",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a loop": {
             "name": "rajzolj hurkot",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw spiral circle": {
@@ -677,7 +680,7 @@
           "draw a loop": {
             "name": "rajzolj hurkot",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "n-sided shape": {
@@ -875,7 +878,7 @@
           "draw a hexagon": {
             "name": "rajzolj egy hatszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -883,13 +886,13 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "do something": {
             "name": "csinálj valamit",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -897,7 +900,7 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -905,7 +908,7 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -913,14 +916,14 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
         "NEW Course 4 Artist Params 14": {
           "draw a spiral edge": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -929,7 +932,7 @@
             "name": "rajzolj egy csillagot",
             "parameters": {
               "points": "pontok",
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a circle": {
@@ -938,32 +941,32 @@
           "draw a pinwheel": {
             "name": "rajzolj szélkereket",
             "parameters": {
-              "length": "hossza",
+              "length": "length",
               "repeat": "ismételd"
             }
           },
           "draw a triangle": {
             "name": "Rajzolj egy háromszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a shape": {
             "name": "rajzolj síkidomot",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a house": {
             "name": "rajzoljon egy házat",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -985,7 +988,7 @@
           "draw a triangle with length": {
             "name": "rajzolj háromszöget, oldala",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -993,7 +996,7 @@
           "draw a pentagon": {
             "name": "rajzolj ötszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1001,25 +1004,25 @@
           "draw a triangle": {
             "name": "Rajzolj egy háromszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a hexagon": {
             "name": "rajzolj egy hatszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a sqaure": {
             "name": "rajzolj négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1027,7 +1030,7 @@
           "draw a triangle": {
             "name": "Rajzolj egy háromszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1035,7 +1038,7 @@
           "draw a triangle with length": {
             "name": "rajzolj háromszöget, oldala",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1043,7 +1046,7 @@
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "do something": {
@@ -1054,7 +1057,7 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1310,14 +1313,14 @@
         "course4_bee_fwp_challenge1": {
           "pick row": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
         "course4_bee_fwp_challenge2": {
           "pick row": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -1851,6 +1854,9 @@
           },
           "draw a line of squares": {
             "name": "rajzolj egy sor négyzetet"
+          },
+          "draw a plane of squares": {
+            "name": "négyzet rajzolása"
           }
         },
         "courseE_artist_concept4_2018": {
@@ -1859,6 +1865,9 @@
           },
           "draw a line of squares": {
             "name": "rajzolj egy sor négyzetet"
+          },
+          "draw a plane of squares": {
+            "name": "négyzet rajzolása"
           }
         },
         "courseE_artist_concept_challenge1": {
@@ -2049,6 +2058,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions8_2019": {
@@ -2060,6 +2072,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions8_2020": {
@@ -2071,6 +2086,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions8a_2018": {
@@ -2139,6 +2157,9 @@
           },
           "do something": {
             "name": "csinálj valamit"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions8c_2019": {
@@ -2150,6 +2171,9 @@
           },
           "do something": {
             "name": "csinálj valamit"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions8c_2020": {
@@ -2161,6 +2185,9 @@
           },
           "do something": {
             "name": "csinálj valamit"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions9": {
@@ -2171,7 +2198,7 @@
             "name": "rajzolj háromszöget"
           },
           "draw line of triangles": {
-            "name": "rajzolj vonalat és háromszöget"
+            "name": "rajzolj vonalat háromszögekből"
           }
         },
         "courseE_artist_functions9_2018": {
@@ -2182,7 +2209,7 @@
             "name": "rajzolj háromszöget"
           },
           "draw line of triangles": {
-            "name": "rajzolj vonalat és háromszöget"
+            "name": "rajzolj vonalat háromszögekből"
           }
         },
         "courseE_artist_functions9_2019": {
@@ -2193,7 +2220,7 @@
             "name": "rajzolj háromszöget"
           },
           "draw line of triangles": {
-            "name": "rajzolj vonalat és háromszöget"
+            "name": "rajzolj vonalat háromszögekből"
           }
         },
         "courseE_artist_functions9_2020": {
@@ -2204,7 +2231,7 @@
             "name": "rajzolj háromszöget"
           },
           "draw line of triangles": {
-            "name": "rajzolj vonalat és háromszöget"
+            "name": "rajzolj vonalat háromszögekből"
           }
         },
         "courseE_artist_functionsProj_2018": {
@@ -2219,6 +2246,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functionsProj_2019": {
@@ -2233,6 +2263,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functionsProj_2020": {
@@ -2247,6 +2280,9 @@
           },
           "draw square": {
             "name": "rajzolj négyzetet"
+          },
+          "staggered squares": {
+            "name": "lépcsős négyzetek"
           }
         },
         "courseE_artist_functions_challenge1": {
@@ -2487,6 +2523,12 @@
           },
           "pumpkin square": {
             "name": "sütőtök négyzet"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions10a1_2019": {
@@ -2495,6 +2537,12 @@
           },
           "pumpkin square": {
             "name": "sütőtök négyzet"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions10a1_2020": {
@@ -2503,6 +2551,12 @@
           },
           "pumpkin square": {
             "name": "sütőtök négyzet"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions10b": {
@@ -2524,6 +2578,15 @@
           },
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          },
+          "get produce": {
+            "name": "termény felszedése"
           }
         },
         "courseE_farmer_functions11_predict_2019": {
@@ -2532,6 +2595,15 @@
           },
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          },
+          "get produce": {
+            "name": "termény felszedése"
           }
         },
         "courseE_farmer_functions11_predict_2020": {
@@ -2540,39 +2612,57 @@
           },
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          },
+          "get produce": {
+            "name": "termény felszedése"
           }
         },
         "courseE_farmer_functions13_2018": {
           "check for corn": {
-            "name": "ellenőrizd kukoricát"
+            "name": "kukorica vizsgálata"
           },
           "corn rectangle": {
             "name": "kukorica téglalap"
           },
           "lettuce stairs": {
             "name": "saláta lépcsők"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
           }
         },
         "courseE_farmer_functions13_2019": {
           "check for corn": {
-            "name": "ellenőrizd kukoricát"
+            "name": "kukorica vizsgálata"
           },
           "corn rectangle": {
             "name": "kukorica téglalap"
           },
           "lettuce stairs": {
             "name": "saláta lépcsők"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
           }
         },
         "courseE_farmer_functions13_2020": {
           "check for corn": {
-            "name": "ellenőrizd kukoricát"
+            "name": "kukorica vizsgálata"
           },
           "corn rectangle": {
             "name": "kukorica téglalap"
           },
           "lettuce stairs": {
             "name": "saláta lépcsők"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
           }
         },
         "courseE_farmer_functions2ba": {
@@ -2583,16 +2673,25 @@
         "courseE_farmer_functions2ba_2018": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions2ba_2019": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions2ba_2020": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c": {
@@ -2603,31 +2702,58 @@
         "courseE_farmer_functions3c1_2018": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c1_2019": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c1_2020": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "pick along path": {
+            "name": "felszedni az útról"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c_2018": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c_2019": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions3c_2020": {
           "get all pumpkins": {
             "name": "gyűjtsd be az összes sütőtököt"
+          },
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
           }
         },
         "courseE_farmer_functions4b": {
@@ -2707,7 +2833,7 @@
           },
           "black outline": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -2715,7 +2841,7 @@
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "checker": {
@@ -2735,7 +2861,7 @@
           },
           "black outline": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -2743,7 +2869,7 @@
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -2751,7 +2877,7 @@
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a square2": {
@@ -2769,7 +2895,7 @@
           },
           "black outline": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -2777,7 +2903,7 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -2785,21 +2911,21 @@
           "draw a polygon": {
             "name": "rajzolj sokszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
         "courseF_artist_fwp6": {
           "draw a spiral edge": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
         "courseF_artist_fwp7": {
           "draw a spiral edge": {
             "parameters": {
-              "length": "hossza",
+              "length": "length",
               "min": "min"
             }
           }
@@ -2807,7 +2933,7 @@
         "courseF_artist_fwp8": {
           "draw a spiral edge": {
             "parameters": {
-              "length": "hossza",
+              "length": "length",
               "min": "min"
             }
           }
@@ -2817,7 +2943,7 @@
             "name": "rajzolj egy csillagot",
             "parameters": {
               "points": "pontok",
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a circle": {
@@ -2826,37 +2952,37 @@
           "draw a pinwheel": {
             "name": "rajzolj szélkereket",
             "parameters": {
-              "length": "hossza",
+              "length": "length",
               "repeat": "ismételd"
             }
           },
           "draw a triangle": {
             "name": "Rajzolj egy háromszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a shape": {
             "name": "rajzolj síkidomot",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a house": {
             "name": "rajzoljon egy házat",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a square": {
             "name": "rajzoljon egy négyzetet",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           },
           "draw a spiral edge": {
             "parameters": {
-              "length": "hossza",
+              "length": "length",
               "min": "min"
             }
           }
@@ -2888,7 +3014,7 @@
           "draw an octagon": {
             "name": "rajzolj nyolcszöget",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -3010,7 +3136,7 @@
           "rowOfNectar": {
             "name": "nektárokSora",
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -3057,14 +3183,14 @@
         "courseF_bee_fwp_challenge1": {
           "pick row": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
         "courseF_bee_fwp_challenge2": {
           "pick row": {
             "parameters": {
-              "length": "hossza"
+              "length": "length"
             }
           }
         },
@@ -3220,6 +3346,144 @@
           },
           "draw bit": {
             "name": "rajzolj bitet"
+          }
+        },
+        "courseE_farmer_functions1a_2018": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions1a_2019": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions1a_2020": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions2b_2018": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions2b_2019": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions2b_2020": {
+          "check square for corn": {
+            "name": "terület átvizsgálása kukoricára"
+          }
+        },
+        "courseE_farmer_functions7a1_2018": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions7a1_2019": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions7a1_2020": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions8a1_2018": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions8a1_2019": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions8a1_2020": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions9a1_2018": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions9a1_2019": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "courseE_farmer_functions9a1_2020": {
+          "garden square": {
+            "name": "kerti négyzet"
+          }
+        },
+        "CourseD_EOC_artist": {
+          "draw a star": {
+            "name": "rajzolj egy csillagot",
+            "parameters": {
+              "points": "pontok",
+              "length": "length"
+            }
+          },
+          "draw a circle": {
+            "name": "kör rajzolása"
+          },
+          "draw a pinwheel": {
+            "name": "rajzolj szélkereket",
+            "parameters": {
+              "length": "length",
+              "repeat": "ismételd"
+            }
+          },
+          "draw a triangle": {
+            "name": "Rajzolj egy háromszöget",
+            "parameters": {
+              "length": "length"
+            }
+          },
+          "draw a shape": {
+            "name": "rajzolj síkidomot",
+            "parameters": {
+              "length": "length"
+            }
+          },
+          "draw a house": {
+            "name": "rajzoljon egy házat",
+            "parameters": {
+              "length": "length"
+            }
+          },
+          "draw a square": {
+            "name": "rajzoljon egy négyzetet",
+            "parameters": {
+              "length": "length"
+            }
+          }
+        },
+        "courseC_artist_prog4": {
+          "booster": {
+            "name": "gyorsító"
+          }
+        },
+        "courseC_artist_prog4_2018": {
+          "booster": {
+            "name": "gyorsító"
+          }
+        },
+        "courseC_artist_prog4_2019": {
+          "booster": {
+            "name": "gyorsító"
+          }
+        },
+        "courseC_artist_prog4_2020": {
+          "booster": {
+            "name": "gyorsító"
           }
         }
       }

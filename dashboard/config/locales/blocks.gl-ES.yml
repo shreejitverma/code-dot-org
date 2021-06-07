@@ -139,6 +139,7 @@ gl:
             '"scale"': tamaño
             '"x"': posición x
             '"y"': posición y
+            '"speed"': velocidade
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -150,6 +151,7 @@ gl:
             '"scale"': tamaño
             '"x"': posición x
             '"y"': posición y
+            '"speed"': velocidade
       gamelab_getTime:
         options:
           UNIT:
@@ -201,6 +203,11 @@ gl:
             '"scale"': tamaño
             '"x"': posición x
             '"y"': posición y
+            '"speed"': velocidade
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': tamaño
       gamelab_setSizes:
         options:
           PROPERTY:
@@ -331,9 +338,9 @@ gl:
         text: vire á esquerda
       RyanLab_turnRight:
         text: vire á dereita
-      aalab_starwars_playSound:
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
             '"random"': aleatorio
       binary_move:
         options:

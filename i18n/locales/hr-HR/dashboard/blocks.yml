@@ -147,6 +147,7 @@ hr:
             '"scale"': veličina
             '"x"': x pozicija
             '"y"': y pozicija
+            '"speed"': brzina
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -158,6 +159,7 @@ hr:
             '"scale"': veličina
             '"x"': x pozicija
             '"y"': y pozicija
+            '"speed"': brzina
       gamelab_getTime:
         options:
           UNIT:
@@ -209,6 +211,11 @@ hr:
             '"scale"': veličina
             '"x"': x pozicija
             '"y"': y pozicija
+            '"speed"': brzina
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': veličina
       gamelab_setSizes:
         options:
           PROPERTY:
@@ -339,9 +346,9 @@ hr:
         text: okreni ulijevo
       RyanLab_turnRight:
         text: okreni udesno
-      aalab_starwars_playSound:
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
             '"random"': slučajno odabran
       binary_move:
         options:

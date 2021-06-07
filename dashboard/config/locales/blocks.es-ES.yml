@@ -955,12 +955,26 @@ es:
         text: establecer
       gamelab_addBehaviorSimple:
         text: sprite {SPRITE} comienza {BEHAVIOR}
+      gamelab_addTarget:
+        text: "{SPRITE}consigue el objetivo{TARGET}"
+        options:
+          OPT:
+            '"follow"': seguir
+            '"avoid"': evitar
       gamelab_allSpritesWithAnimation:
         text: "{ANIMATION}"
       gamelab_atTime:
+        text: en{N} {UNIT}
         options:
           UNIT:
             '"seconds"': segundos
+            '"frames"': fotogramas
+      gamelab_avoidingTargets:
+        text: evitando objetivos
+      gamelab_beginCollectingData:
+        text: empieza recopilación de datos {BREAK} valor {VALUE} con etiqueta {LABEL}
+      gamelab_bounceOff:
+        text: "{SPRITE} rebota {TARGET}"
       gamelab_changePropBy:
         text: cambiar {SPRITE} {PROPERTY} por {VAL}.
         options:
@@ -970,6 +984,7 @@ es:
             '"x"': posición x
             '"y"': posición y
             '"direction"': dirección de movimiento
+            '"speed"': velocidad
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} toca {SPRITE2}"
         options:
@@ -982,6 +997,10 @@ es:
         text: clic en sprite {SPRITE}
       gamelab_comment:
         text: 'comentario: {COMMENT}'
+      gamelab_costumeImage:
+        text: "{COSTUME}"
+      gamelab_countByAnimation:
+        text: número de {SPRITE}
       gamelab_createNewSprite:
         text: "hacer un nuevo sprite \n llamado {NAME} \n con disfraz {COSTUME} \n
           en {LOCATION}"
@@ -989,8 +1008,14 @@ es:
         text: eliminar {THIS}
       gamelab_draggable:
         text: poder arrastrastrarlos
+      gamelab_drawLine:
+        text: dibuja línea {COLOR}  {LOC1}  {LOC2}
       gamelab_edgesDisplace:
         text: limitacion de bloque {SPRITE} para moverse
+      gamelab_followingTargets:
+        text: siguientes objetivos
+      gamelab_getAllSprites:
+        text: todos los sprites
       gamelab_getProp:
         text: "{SPRITE} {PROPERTY}"
         options:
@@ -1001,6 +1026,7 @@ es:
             '"y"': posición y
             '"direction"': dirección de movimiento
             '"tint"': tinte
+            '"speed"': velocidad
       gamelab_getThisSprite:
         text: "{CHOICE} sprite"
         options:
@@ -1008,12 +1034,23 @@ es:
             '"this"': este
             '"other"': otro
       gamelab_getTime:
+        text: tiempo en {UNIT}
         options:
           UNIT:
             '"seconds"': segundos
+            '"frames"': fotogramas
+      gamelab_hideHaiku:
+        text: ocultar haiku
       gamelab_hideTitleScreen:
         text: ocultar pantalla de título
+      gamelab_ifVarEquals:
+        text: |-
+          if {NUM} ={VAL}
+          {STATEMENT}
+      gamelab_isCostumeEqual:
+        text: "{SPRITE} el disfraz es {COSTUME}"
       gamelab_isKeyPressed:
+        text: "{KEY} se pulsa"
         options:
           KEY:
             '"up"': arriba
@@ -1049,6 +1086,8 @@ es:
             '"z"': z
       gamelab_isTouchingEdges:
         text: "{SPRITE} está tocando los bordes"
+      gamelab_isTouchingSprite:
+        text: "{SPRITE} está tocando {TARGET}"
       gamelab_jumpTo:
         text: "{SPRITE} saltar a {LOCATION}"
       gamelab_keyPressed:
@@ -1092,6 +1131,7 @@ es:
       gamelab_locationAt:
         text: 'ubicación x: {X} y: {Y}'
       gamelab_locationModifier:
+        text: "{DISTANCE} píxeles {DIRECTION} de {LOCATION}"
         options:
           DIRECTION:
             '"North"': Norte
@@ -1106,6 +1146,8 @@ es:
         text: "{LOCATION}"
       gamelab_makeNewSpriteAnon:
         text: crear un nuevo sprite {ANIMATION_NAME} en {LOCATION}
+      gamelab_makeNumSprites:
+        text: hacer {NUM} nuevos {ANIMATION_NAME} sprites
       gamelab_mirrorSprite:
         text: "{SPRITE} hacia {DIRECTION}"
         options:
@@ -1128,6 +1170,8 @@ es:
             '"West"': Oeste
       gamelab_moveToward:
         text: mover {SPRITE} pixeles {DISTANCE} hacia {TARGET}
+      gamelab_newSpritePointer:
+        text: clic en sprite {SPRITE}
       gamelab_objectSpritePointer:
         text: objeto {SPRITE}
       gamelab_patrollingUpDown:
@@ -1142,6 +1186,9 @@ es:
             '"East"': Este
             '"South"': Sur
             '"West"': Oeste
+      gamelab_printHaiku:
+        text: mostrar haiku {BREAK} título del poema {TITLE} autor del poema {AUTHOR}
+          linea 1 {LINE1} linea 2 {LINE2} linea 3 {LINE3}
       gamelab_printText:
         text: imprimir {TEXT}
       gamelab_randColor:
@@ -1183,6 +1230,18 @@ es:
             undefined: ninguno
       gamelab_setBackgroundImageAs:
         text: establecer fondo a {IMG}
+      gamelab_setDefaultSpriteSize:
+        text: establecer el nuevo tamaño del sprite por defecto {SIZE}
+        options:
+          SIZE:
+            '25': extra pequeño
+            '50': pequeño
+            '75': medio
+            '100': grande
+      gamelab_setPrompt:
+        text: solicitar usuario {QUESTION} para la variable {VAR}
+      gamelab_setPromptWithChoices:
+        text: solicitar usuario {QUESTION} para la variable {VAR} con opciones {A}{B}{C}
       gamelab_setProp:
         text: establecer {SPRITE} {PROPERTY} a {VAL}
         options:
@@ -1192,6 +1251,17 @@ es:
             '"x"': posición x
             '"y"': posición y
             '"direction"': dirección de movimiento
+            '"speed"': velocidad
+      gamelab_setProp_dropdown:
+        text: fijar {SPRITE} {PROPERTY} a {SIZE}
+        options:
+          PROPERTY:
+            '"scale"': tamaño
+          SIZE:
+            '25': extra pequeño
+            '50': pequeño
+            '75': medio
+            '100': grande
       gamelab_setSizes:
         text: definir {SPRITE} {PROPERTY} a {N}%
         options:
@@ -1201,6 +1271,8 @@ es:
             '"height"': altura
       gamelab_setTint:
         text: cambiar color de {THIS} a {COLOR}
+      gamelab_setupScoreboard:
+        text: "dibujar marcador \n{SPRITE1COSTUME}tanteo{VAR1}{SPRITE2COSTUME}tanteo{VAR2}objetivo{SPRITE3COSTUME}"
       gamelab_setupSim:
         text: |-
           simulación de la configuración con
@@ -1216,8 +1288,26 @@ es:
           CONDITION:
             '"when"': cuando
             '"while"': mientras
+      gamelab_spriteSay:
+        text: "{SPRITE} dice {SPEECH}"
+      gamelab_startAvoiding:
+        text: "{SPRITE} empieza a evitar {TARGET}"
+      gamelab_startFollowing:
+        text: "{SPRITE} empieza seguimiento {TARGET}"
+      gamelab_stopAvoiding:
+        text: "{SPRITE} deja de evitar a otros sprites"
+      gamelab_stopCollectingData:
+        text: parar recopilación de datos
+      gamelab_stopFollowing:
+        text: "{SPRITE} deja de seguir a otros sprites"
       gamelab_subjectSpritePointer:
         text: clic en sprite {SPRITE}
+      gamelab_textJoin:
+        text: "{LEFT_QUOTE}{TEXT1}{RIGHT_QUOTE}{TEXT2}"
+      gamelab_textVariableJoin:
+        text: "{VAR}{TEXT2}"
+      gamelab_tumbling:
+        text: cayendo
       gamelab_turn:
         text: "{SPRITE} gira {DIRECTION} {N} grados"
         options:
@@ -1226,6 +1316,8 @@ es:
             '"left"': izquierda
       gamelab_updateTitleWithColor:
         text: mostrar pantalla de título {BREAK} título {TITLE} color {COLOR}
+      gamelab_whenAllPromptsAnswered:
+        text: cuando se responda a todas las preguntas
       gamelab_whenDownArrow:
         text: cuando se presiona la flecha abajo
       gamelab_whenKey:
@@ -1243,8 +1335,12 @@ es:
             '"d"': d
       gamelab_whenLeftArrow:
         text: cuando se presiona la flecha izquierda
+      gamelab_whenPromptAnswered:
+        text: cuando {VAR} respondió
       gamelab_whenRightArrow:
         text: cuando se presiona la flecha derecha
+      gamelab_whenSpriteCreated:
+        text: cuando {SPRITE} creado
       gamelab_whenTouching:
         text: cuando {SPRITE1} toca {SPRITE2}
       gamelab_whenUpArrow:
@@ -1272,6 +1368,21 @@ es:
         text: mientras {SPRITE1} está tocando {SPRITE2}
       gamelab_whileUpArrow:
         text: mientras se presiona la flecha arriba
+      gamelab_withPercentChance:
+        text: |-
+          si {NUM}% oportunidad
+          {STATEMENT}
+      gamelab_withPercentChanceDropdown:
+        text: |2-
+           {NUM} posibilidad
+           {STATEMENT}
+        options:
+          NUM:
+            '10': muy baja
+            '25': baja
+            '50': 50/50
+            '75': alta
+            '90': muy alta
       gamelab_xLocationOf:
         text: coordenada x de {SPRITE}
       gamelab_yLocationOf:
@@ -1291,6 +1402,8 @@ es:
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": no es mi-etiqueta
       Mikelab_allSpritesWithAnimation:
         text: "{ANIMATION}"
+      Mikelab_beginDataCollection:
+        text: solicitar usuario {QUESTION} para la variable {VAR} con opciones {A}{B}{C}
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1469,6 +1582,8 @@ es:
           DANCE:
             MOVES.ClapHigh: pez
             MOVES.Clown: no es mi-etiqueta
+      Mikelab_joinText:
+        text: "{TEXT} {NEXT}"
       Mikelab_locationAt:
         text: 'ubicación x: {X} y: {Y}'
       Mikelab_location_picker:
@@ -1495,6 +1610,25 @@ es:
             '"x"': posición x
             '"y"': posición y
             '"direction"': dirección de movimiento
+      Mikelab_setupLevel:
+        text: |-
+          ajustar nivel con
+          {A1}{A2}{A3}{A4}
+          {A5}{A6}{A7}{A8}
+          {B1}{B2}{B3}{B4}
+          {B5}{B6}{B7}{B8}
+      Mikelab_setupOutbreak:
+        text: |-
+          configuración del brote
+          de la población:{SPRITE2N}
+          {TOGGLE}virus
+      Mikelab_setupSim:
+        text: |-
+          simulación de la configuración con
+          {SPRITE1N}{SPRITE1COSTUME}velocidad{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}velocidad{SPRITE2SPEED}
+          recogiendo
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1557,6 +1691,30 @@ es:
         text: coordenada x de {SPRITE}
       Mikelab_yLocationOf:
         text: coordenada y de {SPRITE}
+      Outbreak_beginCongregating:
+        text: los monstruos empiezan a congregarse
+      Outbreak_beginQuarantining:
+        text: los monstruos empiezan la cuarentena cuando enferman
+      Outbreak_beginSocialDistancing:
+        text: los monstruos empiezan el distanciamiento social
+      Outbreak_beginWandering:
+        text: los monstruos empiezan a deambular
+      Outbreak_beginWearingMasks:
+        text: los monstruos empiezan a llevar mascarilla
+      Outbreak_layoutBorder:
+        text: ordenar monstruos en un borde
+      Outbreak_layoutClusters:
+        text: ordenar los monstruos en grupos de {NUM}
+      Outbreak_layoutGrid:
+        text: ordenar monstruos como una cuadrícula
+      Outbreak_layoutRandom:
+        text: ordenar los monstruos al azar
+      Outbreak_setSpeed:
+        text: ajustar velocidad monstruo a {VAL}
+      Outbreak_setupOutbreak:
+        text: Configurar Monster Town con{COUNT}monstruos
+      Outbreak_stopMoving:
+        text: los monstruos dejan de moverse
       RyanLab_moveForward:
         text: avanzar
       RyanLab_turnLeft:
@@ -1590,49 +1748,60 @@ es:
         options:
           PROPERTY:
             "'shapeColor'": color
-      aalab_addBehaviorForDuration:
-        text: aalab sprite {SPRITE} inicia {BEHAVIOR} durante {SECONDS} segundos
-      aalab_addBehaviorUntilBoolean:
-        text: sprite {SPRITE} inicia {BEHAVIOR} hasta {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: nuevo sprite llamado{SPRITE_NAME} con disfraz{ANIMATION_NAME} en ubicación{LOCATION}
-      aalab_goToScene:
-        text: ir a escena {SCENE}
+      aalab_layoutSprites:
+        text: diseñar monstruos como un {FORMAT}
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: mover {SPRITE} {DISTANCE} pixeles {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Norte
-            '"East"': Este
-            '"South"': Sur
-            '"West"': Oeste
-      aalab_prompt:
-        text: preguntar {MESSAGE}
-      aalab_scene:
-        text: escena {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: configurar historia
-      aalab_starwars_playSound:
-        text: reproducir{OPTION}sonido
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': cuadrícula
+            '"border"': frontera
+            '"row"': fila
             '"random"': aleatorio
-            '"R2-D2 random"': R2-D2 aleatorio
-            '"R2-D2 1"': R2-D2 1
-            '"R2-D2 2"': R2-D2 2
-            '"R2-D2 3"': R2-D2 3
-            '"R2-D2 4"': R2-D2 4
-            '"R2-D2 5"': R2-D2 5
+      aalab_setSpeed:
+        text: ajustar velocidad monstruo a {VAL}
+      aalab_setupSim:
+        text: Configurar Monster Town con{COUNT}monstruos
+      aalab_someGraduallyStartIntervention:
+        text: "{PORTION} monstruos {RATE} comenzar {BEHAVIOR}"
+        options:
+          PORTION:
+            '1': todo
+            '0.75': la mayoría
+            '0.5': la mitad
+            '0.25': algunos
+          RATE:
+            '"immediately"': inmediatamente
+            '"quickly"': rápidamente
+            '"gradually"': gradualmente
+            '"slowly"': lentamente
+          BEHAVIOR:
+            '"wandering"': vagando al azar
+            '"congregating"': concentrados
+            '"quarantining"': cuarentena cuando enferma
+            '"avoiding"': distanciamiento social
+            '"none"': quedarse quieto
+      aalab_someStartIntervention:
+        text: "{PORTION} comienzan monstruos {BEHAVIOR}"
+        options:
+          PORTION:
+            '1': todo
+            '0.75': la mayoría
+            '0.5': la mitad
+            '0.25': algunos
+          BEHAVIOR:
+            '"wandering"': vagando al azar
+            '"congregating"': concentrados
+            '"quarantining"': cuarentena cuando enferma
+            '"avoiding"': distanciamiento social
+            '"none"': quedarse quieto
+      aalab_startIntervention:
+        text: comienzan monstruos {BEHAVIOR}
+        options:
+          BEHAVIOR:
+            wandering: vagando al azar
+            '"congregating"': concentrados
+            '"quarantining"': cuarentena cuando enferma
+            '"avoiding"': distanciamiento social
+            '"none"': quedarse quieto
       binary_drawBin:
         text: dibujar binario {BIN}
       binary_drawBinScreen:
@@ -1727,6 +1896,7 @@ es:
             '"stoneBricks"': ladrillos de piedra
             '"mossyStoneBricks"': ladrillos de piedra musgosa
             '"crackedStoneBricks"': ladrillos de piedra quebrados
+            '"chiseledStoneBricks"': ladrillos de piedra decorativa
             '"blueCoralBlock"': bloque de coral azul
             '"pinkCoralBlock"': bloque de coral rosa
             '"magentaCoralBlock"': bloque de coral magenta

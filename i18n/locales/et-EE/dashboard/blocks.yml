@@ -771,6 +771,7 @@ et:
             '"x"': x asukoht
             '"y"': y asukoht
             '"direction"': liikumise suund
+            '"speed"': kiirus
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -786,6 +787,7 @@ et:
             '"y"': y asukoht
             '"direction"': liikumise suund
             '"tint"': toon
+            '"speed"': kiirus
       gamelab_getTime:
         options:
           UNIT:
@@ -870,6 +872,13 @@ et:
             '"https://studio.code.org/blockly/media/skins/studio/background_rainbow.png"': vikerkaar
             '"https://studio.code.org/blockly/media/skins/studio/background_underwater.png"': veealune
             '"https://studio.code.org/blockly/media/skins/studio/background_winter.png"': talv
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': keskmine
+            '100': large
       gamelab_setProp:
         options:
           PROPERTY:
@@ -878,6 +887,16 @@ et:
             '"x"': x asukoht
             '"y"': y asukoht
             '"direction"': liikumise suund
+            '"speed"': kiirus
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': suurus
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': keskmine
+            '100': large
       gamelab_setSizes:
         options:
           PROPERTY:
@@ -1099,10 +1118,27 @@ et:
         text: pööra paremale
       Vector_positionCenter:
         text: keskel
-      aalab_starwars_playSound:
+      aalab_layoutSprites:
         options:
-          OPTION:
+          FORMAT:
+            '"grid"': ruudustikus
+            '"border"': piir
+            '"row"': rida
             '"random"': juhuslik
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': kõik
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': kõik
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_move:
         options:
           DIR:

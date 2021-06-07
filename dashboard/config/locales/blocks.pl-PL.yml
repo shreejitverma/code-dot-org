@@ -983,6 +983,12 @@ pl:
             '"peas"': The Black Eyed Peas - I Got a Feeling
       gamelab_addBehaviorSimple:
         text: duszek {SPRITE} rozpoczyna {BEHAVIOR}
+      gamelab_addTarget:
+        text: "{SPRITE} osiąga cel {TARGET}"
+        options:
+          OPT:
+            '"follow"': podążaj
+            '"avoid"': unikaj
       gamelab_allSpritesWithAnimation:
         text: "{ANIMATION}"
       gamelab_atTime:
@@ -991,6 +997,10 @@ pl:
           UNIT:
             '"seconds"': sekundy
             '"frames"': ramki
+      gamelab_avoidingTargets:
+        text: unikając celów
+      gamelab_beginCollectingData:
+        text: rozpocznij zbierać dane {BREAK} wartości {VALUE} z etykietami {LABEL}
       gamelab_bounceOff:
         text: "{SPRITE} odbija się od {TARGET}"
       gamelab_changePropBy:
@@ -1002,6 +1012,7 @@ pl:
             '"x"': współrzędna x
             '"y"': współrzędna y
             '"direction"': kierunku ruchu
+            '"speed"': prędkość
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} dotyka {SPRITE2}"
         options:
@@ -1025,8 +1036,12 @@ pl:
         text: usuń {THIS}
       gamelab_draggable:
         text: będąc przeciągalnym
+      gamelab_drawLine:
+        text: narysuj linię {COLOR}  {LOC1}  {LOC2}
       gamelab_edgesDisplace:
         text: krawędzie bloku {SPRITE} z ruchu
+      gamelab_followingTargets:
+        text: idąc za celami
       gamelab_getAllSprites:
         text: wszystkie duszki
       gamelab_getProp:
@@ -1039,6 +1054,7 @@ pl:
             '"y"': współrzędna y
             '"direction"': kierunku ruchu
             '"tint"': odcień
+            '"speed"': prędkość
       gamelab_getThisSprite:
         text: duszek {CHOICE}
         options:
@@ -1051,6 +1067,8 @@ pl:
           UNIT:
             '"seconds"': sekundy
             '"frames"': ramki
+      gamelab_hideHaiku:
+        text: ukryj haiku
       gamelab_hideTitleScreen:
         text: ukryj ekran tytułowy
       gamelab_ifVarEquals:
@@ -1180,6 +1198,8 @@ pl:
             '"West"': Zachód
       gamelab_moveToward:
         text: przemieść {SPRITE} o {DISTANCE} pikseli w kierunku {TARGET}
+      gamelab_newSpritePointer:
+        text: "{SPRITE}"
       gamelab_objectSpritePointer:
         text: "{SPRITE}"
       gamelab_patrollingUpDown:
@@ -1194,6 +1214,9 @@ pl:
             '"East"': Wschód
             '"South"': Południe
             '"West"': Zachód
+      gamelab_printHaiku:
+        text: pokaż haiku {BREAK} tytuł wiersza {TITLE} autora wiersza {AUTHOR} linię
+          1 {LINE1} linię 2 {LINE2} linię 3 {LINE3}
       gamelab_printText:
         text: drukuj {TEXT}
       gamelab_randColor:
@@ -1232,6 +1255,14 @@ pl:
             undefined: żaden
       gamelab_setBackgroundImageAs:
         text: ustaw tło na {IMG}
+      gamelab_setDefaultSpriteSize:
+        text: ustaw nowy domyślny rozmiar duszka na {SIZE}
+        options:
+          SIZE:
+            '25': ekstra mały
+            '50': mały
+            '75': średni
+            '100': duży
       gamelab_setPrompt:
         text: poproś użytkownika {QUESTION} o zmienne {VAR}
       gamelab_setPromptWithChoices:
@@ -1245,6 +1276,17 @@ pl:
             '"x"': współrzędna x
             '"y"': współrzędna y
             '"direction"': kierunku ruchu
+            '"speed"': prędkość
+      gamelab_setProp_dropdown:
+        text: ustaw {SPRITE} {PROPERTY} na {SIZE}
+        options:
+          PROPERTY:
+            '"scale"': rozmiar
+          SIZE:
+            '25': ekstra mały
+            '50': mały
+            '75': średni
+            '100': duży
       gamelab_setSizes:
         text: ustaw {SPRITE} {PROPERTY} na {N}%
         options:
@@ -1254,6 +1296,10 @@ pl:
             '"height"': wysokość
       gamelab_setTint:
         text: zmień kolor {THIS} na {COLOR}
+      gamelab_setupScoreboard:
+        text: |-
+          narysuj tablicę wyników
+          {SPRITE1COSTUME}wynik{VAR1}{SPRITE2COSTUME}wynik{VAR2}cel{SPRITE3COSTUME}
       gamelab_setupSim:
         text: "ustaw symulację  {SPRITE1N}{SPRITE1COSTUME} z prędkością \n{SPRITE1SPEED}\nSPRITE2N][3]{SPRITE2COSTUME}
           z prędkością\n {SPRITE2SPEED}\nzbierając\n{SPRITE3N}{SPRITE3COSTUME}"
@@ -1265,8 +1311,22 @@ pl:
           CONDITION:
             '"when"': kiedy
             '"while"': dopóki
+      gamelab_startAvoiding:
+        text: "{SPRITE} zaczyna unikać {TARGET}"
+      gamelab_startFollowing:
+        text: "{SPRITE} zaczyna podążać {TARGET}"
+      gamelab_stopAvoiding:
+        text: "{SPRITE} przestaje unikać inne duszki"
+      gamelab_stopCollectingData:
+        text: zatrzymaj zbieranie danych
+      gamelab_stopFollowing:
+        text: "{SPRITE} przestaje podążać za innymi duszkami "
       gamelab_subjectSpritePointer:
         text: "{SPRITE}"
+      gamelab_textJoin:
+        text: "{LEFT_QUOTE}{TEXT1}{RIGHT_QUOTE}{TEXT2}"
+      gamelab_textVariableJoin:
+        text: "{VAR}{TEXT2}"
       gamelab_tumbling:
         text: gimnastykowanie się
       gamelab_turn:
@@ -1277,6 +1337,8 @@ pl:
             '"left"': w lewo
       gamelab_updateTitleWithColor:
         text: pokaż ekran tytułowy {BREAK} tytuł {TITLE} kolor {COLOR}
+      gamelab_whenAllPromptsAnswered:
+        text: gdy odpowiedzą na wszystkie monity
       gamelab_whenDownArrow:
         text: po naciśnięciu strzałki w dół
       gamelab_whenKey:
@@ -1298,6 +1360,8 @@ pl:
         text: gdy {VAR} uzyskała odpowiedź
       gamelab_whenRightArrow:
         text: po naciśnięciu strzałki w prawo
+      gamelab_whenSpriteCreated:
+        text: kiedy {SPRITE} utworzony
       gamelab_whenTouching:
         text: kiedy {SPRITE1} dotyka {SPRITE2}
       gamelab_whenUpArrow:
@@ -1329,6 +1393,17 @@ pl:
         text: |-
           jeśli {NUM}% szansa
           {STATEMENT}
+      gamelab_withPercentChanceDropdown:
+        text: |2-
+           {NUM} szansa
+           {STATEMENT}
+        options:
+          NUM:
+            '10': bardzo niski
+            '25': niski
+            '50': 50/50
+            '75': wysoki
+            '90': bardzo wysoki
       gamelab_xLocationOf:
         text: x współrzędna {SPRITE}
       gamelab_yLocationOf:
@@ -1346,6 +1421,10 @@ pl:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": nie ryba
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": moja etykieta
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": nie moja etykieta
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
+      Mikelab_beginDataCollection:
+        text: poproś użytkownika {QUESTION} o zmienne {VAR} z wyborami {A}{B}{C}
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1555,6 +1634,14 @@ pl:
             '"x"': współrzędna x
             '"y"': współrzędna y
             '"direction"': kierunku ruchu
+      Mikelab_setupOutbreak:
+        text: |-
+          konfiguracja epidemii
+          populacja:{SPRITE2N}
+          {TOGGLE}wirus
+      Mikelab_setupSim:
+        text: "ustaw symulację  {SPRITE1N}{SPRITE1COSTUME} z prędkością \n{SPRITE1SPEED}\nSPRITE2N][3]{SPRITE2COSTUME}
+          z prędkością\n {SPRITE2SPEED}\nzbierając\n{SPRITE3N}{SPRITE3COSTUME}"
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1617,6 +1704,30 @@ pl:
         text: x współrzędna {SPRITE}
       Mikelab_yLocationOf:
         text: współrzędna y {SPRITE}
+      Outbreak_beginCongregating:
+        text: potwory zaczynają się gromadzić
+      Outbreak_beginQuarantining:
+        text: potwory rozpoczynają kwarantannę, gdy są chore
+      Outbreak_beginSocialDistancing:
+        text: potwory zaczynają dystansować się od siebie
+      Outbreak_beginWandering:
+        text: potwory zaczynają wędrować
+      Outbreak_beginWearingMasks:
+        text: potwory zaczynają nosić maski
+      Outbreak_layoutBorder:
+        text: układ potworów na brzegu
+      Outbreak_layoutClusters:
+        text: układ potworów w klastrach {NUM}
+      Outbreak_layoutGrid:
+        text: układ potworów jako siatka
+      Outbreak_layoutRandom:
+        text: układ potworów losowy
+      Outbreak_setSpeed:
+        text: ustaw prędkość potwora na {VAL}
+      Outbreak_setupOutbreak:
+        text: załóż Miasto Potworów z [COUNT] [0] potworami
+      Outbreak_stopMoving:
+        text: potwory zatrzymują się
       RyanLab_moveForward:
         text: idź do przodu
       RyanLab_turnLeft:
@@ -1650,50 +1761,51 @@ pl:
         options:
           PROPERTY:
             "'shapeColor'": kolor
-      aalab_addBehaviorForDuration:
-        text: duszek aalab {SPRITE} zaczyna {BEHAVIOR} przez {SECONDS} sekund
-      aalab_addBehaviorUntilBoolean:
-        text: duszek {SPRITE} zaczyna {BEHAVIOR} aż do {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: nowy duszek o nazwie {SPRITE_NAME} w kostiumie {ANIMATION_NAME} w miejscu
-          {LOCATION}
-      aalab_goToScene:
-        text: przejdź do sceny {SCENE}
+      aalab_layoutSprites:
+        text: układ potworów jako {FORMAT}
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: przemieść {SPRITE} o {DISTANCE} pikseli {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Północ
-            '"East"': Wschód
-            '"South"': Południe
-            '"West"': Zachód
-      aalab_prompt:
-        text: zadaj pytanie {MESSAGE}
-      aalab_scene:
-        text: scena {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: historia konfiguracji
-      aalab_starwars_playSound:
-        text: odtwórz dźwięk {OPTION}
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': siatka
+            '"border"': brzeg
+            '"row"': rząd
             '"random"': losowy
-            '"R2-D2 random"': R2-D2 losowe
-            '"R2-D2 1"': R2-D2 1
-            '"R2-D2 2"': R2-D2 2
-            '"R2-D2 3"': R2-D2 3
-            '"R2-D2 4"': R2-D2 4
-            '"R2-D2 5"': R2-D2 5
+      aalab_setSpeed:
+        text: ustaw prędkość potwora na {VAL}
+      aalab_setupSim:
+        text: załóż Miasto Potworów z [COUNT] [0] potworami
+      aalab_someGraduallyStartIntervention:
+        text: "{PORTION} potwory {RATE} zaczynają  {BEHAVIOR}"
+        options:
+          PORTION:
+            '1': wszystkie
+            '0.75': większość
+            '0.5': połowa z
+            '0.25': kilka
+          RATE:
+            '"immediately"': natychmiast
+            '"quickly"': szybko
+            '"gradually"': stopniowo
+            '"slowly"': powoli
+          BEHAVIOR:
+            '"wandering"': wędrując losowo
+            '"congregating"': gromadzenie się
+      aalab_someStartIntervention:
+        text: "{PORTION} potwory zaczynają  {BEHAVIOR}"
+        options:
+          PORTION:
+            '1': wszystkie
+            '0.75': większość
+            '0.5': połowa z
+            '0.25': kilka
+          BEHAVIOR:
+            '"wandering"': wędrując losowo
+            '"congregating"': gromadzenie się
+      aalab_startIntervention:
+        text: potwory zaczynają {BEHAVIOR}
+        options:
+          BEHAVIOR:
+            wandering: wędrując losowo
+            '"congregating"': gromadzenie się
       binary_drawBin:
         text: narysuj binarny {BIN}
       binary_drawBinScreen:

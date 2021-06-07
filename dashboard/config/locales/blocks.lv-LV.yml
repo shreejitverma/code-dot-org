@@ -207,6 +207,7 @@ lv:
         options:
           PROPERTY:
             '"scale"': izmērs
+            '"speed"': ātrums
       gamelab_checkTouching:
         options:
           CONDITION:
@@ -216,6 +217,7 @@ lv:
         options:
           PROPERTY:
             '"scale"': izmērs
+            '"speed"': ātrums
       gamelab_getTime:
         options:
           UNIT:
@@ -274,6 +276,11 @@ lv:
             '"https://studio.code.org/blockly/media/skins/studio/background_underwater.png"': zemūdens
             '"https://studio.code.org/blockly/media/skins/studio/background_winter.png"': ziema
       gamelab_setProp:
+        options:
+          PROPERTY:
+            '"scale"': izmērs
+            '"speed"': ātrums
+      gamelab_setProp_dropdown:
         options:
           PROPERTY:
             '"scale"': izmērs
@@ -397,13 +404,10 @@ lv:
         text: pagriezt pa labi
       Vector_vectorNorth:
         text: uz ziemeļiem
-      aalab_moveInDirection:
+      aalab_layoutSprites:
         options:
-          DIRECTION:
-            '"North"': Ziemeļi
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"row"': rinda
             '"random"': nejaušs
       binary_move:
         options:

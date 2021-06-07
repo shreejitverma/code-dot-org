@@ -1087,6 +1087,12 @@
   coursed-2019_gradelevel: Klasa 8+
   coursee-2019_gradelevel: W wieku 8-12
   coursef-2019_gradelevel: W wieku 9-13
+  coursea-2020_gradelevel: W wieku 4-7
+  courseb-2020_gradelevel: W wieku 5-8
+  coursec-2020_gradelevel: W wieku 6-10
+  coursed-2020_gradelevel: Klasa 8+
+  coursee-2020_gradelevel: W wieku 8-12
+  coursef-2020_gradelevel: W wieku 9-13
   accelerated_gradelevel: "W wieku 10-18"
   codeorg_platformtext: "Nowoczesne przeglądarki, smartfony, tablety"
   codeintl_platformtext: "Nowoczesne przeglądarki, smartfony, tablety"
@@ -1213,6 +1219,12 @@
   coursed-2019_shortdescription_congrats: Szybko omów pojęcia z kursu C, a następnie przejdź dalej do algorytmów, zagnieżdżonych pętli, warunków i innych.
   coursee-2019_shortdescription_congrats: Szybko omów pojęcia w kursach C i D, a następnie przejdź dalej do funkcji.
   coursef-2019_shortdescription_congrats: Poznaj wszystkie pojęcia z podstaw informatyki i stwórz własne dzieło sztuki, historyjkę lub grę.
+  coursea-2020_shortdescription_congrats: Poznaj podstawy informatyki i bezpieczeństwa w Internecie. Pod koniec kursu twórz swoją własną grę lub opowiadanie, które możesz udostępnić.
+  courseb-2020_shortdescription_congrats: Poznaj podstawy informatyki i bezpieczeństwa w Internecie. Pod koniec kursu twórz swoją własną grę lub opowiadanie, które możesz udostępnić.
+  coursec-2020_shortdescription_congrats: Twórz programy przy pomocy tworzenia sekwencji, pętli i zdarzeń. Przekładaj swoje inicjały na zapis binarny, badaj różne techniki rozwiązywania problemów i ucz się, jak reagować na cyberprzemoc. Pod koniec kursu utwórz swoją własną grą lub historyjkę, którą będziesz mógł udostępnić!
+  coursed-2020_shortdescription_congrats: Uczniowie pogłębiają poziom zrozumienia zagadnień pętli, wyrażeń warunkowych i zdarzeń. Poza kodowaniem, uczniowie uczą się o obywatelstwie cyfrowym.
+  coursee-2020_shortdescription_congrats: Zacznij kodować przy pomocy algorytmów, pętli, wyrażeń warunkowych oraz zdarzeń, a następnie przejdziesz do funkcji. W drugiej części tego kursu, zaprojektuj i utwórz projekt podsumowujący, który możesz udostępnić znajomym i rodzinie.
+  coursef-2020_shortdescription_congrats: Naucz się używać różnych rodzajów pętli, wydarzeń, funkcji i wyrażeń warunkowych. Badaj różne techniki rozwiązywania problemów oraz dyskutuj o społecznym oddziaływaniu informatyki i Internetu. W drugiej części tego kursu, zaprojektuj i utwórz projekt podsumowujący, który możesz udostępnić znajomym i rodzinie.
   codeorg_longdescription: "Poznaj podstawowe pojęcia informatyki programując metodą przeciągnij i upuść. To jest jak gra, samodzielny samouczek z wykładami wideo Billa Gatesa, Marka Zuckerberga oraz udziałem Angry Birds i Plants vs. Zombies w rolach głównych. Nauczysz się stosować pętle, warunki oraz podstawowe algorytmy. Materiały są dostępne w 34 językach."
   codeintl_longdescription: "Poznaj podstawowe pojęcia informatyki programując metodą przeciągnij i upuść. To jest jak gra, samodzielny samouczek z wykładami wideo Billa Gatesa, Marka Zuckerberga oraz udziałem Angry Birds i Plants vs. Zombies w rolach głównych. Nauczysz się stosować pętle, warunki oraz podstawowe algorytmy. Materiały są dostępne w 34 językach."
   thinkersmithspanish_longdescription: "Mediante el uso de un \"Vocabulario Robot\" predefinido, los estudiantes descubrir&aacute;n como guiarse de modo tal de llevar a cabo tareas espec&iacute;ficas sin ser estas discutidas previamente. Este segmento ense&ntilde;a a los estudiantes la conexi&oacute;n entre s&iacute;mbolos y acciones as&iacute; como la valiosa habilidad de depuraci&oacute;n."
@@ -1490,6 +1502,8 @@
   header_legal_privacy: "Polityka prywatności"
   header_legal_tos: "Regulamin"
   header_tutorials: "Samouczki"
+  header_screen_reader_hamburger: "Menu"
+  header_screen_reader_help: "Pomoc Menu "
   app_lab_documentation: "Dokumentacja App Lab"
   app_lab_tutorials: "Samouczki App Lab"
   game_lab_documentation: "Dokumentacja Game Lab"
@@ -1659,7 +1673,7 @@
   hoc2018_dance_amazon_sponsor_section_with_logo_title: "W partnerstwie z: "
   hoc2018_dance_amazon_sponsor_section_with_logo_description_with_link: "Amazon Future Engineer* to kompleksowy program \"od dzieciństwa do kariery\", który inspiruje, kształci i szkoli dzieci i młodzież o niskich dochodach i innych przeciwnościach, aby kontynuowały rozwój kariery w dziedzinie informatyki. <a href='%{amazon_future_engineer_link}' target='_blank'> Dowiedz się więcej </a>"
   hoc2018_dance_amazon_sponsor_section_with_logo_description_with_link_markdown: "Amazon Future Engineer* to kompleksowy program od dzieciństwa do kariery, który inspiruje, kształci i szkoli dzieci i młodzież z rodzin o niskich dochodach i pokrzywdzonych w inny sposób, aby kontynuowały zdobywanie zawodu w dziedzinie informatyki. [Więcej informacji](%{amazon_future_engineer_link})"
-  hoc2018_dance_amazon_sponsor_section_france_link_markdown: "Jeśli jesteś uczniem lub nauczycielem we Francji, wypróbuj [Amazon Future Engineer - France](%{amazon_future_engineer_france_link})"
+  hoc2018_dance_amazon_sponsor_section_france_link_markdown: "Jeśli jesteś uczniem lub nauczycielem we Francji, odwiedź [Amazon Future Engineer - France](%{amazon_future_engineer_france_link})"
   hoc2018_dance_amazon_learn_more_future_engineer_subheading_title: "Dowiedz się więcej o programie Amazon Future Engineer"
   hoc2018_dance_amazon_about_future_engineer_title: "O programie Amazon Future Engineer"
   hoc2018_dance_amazon_about_future_engineer_description: "Dowiedz się o programie od przedszkola do kariery firmy Amazon, aby zwiększyć dostęp do edukacji informatycznej. Znajdź informacje o tym, jak wziąć udział w naszych obozach letnich, lekcjach informatyki w szkołach średnich, stypendiach i stażach."
@@ -1696,7 +1710,7 @@
   hoc2019_mc_mee_description1: 'Nowy samouczek dla Minecraftu w ramach Godziny Kodowania jest teraz dostępny w Minecraft: Education Edition dla Windows, Mac i iPad. Naucz się podstaw programowania i odkrywaj sztuczną inteligencję ze swoimi uczniami!'
   hoc2019_mc_mee_description2: "Uzyskaj dostęp do bezpłatnych zasobów, w tym: planu lekcji, filmów, programu informatyki i szkoleń dla nauczycieli."
   hoc2019_mc_more_coding_resources: "Więcej zasobów do kodowania"
-  hoc2019_dance_previous_versions: "Czy szukasz poprzedniej wersji Potańcówki?  \nKliknij tutaj, aby zacząć [Część 1](%{dance_2018_link}) i [Część  2](%{dance_extras_2018_link}) z ostatniego roku."
+  hoc2019_dance_previous_versions: "Czy szukasz poprzedniej wersji Potańcówki?  \nKliknij tutaj, aby zacząć [Część 1](%{dance_2018_link}) i [Część  2](%{dance_extras_2018_link}) z 2018."
   homepage_slot_text_title_at_home: "Ucz się w domu"
   homepage_slot_text_blurb_at_home: "Dzięki tym materiałom to jest proste"
   homepage_slot_text_link_code_break: "Przejdź do Code Brake"
@@ -1709,9 +1723,65 @@
   hoc2020_mc_available_mee: 'Dostępne w Minecrafcie: Education Edition'
   hoc2020_mc_mee_title: "Opowieść Minecrafta o dwóch wioskach"
   hoc2020_mc_mee_description: 'Nowy samouczek Godziny Kodowania dla Minecrafta jest teraz dostępny w Minecraft: Education Edition dla Windows, Mac, Chromebooka i iPada. Naucz się podstaw kodowania i poznaj różnorodność i integrację ze swoimi uczniami! Uzyskaj dostęp do bezpłatnych zasobów, w tym planu lekcji, filmów, programu nauczania informatyki, lekcji dotyczcych równości oraz szkoleń dla nauczycieli.'
-  footer_powered_by_aws: "Zasilany przez Amazon Web Services"
+  footer_powered_by_aws: "Amazon Web Services i logo “Powered by AWS” są znakami towarowymi Amazon.com, Inc. lub jej podmiotów zależnych w Stanach Zjednoczonych i / lub innych krajach.\n"
   footer_built_on_github: "Oparty na GitHub firmy Microsoft"
   codebytes_skinny_banner_title: "Dołącz do nas 7-11 grudnia do naszych mini-lekcjach na żywo z CodeBytes!"
   codebytes_skinny_banner_description: 'Dołącz do nas każdego dnia Tygodnia Edukacji Informatycznej z CodeBytes, na 20-minutowe interaktywne lekcje informatyki. Transmisja na żywo dwa razy dziennie, CodeBytes to dla uczniów świetny sposób na udział w wirtualnej #HourOfCode!'
   codebytes_skinny_banner_english_only: "Tylko w języku angielskim"
   codebytes_skinny_banner_learn: "Dowiedz się więcej tutaj [code.org/codebytes](%{code_bytes_url})."
+  footer_privacy_policy: "Polityka prywatności"
+  footer_privacy_policy_updated: "Polityka prywatności (uaktualniona)"
+  footer_about: "O programie"
+  footer_partners: "Partnerzy"
+  footer_blog: "Blog"
+  footer_donate: "Podaruj"
+  footer_store: "Skład"
+  footer_support: "Wsparcie"
+  footer_terms: "Warunki"
+  ai_for_oceans: "AI dla oceanów"
+  ai_for_oceans_lesson_plan: "plan lekcji"
+  ai_for_oceans_tile_description: "Pomóż A.I. oczyść oceany, ucząc go wykrywania śmieci! Dowiedz się o danych treningowych i uprzedzeniach oraz o tym, jak sztuczna inteligencja może zajmować się problemami świata. Widok "
+  how_ai_works: "Jak działa AI"
+  how_ai_works_tile_description: "Dowiedzieć się, jak działa sztuczna inteligencja i dlaczego jest to ważne, dzięki tej serii krótkich filmów. Z udziałem CEO firmy Microsoft Satya Nadella i innych ekspertów. "
+  watch_the_videos: "Obejrzyj wideo"
+  ai_and_ethics: "AI i etyka "
+  ai_and_ethics_tile_description: "Uczniowie zastanawiają się nad etycznymi konsekwencjami sztucznej inteligencji, a następnie wspólnie tworzą zasób „Kodeks etyczny AI” dla twórców i prawodawców sztucznej inteligencji na całym świecie. "
+  view_lesson_plan: "Zobacz plan Lekcji"
+  ai_in_partnership_with: "W partnerstwie z: "
+  ai_microsoft_thanks: "Dziękujemy Microsoft za wspieranie naszej wizji i misji, aby zapewnić, że każde dziecko ma możliwość nauki informatyki i umiejętności, by odnieść sukces w XXI wieku."
+  ai_ethics_panel_header: "Panel dyskusyjny Badanie etyki AI"
+  ai_ethics_panel_description_1: "Wejdź głębiej z niektórymi z naszych ulubionych ekspertów AI! Ta dyskusja panelowa porusza ważne kwestie, takie jak zwodniczość algorytmów i przyszłość pracy. Połącz to z naszym "
+  ai_ethics_lesson_plan: "Plan lekcji AI i etyka"
+  ai_ethics_panel_description_2: "świetne wprowadzenie do etyki sztucznej inteligencji! "
+  cs_for_good: "Informatyka na dobre"
+  cs_for_good_tile_description: "Zasoby, które mają zainspirować uczniów do głębokiego przemyślenia roli, jaką może odegrać informatyka w tworzeniu bardziej sprawiedliwego i zrównoważonego świata. "
+  view_resources: "Zobacz zasoby"
+  imagine_cup_junior: "Imagine Cup Junior"
+  imagine_cup_junior_tile_description: "To globalne wyzwanie AI  na Dobre wprowadza uczniów w inicjatywy Microsoft AI na Dobre, umożliwiając im rozwiązanie problemu na świecie dzięki potędze sztucznej inteligencji. "
+  ai_activity: "Aktywność"
+  ai_description: "Opis"
+  ai_seeing_ai: "Widząc AI"
+  ai_seeing_ai_description: "Darmowa aplikacja, która opowiada o świecie wokół Ciebie w różnych językach."
+  ai_quick_draw: "Szybko, Wyciągnij!"
+  ai_quick_draw_description: "Czy sieć neuronowa może nauczyć się rozpoznawać gryzmoły?"
+  ai_teachable_machine: "Pojętna maszyna"
+  ai_teachable_machine_description: "Naucz komputer rozpoznawać Twoje własne obrazy, dźwięki oraz pozy."
+  ai_google: "Eksperymenty AI z Google"
+  ai_google_description: "Rozpocznij poznawanie uczenia maszynowego poprzez obrazy, rysunki, język, muzykę i wiele innych."
+  ai_zooniverse: "Zooniverse - Snapshot Mountain Zebra"
+  ai_zooniverse_description: "Pomóż chronić zagrożoną zebrę górską, rozpoznając różne zwierzęta na zdjęciach."
+  ai_audience: "Odbiorcy"
+  ai_minecraft_description: 'Uzyskaj dostęp do bezpłatnych zasobów, w tym planu lekcji, filmów, programu nauczania informatyki i szkoleń dla nauczycieli. (Wymaga Minecraftu: Education Edition)'
+  ai_k_12_audience: "K-12 (Wymaga czytania)"
+  ai_microsoft_workshop: "Bezpłatne wirtualne warsztaty firmy Microsoft "
+  ai_microsoft_workshop_description: "Rozpalaj ciekawość dzięki darmowym warsztatom STEM i kodowania."
+  ai_machine_learning_for_kids: "Uczenie maszynowe dla dzieci"
+  ai_machine_learning_for_kids_description: "Wytrenuj model uczenia maszynowego za pomocą tekstu, liczb lub obrazów i używaj go do tworzenia gier w Scratch. "
+  ai_ibm_machine_learning_for_kids: 'IBM: Uczenie maszynowe dla dzieci'
+  ai_ecs: 'ECS: Sztuczna inteligencja (AI)'
+  ai_ecs_description: "Nowa alternatywna jednostka programowa dla programu nauczania Odkrywanie Informatyki (ECS)."
+  ai_elements: "Elementy sztucznej inteligencji (AI)"
+  ai_elements_description: "Seria bezpłatnych kursów online utworzonych przez Reaktor i Uniwersytet Helsiński."
+  ai_cognimates: "Cognimates"
+  ai_cognimates_description: "Platforma edukacyjna AI do tworzenia gier, programowania robotów i szkolenia."
+  ai_try_activity: "Spróbuj aktywności"

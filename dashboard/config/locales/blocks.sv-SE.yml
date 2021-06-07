@@ -47,7 +47,7 @@ sv:
         text: efter {TIMESTAMP} {UNIT}
         options:
           UNIT:
-            '"measures"': åtgärder
+            '"measures"': takter
             '"seconds"': sekunder
       Dancelab_changeColorBy:
         text: ändra {COLOR} {METHOD} via {AMOUNT}
@@ -216,13 +216,13 @@ sv:
         text: 'varje {N} {UNIT} '
         options:
           UNIT:
-            '"measures"': åtgärder
+            '"measures"': takter
             '"seconds"': sekunder
       Dancelab_everySecondsRange:
         text: 'varje {N} {UNIT} från {START} till {STOP} '
         options:
           UNIT:
-            measures: Åtgärder
+            measures: Takter
             seconds: Sekunder
       Dancelab_everyVerseChorus:
         text: 'varje {UNIT} '
@@ -252,7 +252,7 @@ sv:
         text: "{UNIT} har passerat"
         options:
           UNIT:
-            '"measures"': åtgärder
+            '"measures"': takter
             '"seconds"': sekunder
       Dancelab_ifDanceIs:
         text: |-
@@ -275,7 +275,7 @@ sv:
         text: om {UNIT} is {OP} {N} {DO1} {DO2}
         options:
           UNIT:
-            '"measures"': åtgärder
+            '"measures"': takter
             '"seconds"': sekunder
           OP:
             '">"': ">"
@@ -467,7 +467,7 @@ sv:
       Dancelab_mixColors:
         text: blanda {COLOR1} och {COLOR2}
       Dancelab_nMeasures:
-        text: "{N} åtgärder"
+        text: "{N} takter"
       Dancelab_onPointerDown:
         text: när pekaren förs nedåt
       Dancelab_onPointerDrag:
@@ -968,6 +968,7 @@ sv:
             '"x"': x-position
             '"y"': y-position
             '"direction"': rörelseriktning
+            '"speed"': hastighet
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} berör {SPRITE2}"
         options:
@@ -998,6 +999,7 @@ sv:
             '"y"': y-position
             '"direction"': rörelseriktning
             '"tint"': färgton
+            '"speed"': hastighet
       gamelab_getThisSprite:
         text: "{CHOICE} sprite"
         options:
@@ -1120,6 +1122,8 @@ sv:
             '"West"': Väst
       gamelab_moveToward:
         text: Flytta {SPRITE} Pixlar {DISTANCE} Mot {TARGET}
+      gamelab_newSpritePointer:
+        text: klickade {SPRITE}
       gamelab_objectSpritePointer:
         text: klickade {SPRITE}
       gamelab_playSound:
@@ -1171,6 +1175,13 @@ sv:
             undefined: Ingen
       gamelab_setBackgroundImageAs:
         text: ställa in bakgrunden till {IMG}
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': medel
+            '100': large
       gamelab_setProp:
         text: ligger {SPRITE} {PROPERTY} Att {VAL}
         options:
@@ -1180,6 +1191,16 @@ sv:
             '"x"': x-position
             '"y"': y-position
             '"direction"': rörelseriktning
+            '"speed"': hastighet
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': storlek
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': medel
+            '100': large
       gamelab_setSizes:
         text: ställ in {SPRITE} {PROPERTY} till {N} %
         options:
@@ -1275,6 +1296,8 @@ sv:
             "{x: randomNumber(52, 350), y: randomNumber(50, 350)}": inte fiska
             "{x: randomNumber(50, 350), y: randomNumber(50, 350)}": min-etikett
             "{x: randomNumber(53, 350), y: randomNumber(50, 350)}": inte min etikett
+      Mikelab_allSpritesWithAnimation:
+        text: "{ANIMATION}"
       Mikelab_changePropBy:
         options:
           PROPERTY:
@@ -1479,6 +1502,13 @@ sv:
             '"x"': x-position
             '"y"': y-position
             '"direction"': rörelseriktning
+      Mikelab_setupSim:
+        text: |-
+          Ställ in simulering med
+          {SPRITE1N}{SPRITE1COSTUME}Hastighet{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}Hastighet{SPRITE2SPEED}
+          Samla
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1574,42 +1604,27 @@ sv:
         options:
           PROPERTY:
             "'shapeColor'": färg
-      aalab_addBehaviorForDuration:
-        text: aalab sprite {SPRITE} börjar {BEHAVIOR} för {SECONDS} sekunder
-      aalab_addBehaviorUntilBoolean:
-        text: Sprite {SPRITE} Börjar {BEHAVIOR} Tills {CONDITION}
-      aalab_createNewSpriteAnonReturn2:
-        text: ny Sprite med namnet{SPRITE_NAME} med kostym{ANIMATION_NAME} på plats{LOCATION}
-      aalab_goToScene:
-        text: gå till scen {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: Flytta {SPRITE} {DISTANCE} Pixlar {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Norr
-            '"East"': Österut
-            '"South"': Söder
-            '"West"': Väst
-      aalab_prompt:
-        text: fråga {MESSAGE}
-      aalab_scene:
-        text: scen {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: installationsberättelse
-      aalab_starwars_playSound:
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': rutnät
+            '"border"': gräns
+            '"row"': rad
             '"random"': slumpad
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': alla
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': alla
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: rita binär {BIN}
       binary_drawBinScreen:

@@ -993,6 +993,7 @@ de:
             '"x"': x-Position
             '"y"': y-Position
             '"direction"': Bewegungsrichtung
+            '"speed"': Geschwindigkeit
       gamelab_checkTouching:
         text: "{CONDITION} {SPRITE1} berührt {SPRITE2}"
         options:
@@ -1029,6 +1030,7 @@ de:
             '"y"': y-Position
             '"direction"': Bewegungsrichtung
             '"tint"': Farbton
+            '"speed"': Geschwindigkeit
       gamelab_getThisSprite:
         text: "{CHOICE} Sprite"
         options:
@@ -1170,6 +1172,8 @@ de:
             '"West"': West
       gamelab_moveToward:
         text: bewege {SPRITE} {DISTANCE} Pixel zu {TARGET}
+      gamelab_newSpritePointer:
+        text: "{SPRITE} geklicked"
       gamelab_objectSpritePointer:
         text: "{SPRITE} geklicked"
       gamelab_patrollingUpDown:
@@ -1228,6 +1232,13 @@ de:
             undefined: leer
       gamelab_setBackgroundImageAs:
         text: setze Hintergund auf {IMG}
+      gamelab_setDefaultSpriteSize:
+        options:
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': mittel
+            '100': large
       gamelab_setPrompt:
         text: Frage Benutzer {QUESTION} für Variable {VAR}
       gamelab_setPromptWithChoices:
@@ -1241,6 +1252,16 @@ de:
             '"x"': x-Position
             '"y"': y-Position
             '"direction"': Bewegungsrichtung
+            '"speed"': Geschwindigkeit
+      gamelab_setProp_dropdown:
+        options:
+          PROPERTY:
+            '"scale"': Größe
+          SIZE:
+            '25': extra small
+            '50': small
+            '75': mittel
+            '100': large
       gamelab_setSizes:
         text: stellen Sie {SPRITE} {PROPERTY} auf {N}%
         options:
@@ -1559,6 +1580,13 @@ de:
             '"x"': x-Position
             '"y"': y-Position
             '"direction"': Bewegungsrichtung
+      Mikelab_setupSim:
+        text: |-
+          Starte Simulation mit
+          {SPRITE1N}{SPRITE1COSTUME}Geschwindigkeit{SPRITE1SPEED}
+          {SPRITE2N}{SPRITE2COSTUME}Geschwindigkeit{SPRITE2SPEED}
+          sammle
+          {SPRITE3N}{SPRITE3COSTUME}
       Mikelab_showScoreboard:
         options:
           CORNER:
@@ -1654,49 +1682,27 @@ de:
         options:
           PROPERTY:
             "'shapeColor'": Farbe
-      aalab_addBehaviorForDuration:
-        text: aalab Sprite {SPRITE} beginnt {BEHAVIOR} für {SECONDS} Sekunden
-      aalab_addBehaviorUntilBoolean:
-        text: "{SPRITE} beginnt {BEHAVIOR} bis {CONDITION}"
-      aalab_createNewSpriteAnonReturn2:
-        text: neues Sprite mit Namen {SPRITE_NAME} mit Kostüm {ANIMATION_NAME} an der Position {LOCATION}
-      aalab_goToScene:
-        text: gehe zur Szene {SCENE}
+      aalab_layoutSprites:
         options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_moveInDirection:
-        text: bewege {SPRITE} {DISTANCE} Pixel {DIRECTION}
-        options:
-          DIRECTION:
-            '"North"': Nord
-            '"East"': Ost
-            '"South"': Süd
-            '"West"': West
-      aalab_prompt:
-        text: stelle Frage {MESSAGE}
-      aalab_scene:
-        text: Szene {SCENE}
-        options:
-          SCENE:
-            '1': '1'
-            '2': '2'
-            '3': '3'
-      aalab_setupStory:
-        text: Starte Geschichte
-      aalab_starwars_playSound:
-        text: Spiele{OPTION}Klang
-        options:
-          OPTION:
+          FORMAT:
+            '"grid"': Raster
+            '"border"': Grenze
+            '"row"': Zeile
             '"random"': zufällig
-            '"R2-D2 random"': R2-D2 Zufall
-            '"R2-D2 1"': R2-D2 1
-            '"R2-D2 2"': R2-D2 2
-            '"R2-D2 3"': R2-D2 3
-            '"R2-D2 4"': R2-D2 4
-            '"R2-D2 5"': R2-D2 5
+      aalab_someGraduallyStartIntervention:
+        options:
+          PORTION:
+            '1': Alle
+            '0.75': most
+            '0.5': half of
+            '0.25': few
+      aalab_someStartIntervention:
+        options:
+          PORTION:
+            '1': Alle
+            '0.75': most
+            '0.5': half of
+            '0.25': few
       binary_drawBin:
         text: zeichne Binärwert {BIN}
       binary_drawBinScreen:
