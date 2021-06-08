@@ -309,10 +309,6 @@ class Section < ApplicationRecord
     false
   end
 
-  def at_capacity?
-    students.distinct(&:id).size >= @@section_capacity
-  end
-
   def capacity
     @@section_capacity
   end
