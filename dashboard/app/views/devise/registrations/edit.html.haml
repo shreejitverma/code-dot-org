@@ -8,10 +8,12 @@
 %h2= @page_title
 
 - unless current_user.migrated?
+  inside "unless current_user.migrated?"
   -# Mount point for React MigrateToMultiAuth component.
   %div#migrate-multi-auth
 
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  inside form
   - email_mismatch = current_user.errors.delete(:email_mismatch)
   - current_user.reload if email_mismatch.present?
   = render "devise/shared/error_messages", resource: resource
@@ -19,18 +21,22 @@
   .field
     = f.label :name, class: "label-bold"
     - if f.object.secret_picture_account_only?
+      if secret_picture_account_only
       = f.object.name
     - else # most users are allowed to edit username
+      else secret_picture_account_only
       = f.text_field :name, autofocus: true, maxlength: 255
   - if !f.object.teacher_managed_account?
     -# Temporary: Allow single-auth students with no email to add a parent email
     - if current_user.parent_managed_account? || current_user.can_add_parent_email?
+      if current_user.parent_managed_account? || current_user.can_add_parent_email?
       .field
         = f.label t('user.parent_email_label'), class: "label-bold"
         %em= t('user.parent_email_hint')
         %br/
         = f.email_field :parent_email, autocomplete: 'off', maxlength: 255
     - if !current_user.parent_managed_account?
+      if !current_user.parent_managed_account?
       .field
         = f.label :email, class: "label-bold"
         - if current_user.migrated? && !current_user.student?
@@ -42,10 +48,12 @@
           %a#edit-email-link{href: '#'}= t('user.update_email')
           )
   - if resource.username.present?
+    if resource.username.present?
     .field
       = f.label :username, class: "label-bold"
       = f.object.username
   - if f.object.can_edit_password? && f.object.encrypted_password.present?
+    if f.object.can_edit_password? && f.object.encrypted_password.present?
     %div
       = f.label :password, maxlength: 255, class: "label-bold"
       %em= t('user.new_password_hint')
@@ -55,16 +63,19 @@
       = f.label :password_confirmation, class: "label-bold"
       = f.password_field :password_confirmation, autocomplete: 'off', maxlength: 255
   - if f.object.sponsored?
+    if f.object.sponsored?
     .field
       = f.label :password, class: "label-bold"
       = t('user.no_password_because_sponsored')
   - if f.object.encrypted_password.present?
+    if f.object.encrypted_password.present?
     %div
       = f.label :current_password, class: "label-bold"
       %em= t('user.current_password_hint')
       %br/
       = f.password_field :current_password, maxlength: 255
   - if !resource.teacher?
+    if !resource.teacher?
     .field
       = f.label t('signup_form.gender'), class: "label-bold"
       = f.select :gender, gender_options
@@ -72,6 +83,7 @@
       = f.label t('signup_form.age'), class: "label-bold"
       = f.select :age, User::AGE_DROPDOWN_OPTIONS
   - if resource.teacher?
+    if resource.teacher?
     .field
       = f.label :school, class: "label-bold"
       = f.text_field :school, class: 'input-xlarge', maxlength: 255
@@ -83,6 +95,7 @@
   %div#submit-update= f.submit t('user.update'), class: 'btn btn-primary'
 
 - if current_user.should_see_add_password_form?
+  if current_user.should_see_add_password_form?
   -# Mount point for React AddPasswordForm component.
   %div#add-password-fields
 
@@ -100,6 +113,7 @@
     = f.hidden_field :password_confirmation
 
 - if current_user.student?
+  if current_user.student?
   %div#add-parent-email
     %hr
     %h2= t('user.for_parents_and_guardians')
@@ -118,10 +132,12 @@
     %p= t('user.only_one_parent_email_supported_warning')
 
 - if current_user.migrated?
+  if current_user.migrated?
   -# Mount point for React ManageLinkedAccounts component.
   %div#manage-linked-accounts
 
 - if current_user.can_create_personal_login?
+  if current_user.can_create_personal_login?
   %hr
   %h2= t('user.create_personal_login')
   %p
@@ -131,11 +147,13 @@
     = form.hidden_field :hashed_email
     %h3= t('user.enter_new_login_info')
     - if no_email
+      if no_email
       = hidden_field_tag :noEmail, true
       .field
         = form.label t('user.create_personal_login_under_13_username'), class: "label-bold"
         = form.text_field :username, maxlength: 255
     - else
+      else no_email
       .field
         = form.label :personal_email, class: "label-bold" do
           %span
@@ -148,17 +166,20 @@
       = form.label :password_confirmation, class: "label-bold"
       = form.password_field :password_confirmation, autocomplete: 'off', maxlength: 255
     - if current_user.secret_word_account?
+      if current_user.secret_word_account?
       %h3= t('user.confirm_secret_words')
       .field
         = form.label :secret_words, class: "label-bold"
         = form.text_field :secret_words, autocomplete: 'off', value: '', maxlength: 255
     - if no_email
+      if no_email
       %h3= t('user.enter_parent_email')
       .field
         = form.label t('user.create_personal_login_under_13_parent_email'), class: "label-bold"
         = form.text_field :parent_email, maxlength: 255
     = t('user.create_personal_login_terms_markdown', terms_of_service_url: CDO.code_org_url('/tos'), markdown: true).html_safe
     - unless no_email
+      unless no_email
       = t('user.create_personal_login_email_note_markdown', privacy_policy_url: CDO.code_org_url('/privacy'), markdown: true).html_safe
     %div= form.submit t('crud.submit'), id: 'create-personal-login', class: 'btn btn-warning'
 
@@ -167,6 +188,7 @@
 -# process (for example, confirming one's email when upgrading from a student
 -# account to a teacher account)
 - if resource.can_change_own_user_type?
+  if resource.can_change_own_user_type?
   = form_for(resource,
       as: resource_name,
       url: '/users/user_type',
@@ -186,9 +208,11 @@
       %button.btn#change-user-type-button{disabled: true}= t('signup_form.user_type_button')
 
 - if current_user.can_delete_own_account?
+  if current_user.can_delete_own_account?
   -# Mount point for React DeleteAccount component.
   %div#delete-account
 - else
+  else current_user.can_delete_own_account?
   %hr.danger.account-page-section-break
   %h2.danger= t('user.delete')
   %p= t('user.delete_text_teacher_managed_note')
@@ -196,6 +220,7 @@
 -# Hidden form used to asynchronously submit an email change to Rails with the
 -# appropriate authenticity tokens.  See ChangeEmailModal.jsx for more details.
 - if resource.can_edit_email?
+  if resource.can_edit_email?
   = form_for(resource,
       as: resource_name,
       url: '/users/email',
@@ -209,6 +234,7 @@
     = f.hidden_field :current_password
 
 - if resource.student?
+  if resource.student?
   = form_for(resource,
       as: resource_name,
       url: '/users/parent_email',
