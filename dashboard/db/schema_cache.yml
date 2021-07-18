@@ -3150,7 +3150,7 @@ columns:
     'null': false
     default: 
     default_function: 
-    collation: utf8_unicode_ci
+    collation: utf8mb4_unicode_ci
     comment: 
   - &390 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: kind
@@ -3159,7 +3159,7 @@ columns:
     'null': true
     default: 
     default_function: 
-    collation: utf8_unicode_ci
+    collation: utf8mb4_unicode_ci
     comment: 
   - &391 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: form_name
@@ -3168,7 +3168,7 @@ columns:
     'null': false
     default: 
     default_function: 
-    collation: utf8_unicode_ci
+    collation: utf8mb4_unicode_ci
     comment: 
   - &392 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: form_version
@@ -3186,7 +3186,7 @@ columns:
     'null': true
     default: 
     default_function: 
-    collation: utf8_unicode_ci
+    collation: utf8mb4_unicode_ci
     comment: 
   - &394 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: created_at
@@ -3755,6 +3755,15 @@ columns:
     comment: 
   lessons_opportunity_standards:
   - &454 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
+    name: id
+    table_name: lessons_opportunity_standards
+    sql_type_metadata: *31
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &455 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: lesson_id
     table_name: lessons_opportunity_standards
     sql_type_metadata: *34
@@ -3763,19 +3772,10 @@ columns:
     default_function: 
     collation: 
     comment: 
-  - &455 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
+  - &456 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: standard_id
     table_name: lessons_opportunity_standards
     sql_type_metadata: *34
-    'null': false
-    default: 
-    default_function: 
-    collation: 
-    comment: 
-  - &456 !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
-    name: id
-    table_name: lessons_opportunity_standards
-    sql_type_metadata: *31
     'null': false
     default: 
     default_function: 
@@ -13382,9 +13382,9 @@ columns_hash:
     position: *452
     properties: *453
   lessons_opportunity_standards:
-    lesson_id: *454
-    standard_id: *455
-    id: *456
+    id: *454
+    lesson_id: *455
+    standard_id: *456
   lessons_programming_expressions:
     lesson_id: *457
     programming_expression_id: *458
