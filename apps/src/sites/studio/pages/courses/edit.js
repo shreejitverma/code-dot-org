@@ -11,8 +11,8 @@ import {registerReducers} from '@cdo/apps/redux';
 $(document).ready(showCourseEditor);
 
 function showCourseEditor() {
-  const scriptData = document.querySelector('script[data-course-editor]');
-  const courseEditorData = JSON.parse(scriptData.dataset.courseEditor);
+  const unitData = document.querySelector('script[data-course-editor]');
+  const courseEditorData = JSON.parse(unitData.dataset.courseEditor);
 
   const teacherResources = (
     courseEditorData.course_summary.teacher_resources || []
@@ -45,8 +45,7 @@ function showCourseEditor() {
         initialVersionTitle={courseEditorData.course_summary.version_title}
         initialFamilyName={courseEditorData.course_summary.family_name}
         initialVersionYear={courseEditorData.course_summary.version_year}
-        initialVisible={courseEditorData.course_summary.visible || false}
-        initialIsStable={courseEditorData.course_summary.is_stable || false}
+        initialPublishedState={courseEditorData.course_summary.published_state}
         initialPilotExperiment={
           courseEditorData.course_summary.pilot_experiment || ''
         }
@@ -59,10 +58,10 @@ function showCourseEditor() {
         initialDescriptionTeacher={
           courseEditorData.course_summary.description_teacher || ''
         }
-        initialScriptsInCourse={courseEditorData.course_summary.scripts.map(
-          script => script.name
+        initialUnitsInCourse={courseEditorData.course_summary.scripts.map(
+          unit => unit.name
         )}
-        scriptNames={courseEditorData.script_names.sort()}
+        unitNames={courseEditorData.script_names.sort()}
         initialTeacherResources={teacherResources}
         initialHasVerifiedResources={
           courseEditorData.course_summary.has_verified_resources
@@ -75,6 +74,9 @@ function showCourseEditor() {
         initialAnnouncements={announcements}
         useMigratedResources={courseEditorData.course_summary.is_migrated}
         courseVersionId={courseEditorData.course_summary.course_version_id}
+        preventCourseVersionChange={
+          courseEditorData.course_summary.prevent_course_version_change
+        }
         coursePath={courseEditorData.course_summary.course_path}
       />
     </Provider>,

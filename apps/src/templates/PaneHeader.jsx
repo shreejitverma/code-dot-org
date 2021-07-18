@@ -88,6 +88,11 @@ const styles = {
       color: color.white
     }
   },
+  headerButtonDisabled: {
+    backgroundColor: color.light_gray,
+    ':hover': null,
+    cursor: 'default'
+  },
   headerButtonSpan: {
     paddingLeft: 12,
     paddingRight: 12,
@@ -147,6 +152,7 @@ export const PaneButton = Radium(function(props) {
     ...(props.isMinecraft && styles.headerButtonMinecraft),
     ...(props.isPressed && styles.headerButtonPressed),
     ...(!props.headerHasFocus && styles.headerButtonUnfocused),
+    ...(props.isDisabled && styles.headerButtonDisabled),
     ...props.style
   };
 
@@ -162,11 +168,32 @@ export const PaneButton = Radium(function(props) {
     iconStyle = {...iconStyle, ...styles.headerButtonNoLabel};
   }
 
+  function renderIcon() {
+    const {iconClass, icon} = props;
+
+    if (iconClass) {
+      return <i className={iconClass} style={iconStyle} />;
+    }
+
+    if (icon) {
+      const Icon = icon.type;
+      return (
+        <Icon {...icon.props} style={{...iconStyle, ...icon.props.style}}>
+          {icon.children}
+        </Icon>
+      );
+    }
+  }
+
   return (
-    <div id={props.id} style={divStyle} onClick={props.onClick}>
+    <div
+      id={props.id}
+      style={divStyle}
+      onClick={props.isDisabled ? () => {} : props.onClick}
+    >
       <span style={styles.headerButtonSpan}>
         {props.hiddenImage}
-        <i className={props.iconClass} style={iconStyle} />
+        {renderIcon()}
         <span style={styles.noPadding}>{label}</span>
       </span>
     </div>
@@ -175,9 +202,11 @@ export const PaneButton = Radium(function(props) {
 PaneButton.propTypes = {
   headerHasFocus: PropTypes.bool.isRequired,
   iconClass: PropTypes.string,
+  icon: PropTypes.element,
   label: PropTypes.string.isRequired,
   isRtl: PropTypes.bool.isRequired,
   leftJustified: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   isPressed: PropTypes.bool,
   pressedLabel: PropTypes.string,
   onClick: PropTypes.func,

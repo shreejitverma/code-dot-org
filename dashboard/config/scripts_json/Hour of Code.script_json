@@ -2,13 +2,13 @@
   "script": {
     "name": "Hour of Code",
     "wrapup_video_id": 13,
-    "hidden": true,
     "login_required": false,
     "properties": {
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-05-03 23:54:35 UTC",
+    "serialized_at": "2021-06-17 22:27:40 UTC",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "Hour of Code"
     }

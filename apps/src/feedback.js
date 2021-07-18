@@ -43,7 +43,6 @@ module.exports = FeedbackUtils;
 // Globals used in this file:
 //   Blockly
 
-var codegen = require('./lib/tools/jsinterpreter/codegen');
 /** @type {Object<string, function>} */
 var msg = require('@cdo/locale');
 var dom = require('./dom');
@@ -613,7 +612,7 @@ FeedbackUtils.saveThumbnail = function(image) {
 };
 
 FeedbackUtils.isLastLevel = function() {
-  const lesson = getStore().getState().progress.stages[0];
+  const lesson = getStore().getState().progress.lessons[0];
   return (
     lesson.levels[lesson.levels.length - 1].ids.indexOf(
       window.appOptions.serverLevelId
@@ -1192,7 +1191,7 @@ FeedbackUtils.prototype.getGeneratedCodeString_ = function() {
   } else if (this.studioApp_.editCode) {
     return this.studioApp_.editor ? this.studioApp_.editor.getValue() : '';
   } else {
-    return codegen.workspaceCode(Blockly);
+    return Blockly.getWorkspaceCode();
   }
 };
 

@@ -1,14 +1,13 @@
-import React from 'react';
 import {registerReducers, createStoreWithReducers} from '@cdo/apps/redux';
 import sectionData, {setSection} from '@cdo/apps/redux/sectionDataRedux';
 import sectionProgress, {
-  addDataByScript,
+  addDataByUnit,
   setLessonOfInterest,
   setShowSectionProgressDetails
 } from '@cdo/apps/templates/sectionProgress/sectionProgressRedux';
-import scriptSelection, {
+import unitSelection, {
   setValidScripts
-} from '@cdo/apps/redux/scriptSelectionRedux';
+} from '@cdo/apps/redux/unitSelectionRedux';
 import locales from '@cdo/apps/redux/localesRedux';
 import {LevelStatus} from '@cdo/apps/util/sharedConstants';
 import {TestResults} from '@cdo/apps/constants';
@@ -34,22 +33,6 @@ export function fakeDetailRowsForStudent(student) {
   ];
 }
 
-export function wrapTable(table) {
-  return (
-    <div
-      className="main"
-      style={{
-        marginLeft: 80,
-        width: 970,
-        display: 'block',
-        backgroundColor: '#ffffff'
-      }}
-    >
-      {table}
-    </div>
-  );
-}
-
 export function createStore(numStudents, numLessons) {
   const scriptData = getScriptData(numLessons);
   const section = {
@@ -65,7 +48,7 @@ export function createStore(numStudents, numLessons) {
     registerReducers({
       sectionProgress,
       sectionData,
-      scriptSelection,
+      unitSelection,
       locales
     });
   } catch {}
@@ -73,7 +56,7 @@ export function createStore(numStudents, numLessons) {
   store.dispatch(setSection(section));
   store.dispatch(setValidScripts([scriptData], [scriptData.id], [], section));
   store.dispatch(
-    addDataByScript(buildSectionProgress(section.students, scriptData))
+    addDataByUnit(buildSectionProgress(section.students, scriptData))
   );
   store.dispatch(setLessonOfInterest(0));
   store.dispatch(setShowSectionProgressDetails(true));
@@ -88,31 +71,31 @@ function buildSectionProgress(students, scriptData) {
     lastUpdates[scriptData.id][student.id] = Date.now();
     progress[student.id] = {};
   });
-  scriptData.stages.forEach(lesson => {
+  scriptData.lessons.forEach(lesson => {
     lesson.levels.forEach(level => {
       students.forEach(student => {
-        progress[student.id][level.id] = randomProgress();
+        progress[student.id][level.id] = randomProgress(level);
         level.sublevels &&
           level.sublevels.forEach(sublevel => {
-            progress[student.id][sublevel.id] = randomProgress();
+            progress[student.id][sublevel.id] = randomProgress(sublevel);
           });
       });
     });
   });
   return {
-    scriptDataByScript: {[scriptData.id]: scriptData},
-    studentLevelProgressByScript: {[scriptData.id]: progress},
-    studentLessonProgressByScript: {
-      [scriptData.id]: lessonProgressForSection(progress, scriptData.stages)
+    unitDataByUnit: {[scriptData.id]: scriptData},
+    studentLevelProgressByUnit: {[scriptData.id]: progress},
+    studentLessonProgressByUnit: {
+      [scriptData.id]: lessonProgressForSection(progress, scriptData.lessons)
     },
-    studentLastUpdateByScript: {[scriptData.id]: lastUpdates}
+    studentLastUpdateByUnit: {[scriptData.id]: lastUpdates}
   };
 }
 
-function randomProgress() {
+function randomProgress(level) {
   const rand = Math.floor(Math.random() * 4);
   const paired = Math.floor(Math.random() * 10) === 0;
-  const timeSpent = Math.random() * 60 * 60;
+  const timeSpent = level.isConceptLevel ? 0 : Math.random() * 60 * 60 + 1;
   switch (rand) {
     case 0:
       return {
@@ -138,7 +121,7 @@ function randomProgress() {
         locked: false,
         result: TestResults.TOO_MANY_BLOCKS_FAIL,
         paired: paired,
-        timeSpent: undefined,
+        timeSpent: timeSpent,
         lastTimestamp: Date.now()
       };
     default:
@@ -149,11 +132,11 @@ function randomProgress() {
 function getScriptData(numLessons) {
   return {
     id: 162,
-    csf: false,
+    csf: true,
     hasStandards: false,
     title: "CSD Unit 3 - Interactive Animations and Games ('20-'21)",
     path: '//localhost-studio.code.org:3000/s/csd3-2020',
-    stages: [
+    lessons: [
       {
         script_id: 162,
         script_name: 'coursea-2020',
@@ -313,36 +296,7 @@ function getScriptData(numLessons) {
         title: 'Lesson 2: Plotting Shapes',
         lesson_group_display_name: 'Chapter 1: Images and Animations',
         lockable: false,
-        levels: [
-          {
-            id: '3231',
-            url:
-              'http://localhost-studio.code.org:3000/s/csd3-2020/lessons/2/levels/1',
-            progression: 'Lesson Overview',
-            progressionDisplayName: 'Lesson Overview',
-            kind: 'puzzle',
-            icon: null,
-            isUnplugged: false,
-            levelNumber: 1,
-            bubbleText: '1',
-            isConceptLevel: true,
-            bonus: null
-          },
-          {
-            id: '2106',
-            url:
-              'http://localhost-studio.code.org:3000/s/csd3-2020/lessons/2/levels/2',
-            progression: 'Drawing Shapes',
-            progressionDisplayName: 'Drawing Shapes',
-            kind: 'puzzle',
-            icon: null,
-            isUnplugged: false,
-            levelNumber: 2,
-            bubbleText: '2',
-            isConceptLevel: false,
-            bonus: null
-          }
-        ],
+        levels: [],
         description_student:
           "Question of the Day: How can we clearly communicate how to draw something on a screen?This lesson explores the challenges of communicating how to draw with shapes and use a tool that introduces how this problem is approached in Game Lab.The class uses a Game Lab tool  to interactively place shapes on Game Lab's 400 by 400 grid. Partners then take turns instructing each other how to draw a hidden image using this tool, accounting for many of the challenges of programming in Game Lab.",
         description_teacher:

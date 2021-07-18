@@ -2,7 +2,6 @@
   "script": {
     "name": "csp5-2017",
     "wrapup_video_id": null,
-    "hidden": false,
     "login_required": true,
     "properties": {
       "student_detail_progress_view": true,
@@ -36,7 +35,6 @@
       "has_verified_resources": true,
       "has_lesson_plan": true,
       "version_year": "2017",
-      "is_stable": true,
       "project_sharing": true,
       "curriculum_umbrella": "CSP",
       "family_name": "csp5",
@@ -45,7 +43,8 @@
     },
     "new_name": "csp5-2017",
     "family_name": "csp5",
-    "serialized_at": "2021-05-03 23:54:49 UTC",
+    "serialized_at": "2021-06-17 22:28:21 UTC",
+    "published_state": "stable",
     "seeding_key": {
       "script.name": "csp5-2017"
     }
@@ -2769,17 +2768,17 @@
         ],
         "progression": "Pre-test reflection",
         "variants": {
-          "csp_affirmation_control_5": {
-            "experiments": [
-              "rene-control-control",
-              "rene-belonging-control"
-            ]
-          },
           "csp_affirmation_intervention_5": {
             "active": false,
             "experiments": [
               "rene-control-affirmation",
               "rene-belonging-affirmation"
+            ]
+          },
+          "csp_affirmation_control_5": {
+            "experiments": [
+              "rene-control-control",
+              "rene-belonging-control"
             ]
           }
         }
@@ -4836,17 +4835,17 @@
         ],
         "progression": "Pre-test reflection",
         "variants": {
-          "csp_affirmation_control_5": {
-            "experiments": [
-              "rene-control-control",
-              "rene-belonging-control"
-            ]
-          },
           "csp_affirmation_intervention_5": {
             "active": false,
             "experiments": [
               "rene-control-affirmation",
               "rene-belonging-affirmation"
+            ]
+          },
+          "csp_affirmation_control_5": {
+            "experiments": [
+              "rene-control-control",
+              "rene-belonging-control"
             ]
           }
         }

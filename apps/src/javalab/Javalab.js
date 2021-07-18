@@ -18,8 +18,10 @@ import {showLevelBuilderSaveButton} from '@cdo/apps/code-studio/header';
 import {RESIZE_VISUALIZATION_EVENT} from '@cdo/apps/lib/ui/VisualizationResizeBar';
 import Neighborhood from './Neighborhood';
 import NeighborhoodVisualizationColumn from './NeighborhoodVisualizationColumn';
-import DefaultVisualization from './DefaultVisualization';
+import TheaterVisualizationColumn from './TheaterVisualizationColumn';
+import Theater from './Theater';
 import {CsaViewMode} from './constants';
+import {DisplayTheme, getDisplayThemeFromString} from './DisplayTheme';
 
 /**
  * On small mobile devices, when in portrait orientation, we show an overlay
@@ -34,11 +36,11 @@ const MOBILE_PORTRAIT_WIDTH = 600;
 const Javalab = function() {
   this.skin = null;
   this.level = null;
-  this.channelId = null;
 
   /** @type {StudioApp} */
   this.studioApp_ = null;
   this.miniApp = null;
+  this.visualization = null;
 };
 
 /**
@@ -58,9 +60,9 @@ Javalab.prototype.init = function(config) {
 
   this.skin = config.skin;
   this.level = config.level;
-  this.channelId = config.channel;
-  // Pulls dark mode from user preferences
-  this.isDarkMode = !!config.usingDarkModePref;
+  // Sets dark mode based on displayTheme user preference
+  this.isDarkMode =
+    getDisplayThemeFromString(config.displayTheme) === DisplayTheme.DARK;
 
   config.makeYourOwn = false;
   config.wireframeShare = true;
@@ -85,17 +87,14 @@ Javalab.prototype.init = function(config) {
   const onCommitCode = this.onCommitCode.bind(this);
   const onInputMessage = this.onInputMessage.bind(this);
   const handleVersionHistory = this.studioApp_.getVersionHistoryHandler(config);
-  let visualization;
   if (this.level.csaViewMode === CsaViewMode.NEIGHBORHOOD) {
     this.miniApp = new Neighborhood();
     config.afterInject = () =>
       this.miniApp.afterInject(this.level, this.skin, config, this.studioApp_);
-    const iconPath = '/blockly/media/turtle/';
-    visualization = (
-      <NeighborhoodVisualizationColumn iconPath={iconPath} showSpeedSlider />
-    );
-  } else {
-    visualization = <DefaultVisualization />;
+    this.visualization = <NeighborhoodVisualizationColumn />;
+  } else if (this.level.csaViewMode === CsaViewMode.THEATER) {
+    this.miniApp = new Theater();
+    this.visualization = <TheaterVisualizationColumn />;
   }
 
   const onMount = () => {
@@ -114,6 +113,7 @@ Javalab.prototype.init = function(config) {
     container.className = container.className + ' pin_bottom';
     this.studioApp_.initVersionHistoryUI(config);
     this.studioApp_.initTimeSpent();
+    this.studioApp_.initProjectTemplateWorkspaceIconCallout();
 
     // Fixes viewport for small screens.  Also usually done by studioApp_.init().
     var viewport = document.querySelector('meta[name="viewport"]');
@@ -187,6 +187,10 @@ Javalab.prototype.init = function(config) {
   // Dispatches a redux update of isDarkMode
   getStore().dispatch(setIsDarkMode(this.isDarkMode));
 
+  // ensure autosave is executed on first run by manually setting
+  // projectChanged to true.
+  project.projectChanged();
+
   ReactDOM.render(
     <Provider store={getStore()}>
       <JavalabView
@@ -196,7 +200,7 @@ Javalab.prototype.init = function(config) {
         onCommitCode={onCommitCode}
         onInputMessage={onInputMessage}
         handleVersionHistory={handleVersionHistory}
-        visualization={visualization}
+        visualization={this.visualization}
       />
     </Provider>,
     document.getElementById(config.containerId)
@@ -226,14 +230,15 @@ Javalab.prototype.onRun = function() {
     options.useNeighborhood = true;
   }
   this.javabuilderConnection = new JavabuilderConnection(
-    this.channelId,
     this.level.javabuilderUrl,
     message => getStore().dispatch(appendOutputLog(message)),
     this.miniApp,
     getStore().getState().pageConstants.serverLevelId,
     options
   );
-  this.javabuilderConnection.connectJavabuilder();
+  project.autosave(() => {
+    this.javabuilderConnection.connectJavabuilder();
+  });
 };
 
 // Called by Javalab console to send a message to Javabuilder.

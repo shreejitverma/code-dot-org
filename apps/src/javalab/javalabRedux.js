@@ -1,6 +1,8 @@
 import UserPreferences from '../lib/util/UserPreferences';
+import {DisplayTheme} from './DisplayTheme';
 
 const APPEND_CONSOLE_LOG = 'javalab/APPEND_CONSOLE_LOG';
+const CLEAR_CONSOLE_LOGS = 'javalab/CLEAR_CONSOLE_LOGS';
 const RENAME_FILE = 'javalab/RENAME_FILE';
 const SET_SOURCE = 'javalab/SET_SOURCE';
 const SOURCE_VISIBILITY_UPDATED = 'javalab/SOURCE_VISIBILITY_UPDATED';
@@ -8,13 +10,17 @@ const SOURCE_VALIDATION_UPDATED = 'javalab/SOURCE_VALIDATION_UPDATED';
 const SET_ALL_SOURCES = 'javalab/SET_ALL_SOURCES';
 const SET_ALL_VALIDATION = 'javalab/SET_ALL_VALIDATION';
 const COLOR_PREFERENCE_UPDATED = 'javalab/COLOR_PREFERENCE_UPDATED';
+const EDITOR_HEIGHT_UPDATED = 'javalab/EDITOR_HEIGHT_UPDATED';
 const REMOVE_FILE = 'javalab/REMOVE_FILE';
+const SET_IS_RUNNING = 'javalab/SET_IS_RUNNING';
 
 const initialState = {
   consoleLogs: [],
   sources: {'MyClass.java': {text: '', isVisible: true, isValidation: false}},
   isDarkMode: false,
-  validation: {}
+  validation: {},
+  renderedEditorHeight: 400,
+  isRunning: false
 };
 
 // Action Creators
@@ -26,6 +32,10 @@ export const appendInputLog = input => ({
 export const appendOutputLog = output => ({
   type: APPEND_CONSOLE_LOG,
   log: {type: 'output', text: output}
+});
+
+export const clearConsoleLogs = () => ({
+  type: CLEAR_CONSOLE_LOGS
 });
 
 export const setAllValidation = validation => ({
@@ -71,7 +81,9 @@ export const sourceValidationUpdated = (filename, isValidation) => ({
 
 // Updates the user preferences to reflect change
 export const setIsDarkMode = isDarkMode => {
-  new UserPreferences().setUsingDarkMode(isDarkMode);
+  new UserPreferences().setDisplayTheme(
+    isDarkMode ? DisplayTheme.DARK : DisplayTheme.LIGHT
+  );
   return {
     isDarkMode: isDarkMode,
     type: COLOR_PREFERENCE_UPDATED
@@ -81,6 +93,11 @@ export const setIsDarkMode = isDarkMode => {
 export const removeFile = filename => ({
   type: REMOVE_FILE,
   filename
+});
+
+export const setIsRunning = isRunning => ({
+  type: SET_IS_RUNNING,
+  isRunning
 });
 
 // Selectors
@@ -107,12 +124,23 @@ export const getValidation = state => {
   return validation;
 };
 
+export const setRenderedHeight = height => ({
+  type: EDITOR_HEIGHT_UPDATED,
+  height
+});
+
 // Reducer
 export default function reducer(state = initialState, action) {
   if (action.type === APPEND_CONSOLE_LOG) {
     return {
       ...state,
       consoleLogs: [...state.consoleLogs, action.log]
+    };
+  }
+  if (action.type === CLEAR_CONSOLE_LOGS) {
+    return {
+      ...state,
+      consoleLogs: []
     };
   }
   if (action.type === SET_SOURCE) {
@@ -182,6 +210,18 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       isDarkMode: action.isDarkMode
+    };
+  }
+  if (action.type === EDITOR_HEIGHT_UPDATED) {
+    return {
+      ...state,
+      renderedEditorHeight: action.height
+    };
+  }
+  if (action.type === SET_IS_RUNNING) {
+    return {
+      ...state,
+      isRunning: action.isRunning
     };
   }
   return state;

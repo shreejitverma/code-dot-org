@@ -46,7 +46,14 @@ module Services
       activities = script.lessons.map(&:lesson_activities).flatten
       sections = activities.map(&:activity_sections).flatten
       resources = script.lessons.map(&:resources).flatten.concat(script.resources).concat(script.student_resources).uniq.sort_by(&:key)
-      lessons_resources = script.lessons.map(&:lessons_resources).flatten
+
+      # Use the existing seeding_key code to efficiently sort LessonsResource
+      # and ScriptsResource objects in a manner that will be stable across environments.
+      lr_seed_context = SeedContext.new(lessons: script.lessons, resources: resources)
+      lessons_resources = script.lessons.map(&:lessons_resources).flatten.sort_by {|lr| lr.seeding_key(lr_seed_context).to_json}
+      sr_seed_context = SeedContext.new(script: script, resources: resources)
+      scripts_resources = script.scripts_resources.sort_by {|sr| sr.seeding_key(sr_seed_context).to_json}
+
       vocabularies = script.lessons.map(&:vocabularies).flatten
       lessons_vocabularies = script.lessons.map(&:lessons_vocabularies).flatten
       lessons_programming_expressions = script.lessons.map(&:lessons_programming_expressions).flatten
@@ -65,7 +72,7 @@ module Services
         levels: my_levels,
         resources: resources,
         lessons_resources: lessons_resources,
-        scripts_resources: script.scripts_resources,
+        scripts_resources: scripts_resources,
         scripts_student_resources: script.scripts_student_resources,
         vocabularies: vocabularies,
         lessons_vocabularies: lessons_vocabularies,
@@ -90,7 +97,7 @@ module Services
         levels_script_levels: script.levels_script_levels.map {|lsl| ScriptSeed::LevelsScriptLevelSerializer.new(lsl, scope: scope).as_json},
         resources: resources.map {|r| ScriptSeed::ResourceSerializer.new(r, scope: scope).as_json},
         lessons_resources: lessons_resources.map {|lr| ScriptSeed::LessonsResourceSerializer.new(lr, scope: scope).as_json},
-        scripts_resources: script.scripts_resources.map {|sr| ScriptSeed::ScriptsResourceSerializer.new(sr, scope: scope).as_json},
+        scripts_resources: scripts_resources.map {|sr| ScriptSeed::ScriptsResourceSerializer.new(sr, scope: scope).as_json},
         scripts_student_resources: script.scripts_student_resources.map {|sr| ScriptSeed::ScriptsResourceSerializer.new(sr, scope: scope).as_json},
         vocabularies: vocabularies.map {|v| ScriptSeed::VocabularySerializer.new(v, scope: scope).as_json},
         lessons_vocabularies: lessons_vocabularies.map {|lv| ScriptSeed::LessonsVocabularySerializer.new(lv, scope: scope).as_json},
@@ -317,8 +324,8 @@ module Services
         # Extract the parts of the ScriptLevel's seeding_key which are used to
         # identify the Lesson by its seeding_key.
         lesson_seed_keys = %w(lesson.key lesson_group.key script.name)
-        stage = lessons_by_seeding_key[sl_data['seeding_key'].select {|k, _| lesson_seed_keys.include?(k)}]
-        raise 'No stage found' if stage.nil?
+        lesson = lessons_by_seeding_key[sl_data['seeding_key'].select {|k, _| lesson_seed_keys.include?(k)}]
+        raise 'No lesson found' if lesson.nil?
 
         section_key = sl_data['seeding_key']['activity_section.key']
         section_id = section_key && seed_context.activity_sections.find {|section| section.key == section_key}.id
@@ -330,7 +337,7 @@ module Services
         script_level_attrs = sl_data.except('seeding_key')
         script_level_attrs['script_id'] = seed_context.script.id
         script_level_attrs['activity_section_id'] = section_id if section_id
-        script_level_attrs['stage_id'] = stage.id
+        script_level_attrs['stage_id'] = lesson.id
         script_level_to_import.assign_attributes(script_level_attrs)
         script_level_to_import
       end
@@ -359,7 +366,7 @@ module Services
           seed_context.levels.append(level)
         end
 
-        raise 'No level found' if level.nil?
+        raise "No level found: #{seeding_key}" if level.nil?
 
         script_level = script_levels_by_seeding_key[lsl_data['seeding_key'].except('level.key')]
         raise "No ScriptLevel found while seeding script: #{seed_context.script.name}" if script_level.nil?
@@ -652,12 +659,12 @@ module Services
       attributes(
         :name,
         :wrapup_video_id,
-        :hidden,
         :login_required,
         :properties,
         :new_name,
         :family_name,
         :serialized_at,
+        :published_state,
         :seeding_key
       )
 

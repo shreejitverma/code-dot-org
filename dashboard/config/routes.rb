@@ -339,7 +339,8 @@ Dashboard::Application.routes.draw do
     # /s/xxx/reset
     get 'reset', to: 'script_levels#reset'
     get 'next', to: 'script_levels#next'
-    get 'hidden_stages', to: 'script_levels#hidden_lesson_ids'
+    get 'hidden_lessons', to: 'script_levels#hidden_lesson_ids'
+    get 'hidden_stages', to: 'script_levels#hidden_lesson_ids' #TODO: Remove once launched
     post 'toggle_hidden', to: 'script_levels#toggle_hidden'
 
     member do
@@ -356,6 +357,7 @@ Dashboard::Application.routes.draw do
       get 'student', to: 'lessons#student_lesson_plan'
       get 'extras', to: 'script_levels#lesson_extras', format: false
       get 'summary_for_lesson_plans', to: 'script_levels#summary_for_lesson_plans', format: false
+      get 'edit', to: 'lessons#edit_with_lesson_position'
 
       # /s/xxx/lessons/yyy/levels/zzz
       resources :script_levels, only: [:show], path: "/levels", format: false do
@@ -450,6 +452,7 @@ Dashboard::Application.routes.draw do
   post '/admin/studio_person_merge', to: 'admin_users#studio_person_merge', as: 'studio_person_merge'
   post '/admin/studio_person_split', to: 'admin_users#studio_person_split', as: 'studio_person_split'
   post '/admin/studio_person_add_email_to_emails', to: 'admin_users#studio_person_add_email_to_emails', as: 'studio_person_add_email_to_emails'
+  get '/admin/user_progress', to: 'admin_users#user_progress_form', as: 'user_progress_form'
   get '/census/review', to: 'census_reviewers#review_reported_inaccuracies', as: 'review_reported_inaccuracies'
   post '/census/review', to: 'census_reviewers#create'
 
@@ -737,9 +740,9 @@ Dashboard::Application.routes.draw do
       concerns :api_v1_pd_routes
       concerns :section_api_routes
       post 'users/:user_id/using_text_mode', to: 'users#post_using_text_mode'
-      post 'users/:user_id/using_dark_mode', to: 'users#update_using_dark_mode'
+      post 'users/:user_id/display_theme', to: 'users#update_display_theme'
       get 'users/:user_id/using_text_mode', to: 'users#get_using_text_mode'
-      get 'users/:user_id/using_dark_mode', to: 'users#get_using_dark_mode'
+      get 'users/:user_id/display_theme', to: 'users#get_display_theme'
       get 'users/:user_id/contact_details', to: 'users#get_contact_details'
       get 'users/:user_id/school_name', to: 'users#get_school_name'
       get 'users/:user_id/school_donor_name', to: 'users#get_school_donor_name'
@@ -847,6 +850,8 @@ Dashboard::Application.routes.draw do
 
   get '/javabuilder/access_token', to: 'javabuilder_sessions#get_access_token'
 
+  get '/sprites', to: 'sprite_management#sprite_management_directory'
+
   get '/sprites/sprite_upload', to: 'sprite_management#sprite_upload'
 
   # These really belong in the foorm namespace,
@@ -877,5 +882,10 @@ Dashboard::Application.routes.draw do
         get :published_forms_appeared_in
       end
     end
+  end
+
+  resources :code_review_comments, only: [:create, :destroy] do
+    patch :resolve, on: :member
+    get :project_comments, on: :collection
   end
 end

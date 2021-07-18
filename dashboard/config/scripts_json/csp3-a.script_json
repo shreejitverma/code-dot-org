@@ -2,14 +2,14 @@
   "script": {
     "name": "csp3-a",
     "wrapup_video_id": null,
-    "hidden": true,
     "login_required": true,
     "properties": {
       "curriculum_umbrella": "CSP"
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-05-03 23:55:07 UTC",
+    "serialized_at": "2021-06-17 22:29:09 UTC",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "csp3-a"
     }

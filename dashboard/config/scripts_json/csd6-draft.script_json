@@ -2,7 +2,6 @@
   "script": {
     "name": "csd6-draft",
     "wrapup_video_id": null,
-    "hidden": true,
     "login_required": true,
     "properties": {
       "student_detail_progress_view": true,
@@ -17,7 +16,8 @@
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-05-03 23:55:10 UTC",
+    "serialized_at": "2021-06-17 22:29:18 UTC",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "csd6-draft"
     }

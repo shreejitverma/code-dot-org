@@ -676,6 +676,7 @@ StudioApp.prototype.getVersionHistoryHandler = function(config) {
     ReactDOM.render(
       React.createElement(VersionHistory, {
         handleClearPuzzle: this.handleClearPuzzle.bind(this, config),
+        isProjectTemplateLevel: !!config.level.projectTemplateLevelName,
         useFilesApi: !!config.useFilesApi
       }),
       contentDiv
@@ -771,7 +772,7 @@ StudioApp.prototype.scaleLegacyShare = function() {
 
 StudioApp.prototype.getCode = function() {
   if (!this.editCode) {
-    return codegen.workspaceCode(Blockly);
+    return Blockly.getWorkspaceCode();
   }
   if (this.hideSource) {
     return this.startBlocks_;
@@ -1003,8 +1004,7 @@ StudioApp.prototype.runChangeHandlers = function() {
 StudioApp.prototype.setupChangeHandlers = function() {
   const runAllHandlers = this.runChangeHandlers.bind(this);
   if (this.isUsingBlockly()) {
-    const blocklyCanvas = Blockly.mainBlockSpace.getCanvas();
-    blocklyCanvas.addEventListener('blocklyBlockSpaceChange', runAllHandlers);
+    Blockly.addChangeListener(Blockly.mainBlockSpace, runAllHandlers);
   } else {
     this.editor.on('change', runAllHandlers);
     // Droplet doesn't automatically bubble up aceEditor changes
@@ -1039,13 +1039,20 @@ StudioApp.prototype.toggleRunReset = function(button) {
   }
 
   var run = document.getElementById('runButton');
-  var reset = document.getElementById('resetButton');
-  if (run || reset) {
-    run.style.display = showRun ? 'inline-block' : 'none';
+  if (run) {
+    // Note: Checking alwaysHideRunButton is necessary because are some levels where we never
+    // want to show the "run" button (e.g., maze levels that are "stepOnly").
+    run.style.display =
+      showRun && !this.config.alwaysHideRunButton ? 'inline-block' : 'none';
     run.disabled = !showRun;
+  }
+
+  var reset = document.getElementById('resetButton');
+  if (reset) {
     reset.style.display = !showRun ? 'inline-block' : 'none';
     reset.disabled = showRun;
   }
+
   if (this.isUsingBlockly() && !this.config.readonlyWorkspace) {
     // craft has a darker color scheme than other blockly labs. It needs to
     // toggle between different colors on run/reset or else, on run, the workspace

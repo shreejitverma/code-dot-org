@@ -18,6 +18,7 @@ class XhrProxyController < ApplicationController
   ALLOWED_CONTENT_TYPES = Set.new(
     %w(
       application/json
+      application/geo+json
       text/javascript
       text/json
       text/plain
@@ -71,6 +72,7 @@ class XhrProxyController < ApplicationController
     herokuapp.com
     hubblesite.org
     images-api.nasa.gov
+    io.adafruit.com
     isenseproject.org
     lakeside-cs.org
     maker.ifttt.com
@@ -86,6 +88,7 @@ class XhrProxyController < ApplicationController
     random.org
     rejseplanen.dk
     restcountries.eu
+    roblox.com
     runescape.com
     sessionserver.mojang.com
     spreadsheets.google.com

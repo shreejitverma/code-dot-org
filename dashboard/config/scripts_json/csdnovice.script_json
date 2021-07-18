@@ -2,14 +2,14 @@
   "script": {
     "name": "csdnovice",
     "wrapup_video_id": null,
-    "hidden": true,
     "login_required": false,
     "properties": {
       "professional_learning_course": "CS Discoveries TeacherCon Novice"
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-05-03 23:55:03 UTC",
+    "serialized_at": "2021-06-17 22:29:00 UTC",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "csdnovice"
     }

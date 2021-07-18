@@ -2,7 +2,6 @@
   "script": {
     "name": "pre-express-2021",
     "wrapup_video_id": null,
-    "hidden": false,
     "login_required": false,
     "properties": {
       "hideable_lessons": true,
@@ -20,7 +19,8 @@
     },
     "new_name": null,
     "family_name": "pre-express",
-    "serialized_at": "2021-05-26 19:49:46 UTC",
+    "serialized_at": "2021-07-02 16:35:17 UTC",
+    "published_state": "stable",
     "seeding_key": {
       "script.name": "pre-express-2021"
     }
@@ -4436,6 +4436,9 @@
       "activity_section_position": 2,
       "assessment": false,
       "properties": {
+        "level_keys": [
+          "courseB_collector_loops_challenge1_2021"
+        ],
         "progression": "Lesson Extras"
       },
       "named_level": false,

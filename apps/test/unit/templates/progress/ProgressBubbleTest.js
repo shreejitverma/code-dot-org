@@ -12,6 +12,11 @@ import {
   BubbleShape
 } from '@cdo/apps/templates/progress/BubbleFactory';
 import * as utils from '@cdo/apps/utils';
+import {ReviewStates} from '@cdo/apps/templates/feedback/types';
+import {
+  AssessmentBadge,
+  KeepWorkingBadge
+} from '@cdo/apps/templates/progress/BubbleBadge';
 
 const defaultProps = {
   level: {
@@ -217,7 +222,53 @@ describe('ProgressBubble', () => {
     expect(wrapper.props().size).to.equal(BubbleSize.dot);
   });
 
-  it('shows assessment icon on assessment level', () => {
+  it('shows KeepWorkingBadge if a level has teacher feedback keepWorking and not smallBubble', () => {
+    const wrapper = shallow(
+      <ProgressBubble
+        {...defaultProps}
+        smallBubble={false}
+        level={{
+          ...defaultProps.level,
+          teacherFeedbackReviewState: ReviewStates.keepWorking
+        }}
+      />
+    );
+
+    expect(wrapper.find(KeepWorkingBadge)).to.have.lengthOf(1);
+  });
+
+  it('hides KeepWorkingBadge if a level has teacher feedback keepWorking and is smallBubble', () => {
+    const wrapper = shallow(
+      <ProgressBubble
+        {...defaultProps}
+        smallBubble={true}
+        level={{
+          ...defaultProps.level,
+          teacherFeedbackReviewState: ReviewStates.keepWorking
+        }}
+      />
+    );
+
+    expect(wrapper.find(KeepWorkingBadge)).to.have.lengthOf(0);
+  });
+
+  it('shows KeepWorkingBadge instead of AssessmentBadge on assessment level if feedback is keepWorking', () => {
+    const wrapper = shallow(
+      <ProgressBubble
+        {...defaultProps}
+        level={{
+          ...defaultProps.level,
+          kind: LevelKind.assessment,
+          teacherFeedbackReviewState: ReviewStates.keepWorking
+        }}
+      />
+    );
+
+    expect(wrapper.find(KeepWorkingBadge)).to.have.lengthOf(1);
+    expect(wrapper.find(AssessmentBadge)).to.have.lengthOf(0);
+  });
+
+  it('shows AssessmentBadge on assessment level', () => {
     const wrapper = shallow(
       <ProgressBubble
         {...defaultProps}
@@ -228,11 +279,10 @@ describe('ProgressBubble', () => {
       />
     );
 
-    expect(wrapper.find('BubbleBadge')).to.have.lengthOf(1);
-    expect(wrapper.find('BubbleBadge').props().type).to.equal('assessment');
+    expect(wrapper.find(AssessmentBadge)).to.have.lengthOf(1);
   });
 
-  it('does not show assessment icon on bubble on assessment level, if smallBubble is true', () => {
+  it('does not show AssessmentBadge on bubble on assessment level, if smallBubble is true', () => {
     const wrapper = shallow(
       <ProgressBubble
         {...defaultProps}
@@ -244,7 +294,7 @@ describe('ProgressBubble', () => {
       />
     );
 
-    expect(wrapper.find('BubbleBadge')).to.have.lengthOf(0);
+    expect(wrapper.find(AssessmentBadge)).to.have.lengthOf(0);
   });
 
   it('renders a pill shape for unplugged lessons', () => {

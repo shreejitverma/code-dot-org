@@ -2,14 +2,14 @@
   "script": {
     "name": "self-paced-pl-csp1-2021",
     "wrapup_video_id": null,
-    "hidden": true,
     "login_required": false,
     "properties": {
       "is_migrated": true
     },
     "new_name": null,
     "family_name": null,
-    "serialized_at": "2021-05-28 01:29:34 UTC",
+    "serialized_at": "2021-06-17 22:31:36 UTC",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "self-paced-pl-csp1-2021"
     }

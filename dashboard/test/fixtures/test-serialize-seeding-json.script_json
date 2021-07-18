@@ -2,7 +2,6 @@
   "script": {
     "name": "test-serialize-seeding-json-script",
     "wrapup_video_id": null,
-    "hidden": false,
     "login_required": false,
     "properties": {
       "curriculum_path": "my_curriculum_path",
@@ -12,6 +11,7 @@
     },
     "new_name": null,
     "family_name": "test-serialize-seeding-json-family",
+    "published_state": "beta",
     "seeding_key": {
       "script.name": "test-serialize-seeding-json-script"
     }

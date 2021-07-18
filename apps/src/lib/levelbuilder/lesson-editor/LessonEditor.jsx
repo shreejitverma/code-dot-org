@@ -196,13 +196,13 @@ class LessonEditor extends Component {
             <input
               type="checkbox"
               checked={lockable}
-              disabled={this.props.initialLessonData.scriptIsVisible}
+              disabled={this.props.initialLessonData.unitIsLaunched}
               style={styles.checkbox}
               onChange={() => this.setState({lockable: !lockable})}
             />
             <HelpTip>
-              {this.props.initialLessonData.scriptIsVisible ? (
-                <p>Can't update lockable for visible script.</p>
+              {this.props.initialLessonData.unitIsLaunched ? (
+                <p>Can't update lockable for visible unit.</p>
               ) : (
                 <p>
                   Check this box if this lesson should be locked for students.
@@ -217,13 +217,13 @@ class LessonEditor extends Component {
             <input
               type="checkbox"
               checked={hasLessonPlan}
-              disabled={this.props.initialLessonData.scriptIsVisible}
+              disabled={this.props.initialLessonData.unitIsLaunched}
               style={styles.checkbox}
               onChange={() => this.setState({hasLessonPlan: !hasLessonPlan})}
             />
             <HelpTip>
-              {this.props.initialLessonData.scriptIsVisible ? (
-                <p>Can't update has lesson plan for visible script.</p>
+              {this.props.initialLessonData.unitIsLaunched ? (
+                <p>Can't update has lesson plan for visible unit.</p>
               ) : (
                 <p>
                   Check this box if this lesson should have a lesson plan for

@@ -472,6 +472,8 @@ Applab.init = function(config) {
   const hasDataMode = !(
     config.level.hideViewDataButton || config.level.widgetMode
   );
+  const playspacePhoneFrame = !(config.share || config.level.widgetMode);
+  const hideRunResetButtons = playspacePhoneFrame || nonLevelbuilderWidgetMode;
 
   // Construct a logging observer for interpreter events
   if (!config.hideSource) {
@@ -656,7 +658,9 @@ Applab.init = function(config) {
 
   // Push initial level properties into the Redux store
   studioApp().setPageConstants(config, {
-    playspacePhoneFrame: !(config.share || config.level.widgetMode),
+    playspacePhoneFrame,
+    hideRunButton: hideRunResetButtons,
+    hideResetButton: hideRunResetButtons,
     channelId: config.channel,
     allowExportExpo: experiments.isEnabled('exportExpo'),
     exportApp: Applab.exportApp,
@@ -701,7 +705,7 @@ Applab.init = function(config) {
 
   config.dropletConfig = dropletConfig;
 
-  if (config.level.aiEnabled && experiments.isEnabled(experiments.APPLAB_ML)) {
+  if (config.level.aiEnabled) {
     config.dropletConfig = utils.deepMergeConcatArrays(
       config.dropletConfig,
       aiConfig
