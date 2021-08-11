@@ -58,26 +58,31 @@ task :generate_pdfs do
     fetchfile_for_pdf = "#{pdf_conversion_info.output_pdf_path}.fetch"
 
     file fetchfile_for_pdf => pdf_conversion_info.src_files do
+      puts "#####"
+      puts "base_url: #{base_url.inspect}"
+      puts "pdf_conversion_info: #{pdf_conversion_info.inspect}"
+      puts "fetchfile_for_pdf: #{fetchfile_for_pdf}"
+      puts "#####"
       generate_pdf_file(base_url, pdf_conversion_info, fetchfile_for_pdf)
     end
 
     all_outfiles << fetchfile_for_pdf
   end
 
-  # Generate pdf for each state using code.org/public/advocacy/state-facts/splat.haml
-  states = []
-  PEGASUS_DB[:cdo_state_promote].each do |state_row|
-    states << state_row[:state_code_s]
-  end
-  pdf_conversions_for_state_pages(states).each do |pdf_info|
-    fetchfile_for_pdf = "#{pdf_info.output_pdf_path}.fetch"
+  # # Generate pdf for each state using code.org/public/advocacy/state-facts/splat.haml
+  # states = []
+  # PEGASUS_DB[:cdo_state_promote].each do |state_row|
+  #   states << state_row[:state_code_s]
+  # end
+  # pdf_conversions_for_state_pages(states).each do |pdf_info|
+  #   fetchfile_for_pdf = "#{pdf_info.output_pdf_path}.fetch"
 
-    file fetchfile_for_pdf => [sites_v3_dir('code.org/public/advocacy/state-facts/splat.haml'), pegasus_dir('/data/cdo-state-promote.csv')] do
-      generate_pdf_file(base_url, pdf_info, fetchfile_for_pdf)
-    end
+  #   file fetchfile_for_pdf => [sites_v3_dir('code.org/public/advocacy/state-facts/splat.haml'), pegasus_dir('/data/cdo-state-promote.csv')] do
+  #     generate_pdf_file(base_url, pdf_info, fetchfile_for_pdf)
+  #   end
 
-    all_outfiles << fetchfile_for_pdf
-  end
+  #   all_outfiles << fetchfile_for_pdf
+  # end
 
   all_outfiles.each do |outfile|
     Rake::Task[outfile].invoke

@@ -46,3 +46,7 @@ title: Policy implementation summary
   %i 
     See a comparison chart of the 9 policies by state at 
     =link_to 'www.bit.ly/9policies','www.bit.ly/9policies'
+
+%footer
+  - last_updated = Time.now
+  %p= "This document was generated at #{last_updated.strftime('%Y-%m-%d %H:%M:%S')} #{last_updated.zone}"
