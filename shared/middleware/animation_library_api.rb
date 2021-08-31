@@ -129,6 +129,24 @@ class AnimationLibraryApi < Sinatra::Base
   end
 
   #
+  # GET /api/v1/animation-library/level-animations/
+  #
+  # Retrieve files from the level-animations bucket
+  get %r{/api/v1/animation-library/level-animations} do
+    dont_cache
+    s3 = AWS::S3.create_client
+    begin
+      file_array = Array.new
+      s3.list_objects(bucket: 'cdo-animation-library', prefix: 'level_animations/').contents.map do |files|
+        file_array.push(files.key)
+      end
+      {files: file_array}.to_json
+    rescue ArgumentError, OpenSSL::Cipher::CipherError
+      bad_request
+    end
+  end
+
+  #
   # POST /api/v1/animation-library/default-spritelab/
   #
   # Update default sprite list in S3
