@@ -62,8 +62,15 @@ class ReviewableProjectsController < ApplicationController
   end
 
   def for_level
+    # TODO: change this from a hard-coded list of courses to something more generic.
+    # Currently only csa courses support code review, so limit section list to
+    # only csa sections.
+    course_names = %w(csa-pilot csa-pilot-facilitator)
+    course_ids = UnitGroup.where(name: course_names)
+
     peer_user_ids = current_user.
       sections_as_student.
+      where(course_id: course_ids).
       map(&:followers).
       flatten.
       pluck(:student_user_id).
