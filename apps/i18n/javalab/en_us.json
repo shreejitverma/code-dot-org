@@ -71,6 +71,7 @@
   "noMainMethod": "Error: your program does not contain a main method.",
   "noCodeReviewComments": "Comments from your teacher will appear here.",
   "noCodeReviewUntilStudentEditsCode": "You cannot leave comments until the project owner has modified the default code and clicked the \"Run\" button",
+  "noProjectsAvailableForReview": "No other projects are ready for review yet",
   "onlyVisibleToYou": "teacher comments are only visible to you",
   "programCompleted": "Program completed.",
   "reOpen": "Re-open",

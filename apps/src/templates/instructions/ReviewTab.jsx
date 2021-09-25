@@ -424,8 +424,7 @@ class ReviewTab extends Component {
       viewAs === ViewType.Teacher ||
       errorLoadingReviewblePeers ||
       !codeReviewEnabled ||
-      viewAsCodeReviewer ||
-      reviewablePeers.length === 0
+      viewAsCodeReviewer
     ) {
       return null;
     }
