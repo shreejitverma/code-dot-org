@@ -24,7 +24,7 @@ class ReviewTab extends Component {
     // Populated by redux
     codeReviewEnabled: PropTypes.bool,
     viewAsCodeReviewer: PropTypes.bool.isRequired,
-    viewAs: PropTypes.oneOf(Object.keys(ViewType))
+    viewAsTeacher: PropTypes.bool
   };
 
   state = {
@@ -118,10 +118,7 @@ class ReviewTab extends Component {
       })
     );
 
-    if (
-      !this.props.viewAsCodeReviewer &&
-      this.props.viewAs !== ViewType.Teacher
-    ) {
+    if (!(this.props.viewAsCodeReviewer || this.props.viewAsTeacher)) {
       initialLoadPromises.push(
         new Promise((resolve, reject) => {
           codeReviewDataApi
@@ -258,22 +255,9 @@ class ReviewTab extends Component {
 
   renderReadyForReviewCheckbox() {
     const {
-      reviewCheckboxEnabled,
-      token,
       isReadyForReview,
       loadingReviewableState
     } = this.state;
-
-    if (
-      !this.props.codeReviewEnabled ||
-      this.props.viewAsCodeReviewer ||
-      this.props.viewAs === ViewType.Teacher ||
-      !reviewCheckboxEnabled ||
-      !token ||
-      token.length === 0
-    ) {
-      return null;
-    }
 
     return (
       <div style={styles.checkboxContainer}>
@@ -298,13 +282,13 @@ class ReviewTab extends Component {
     );
   }
 
-  setReadyForReview(isReadyForReview) {
+  setReadyForReview(shouldBeReadyForReview) {
     this.setState({
       loadingReviewableState: true,
       errorSavingReviewableProject: false
     });
 
-    if (isReadyForReview) {
+    if (shouldBeReadyForReview) {
       const {
         channelId,
         serverLevelId,
@@ -320,14 +304,13 @@ class ReviewTab extends Component {
         .done(data => {
           this.setState({
             reviewableProjectId: data.id,
-            isReadyForReview: true,
+            isReadyForReview: shouldBeReadyForReview,
             errorSavingReviewableProject: false,
             loadingReviewableState: false
           });
         })
         .fail(() => {
           this.setState({
-            isReadyForReview: false,
             errorSavingReviewableProject: true,
             loadingReviewableState: false
           });
@@ -337,18 +320,18 @@ class ReviewTab extends Component {
         .disablePeerReview(this.state.reviewableProjectId, this.state.token)
         .done(() => {
           this.setState({
-            isReadyForReview: false,
+            isReadyForReview: shouldBeReadyForReview,
             errorSavingReviewableProject: false,
             loadingReviewableState: false
           });
         })
         .fail(() => {
           this.setState({
-            isReadyForReview: true,
             errorSavingReviewableProject: true,
             loadingReviewableState: false
           });
-        });
+        })
+        .always;
     }
   }
 
@@ -385,7 +368,7 @@ class ReviewTab extends Component {
     } = this.state;
     if (
       !authorizationError &&
-      (isReadyForReview || this.props.viewAs === ViewType.Teacher)
+      (isReadyForReview || this.props.viewAsTeacher)
     ) {
       return (
         <CommentEditor
@@ -416,55 +399,49 @@ class ReviewTab extends Component {
     }
   }
 
-  renderPeerDropdown(reviewablePeers, onSelectPeer) {
-    const {codeReviewEnabled, viewAsCodeReviewer, viewAs} = this.props;
-    const {errorLoadingReviewblePeers} = this.state;
+  renderReviewHeader = () => {
+    const {viewAsCodeReviewer} = this.props;
+    const {errorLoadingReviewblePeers, reviewablePeers} = this.state;
+    let peerDropdown = reviewCheckbox = null;
+    if (errorLoadingReviewblePeers) {
+      // TODO: handle this error state
+    } else {
+      peerDropdown = viewAsCodeReviewer ? (
+        // "Back to my project" button
+        <Button
+          text={javalabMsg.returnToMyProject()}
+          color={Button.ButtonColor.white}
+          icon={'caret-left'}
+          size={Button.ButtonSize.default}
+          iconStyle={styles.backToProjectIcon}
+          onClick={this.onClickBackToProject}
+          style={styles.backToProjectButton}
+        />
+      ) : (
+        // list of peers
+        <PeerSelectDropdown
+          text={javalabMsg.reviewClassmateProject()}
+          peers={reviewablePeers}
+          onSelectPeer={this.onSelectPeer}
+        />
+      )
+    }
 
-    if (
-      viewAs === ViewType.Teacher ||
-      errorLoadingReviewblePeers ||
-      !codeReviewEnabled ||
-      viewAsCodeReviewer
-    ) {
-      return null;
+    if (reviewCheckboxEnabled && token && token.length > 0 && !viewAsCodeReviewer) {
+      reviewCheckbox = this.renderReadyForReviewCheckbox()
     }
 
     return (
-      <PeerSelectDropdown
-        text={javalabMsg.reviewClassmateProject()}
-        peers={reviewablePeers}
-        onSelectPeer={onSelectPeer}
-      />
-    );
+      <>
+        {peerDropdown}
+        {reviewCheckbox}
+      </>
+    )
   }
 
-  renderBackToMyProject(onClickBackToProject) {
-    const {codeReviewEnabled, viewAsCodeReviewer, viewAs} = this.props;
-    const {errorLoadingReviewblePeers} = this.state;
-
-    if (
-      viewAs === ViewType.Teacher ||
-      errorLoadingReviewblePeers ||
-      !codeReviewEnabled ||
-      !viewAsCodeReviewer
-    ) {
-      return null;
-    }
-    return (
-      <Button
-        text={javalabMsg.returnToMyProject()}
-        color={Button.ButtonColor.white}
-        icon={'caret-left'}
-        size={Button.ButtonSize.default}
-        iconStyle={styles.backToProjectIcon}
-        onClick={onClickBackToProject}
-        style={styles.backToProjectButton}
-      />
-    );
-  }
 
   render() {
-    const {viewAsCodeReviewer, viewAs} = this.props;
+    const {viewAsCodeReviewer, viewAsTeacher, codeReviewEnabled} = this.props;
 
     const {
       initialLoadCompleted,
@@ -472,7 +449,6 @@ class ReviewTab extends Component {
       forceRecreateEditorKey,
       isReadyForReview,
       errorSavingReviewableProject,
-      reviewablePeers,
       projectOwnerName
     } = this.state;
 
@@ -480,51 +456,50 @@ class ReviewTab extends Component {
     // comments cannot be made on projects in this tate.
     const projectOwnerHasNotEditedCode = !getStore().getState().pageConstants
       .channelId;
-
     if (projectOwnerHasNotEditedCode) {
       return (
         <div style={{...styles.reviewsContainer, ...styles.messageText}}>
           {javalabMsg.noCodeReviewUntilStudentEditsCode()}
         </div>
       );
-    } else {
-      if (!initialLoadCompleted) {
-        return (
-          <div style={styles.loadingContainer}>
-            <Spinner size="large" />
-          </div>
-        );
-      }
+    }
 
+    if (!initialLoadCompleted) {
       return (
-        <div style={styles.reviewsContainer}>
-          <div style={styles.reviewHeader}>
-            {this.renderBackToMyProject(this.onClickBackToProject)}
-            {this.renderPeerDropdown(reviewablePeers, this.onSelectPeer)}
-            {this.renderReadyForReviewCheckbox()}
-          </div>
-          {errorSavingReviewableProject && (
-            <div style={styles.peerReviewErrorMessage}>
-              {javalabMsg.togglePeerReviewError()}
-            </div>
-          )}
-          <div style={styles.commentsSection}>
-            <div style={styles.messageText}>
-              {viewAsCodeReviewer || viewAs === ViewType.Teacher
-                ? javalabMsg.feedbackBeginningPeer({
-                    peerName: projectOwnerName
-                  })
-                : javalabMsg.feedbackBeginning()}
-            </div>
-            {this.renderComments(
-              comments,
-              !isReadyForReview && viewAs !== ViewType.Teacher
-            )}
-            {this.renderCommentEditor(forceRecreateEditorKey)}
-          </div>
+        <div style={styles.loadingContainer}>
+          <Spinner size="large" />
         </div>
       );
     }
+
+    return (
+      <div style={styles.reviewsContainer}>
+        <div style={styles.reviewHeader}>
+          {!viewAsTeacher && codeReviewEnabled && (
+            this.renderReviewHeader()
+          )}
+        </div>
+        {errorSavingReviewableProject && (
+          <div style={styles.peerReviewErrorMessage}>
+            {javalabMsg.togglePeerReviewError()}
+          </div>
+        )}
+        <div style={styles.commentsSection}>
+          <div style={styles.messageText}>
+            {viewAsCodeReviewer || viewAsTeacher
+              ? javalabMsg.feedbackBeginningPeer({
+                  peerName: projectOwnerName
+                })
+              : javalabMsg.feedbackBeginning()}
+          </div>
+          {this.renderComments(
+            comments,
+            !(isReadyForReview || viewAsTeacher)
+          )}
+          {this.renderCommentEditor(forceRecreateEditorKey)}
+        </div>
+      </div>
+    );
   }
 }
 
@@ -532,7 +507,7 @@ export const UnconnectedReviewTab = ReviewTab;
 export default connect(state => ({
   codeReviewEnabled: state.sectionData.section.codeReviewEnabled,
   viewAsCodeReviewer: state.pageConstants.isCodeReviewing,
-  viewAs: state.viewAs
+  viewAsTeacher: state.viewAs === ViewType.Teacher
 }))(ReviewTab);
 
 const styles = {
