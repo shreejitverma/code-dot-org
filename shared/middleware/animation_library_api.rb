@@ -87,7 +87,7 @@ class AnimationLibraryApi < Sinatra::Base
       body = request.body
       key = "spritelab/#{category}/#{animation_name}"
 
-      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body)
+      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body, content_type: request.content_type)
     else
       bad_request
     end
