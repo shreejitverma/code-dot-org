@@ -9988,6 +9988,8 @@ it:
           lessons:
             Virus Simulation for Code Bytes:
               name: Codifica di una simulazione
+            Outbreak:
+              name: Codifica di una simulazione
           lesson_groups:
             outbreak:
               display_name: Simulazione di epidemia
@@ -10836,6 +10838,7 @@ it:
                 contatore per creare progetti complessi. Alla fine avranno la possibilità
                 di creare il proprio progetto in un esercizio libero.
             Virtual Pet:
+              key: Animale virtuale
               name: 'Mini progetto: Animaletto Virtuale'
             End of Course Project:
               key: Progetto di fine corso
@@ -11483,5 +11486,10 @@ it:
           lessons:
             lesson-1:
               name: Ape Sapiente
+          title: Ape Sapiente
         outbreak-csc:
           title: Epidemia
+        csa5-exemplars:
+          lesson_groups:
+            lessonGroup-2:
+              display_name: Contenuto

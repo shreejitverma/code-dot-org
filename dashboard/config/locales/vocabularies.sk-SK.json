@@ -182,6 +182,10 @@
         "machine_learning/oceans/unversioned": {
           "word": "Strojové učenie"
         },
+        "event/outbreak/unversioned": {
+          "word": "Event",
+          "definition": "Akcia, ktorá spôsobí, že sa niečo stane."
+        },
         "sprite/coursef/2021": {
           "word": "Sprajt (postavička)",
           "definition": "Grafický objekt na obrazovke, ktorý má svoju polohu, veľkosť a vzhľad."
@@ -238,6 +242,22 @@
         },
         "internet/coursef/2021": {
           "word": "Internet"
+        },
+        "servers/coursef/2021": {
+          "word": "Servery"
+        },
+        "url/coursef/2021": {
+          "word": "URL"
+        },
+        "dsl_cable/coursef/2021": {
+          "word": "DSL/káblové pripojenie"
+        },
+        "ip_address/coursef/2021": {
+          "definition": "Číslo priradené každej veci, ktorá sa pripojí na internet."
+        },
+        "wi_fi/coursef/2021": {
+          "word": "Wi-Fi",
+          "definition": "Metóda bezdrôtového odosielania informácií pomocou rádiových vĺn."
         },
         "define/coursef/2021": {
           "word": "Definuj",

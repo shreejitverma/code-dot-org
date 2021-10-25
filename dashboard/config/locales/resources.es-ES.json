@@ -7,13 +7,15 @@
           "url": "https://open.spotify.com/playlist/2MiLztu5QGQERdEsZed81b?si=6cF0s1ETQf2vN_ea8B4fIw"
         },
         "csf-artist-intro-video/artist/unversioned": {
-          "name": "Introducción a Artista"
+          "name": "Introducción a Artista",
+          "url": "https://www.youtube.com/watch?v=MUavAHn-QUg"
         },
         "csf-turns-angles-doc/artist/unversioned": {
           "name": "Giros & Ángulos"
         },
         "csf-turns-angles-video/artist/unversioned": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://www.youtube.com/watch?v=sPKXZBL_Yvs"
         },
         "dance-party-playlist/dance/unversioned": {
           "name": "Lista de Reproducción en Spotify (todas las edades)",
@@ -295,9 +297,11 @@
           "url": "https://docs.google.com/document/d/1A9yAObCTJwHsIKtaBZY8KaGwgbxbfolpbIpeJfZRgvs/edit"
         },
         "play_lab_project_planning_guide/courseb/2021": {
+          "name": "Proyecto de Laboratorio de Juegos - Guía de Planificación",
           "url": "https://docs.google.com/document/d/1XiBMkmdQtaCYcaQsGnoY32tGimfiGgBEwenuAadEqT8/template/preview"
         },
         "play_lab_project_planning_guide_1/courseb/2021": {
+          "name": "Proyecto de Laboratorio de Juegos - Guía de Planificación",
           "url": "https://docs.google.com/document/d/1CK-fZ7le7tv6mIR9hZ8MHmaSSkI2uFfyH3W_DFfew2c/template/preview"
         },
         "csta_standards_mapping/courseb/2021": {
@@ -531,23 +535,41 @@
         "virtual_lesson_modifications/coursea/2021": {
           "url": "https://docs.google.com/document/d/1jap518hJg74YGea9zTrW4qE_Qa53IbJ3SHKrPB_Hars/edit"
         },
+        "putting-a-stop-to-online-meanness-lesson-slides/coursec/2021": {
+          "name": "Poner un STOP a la Maldad en Línea: Diapositivas de la Lección",
+          "url": "https://docs.google.com/presentation/d/1IXZ_WSxUuenF42ZzWk5pXTD8-Yy8P4nV2ihHd5-FotY/edit"
+        },
+        "putting-a-stop-to-online-meanness-stop-online-meanness/coursec/2021": {
+          "name": "Poner un STOP a la Maldad en Línea: STOP a la Maldad en Línea",
+          "url": "https://docs.google.com/document/d/1gXXWbEocNfvw4fWdo7nQJ0r2FjoNeyElr8IcANUqLlo/edit?usp=sharing"
+        },
         "csf-mrf-cup-spacing/coursec/2021": {
-          "name": "Mis amigos robóticos"
+          "name": "Mis amigos robóticos",
+          "url": "https://docs.google.com/document/d/1jGz8znfkzhgZ3RNd7Kg1AnDZ2LZ7vjf7VujzPz_84b4/edit"
         },
         "csf-mrf-symbol-key/coursec/2021": {
-          "name": "Mis amigos robóticos"
+          "name": "Mis amigos robóticos",
+          "url": "https://docs.google.com/document/d/1D8W0FETv5OBGj-Fl8gJGHruSvbAhoEtCs6SZxSkKOSc/edit"
         },
         "unplugged-video-robotic-friends/coursec/2021": {
-          "name": "Mis amigos robóticos"
+          "name": "Mis amigos robóticos",
+          "url": "https://youtu.be/xaW3PAzHxCU"
         },
         "csf-mrf-cup-stacking-ideas/coursec/2021": {
-          "name": "Mis amigos robóticos"
+          "name": "Mis amigos robóticos",
+          "url": "https://docs.google.com/document/d/1cq6CvIuCrpS9MfRySO1070uXZ238OuXcqou1mfjV7BM/edit"
         },
         "csf-mrf-paper-trapezoid-template/coursec/2021": {
-          "name": "Mis amigos robóticos"
+          "name": "Mis amigos robóticos",
+          "url": "https://docs.google.com/document/d/1go_BJorY8OzmqWyB5z8_FY7bbPCWg1ZBxfjewU0nMmA/edit"
+        },
+        "c2-maze-bridge/coursec/2021": {
+          "name": "Laberinto - Página Puente",
+          "url": "https://drive.google.com/file/d/19Ul9ruPQ6bHr3sfqnacMMmCGOekTXPYS/view"
         },
         "unplugged-maze-blocks/coursec/2021": {
-          "name": "Bloques Sin conexión para Laberinto/Granjera/Abeja - Cursos 2-5"
+          "name": "Bloques Sin conexión para Laberinto/Granjera/Abeja - Cursos 2-5",
+          "url": "https://docs.google.com/presentation/d/1k_7SSLsm-E4aisa9-LmbsCVzH6J-8yGD9T2LwPb2v48/edit"
         },
         "pair-programming-vid/coursec/2021": {
           "name": "Programación de pares",
@@ -558,22 +580,27 @@
           "url": "https://docs.google.com/document/d/1N3aiitOxz_cut1AQn90g1nYJouKT5dC_4m1M0KFNzP8/edit?usp=sharing"
         },
         "debugging_guide/coursec/2021": {
-          "name": "Guia de Depuración"
+          "name": "Guia de Depuración",
+          "url": "https://docs.google.com/document/d/1z2FgBWwUq6vxwWbnbiQC0EaEKxwgAqBdtTZzVi98xHA"
         },
         "course-cf-blockly-blocks/coursec/2021": {
           "name": "Bloques Blockly Sin Conexión (Cursos 2-5)"
         },
         "csf-artist-intro-video/coursec/2021": {
-          "name": "Introducción a Artista"
+          "name": "Introducción a Artista",
+          "url": "https://www.youtube.com/watch?v=MUavAHn-QUg"
         },
         "csf-turns-angles-video/coursec/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://www.youtube.com/watch?v=sPKXZBL_Yvs"
         },
         "csf-turns-angles-doc/coursec/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://docs.google.com/document/d/1JDeb07W7myaLu7Wjd-fPM8whSaO8aw37m9SJ_7B4Su4/edit"
         },
         "feeling_faces_emotion_image/coursec/2021": {
-          "name": "Caras de Sentimiento Imagen de Emoción"
+          "name": "Caras de Sentimiento Imagen de Emoción",
+          "url": "https://docs.google.com/document/d/1qdt7Y-wVkqFas_TkNO4iITz2K-LEmEVWDWLM50NNAOs"
         },
         "unplugged-video-big-event/coursec/2021": {
           "name": "El Gran Evento",
@@ -588,7 +615,8 @@
           "url": "https://docs.google.com/document/d/1VU2rC918ZY6DM2hunN6FsiDUW6Q1vEqyiJAPWQ6aoX8/edit"
         },
         "the_big_event_course_c_/coursec/2021": {
-          "name": "El Gran Evento (Cursos C-F)"
+          "name": "El Gran Evento (Cursos C-F)",
+          "url": "https://docs.google.com/document/d/1WlrJ6FKqrcvuyDWADnJiGpOo7rfolKcT5QH4W4uEptQ/edit"
         },
         "pause_and_think_online/coursec/2021": {
           "name": "Detente y Piensa Online",
@@ -611,6 +639,9 @@
         },
         "assessment-answer-binary-bracelets/coursec/2021": {
           "name": "Pulseras Binarias"
+        },
+        "play-lab-project-guide/coursec/2021": {
+          "name": "Proyecto de Laboratorio de Juegos - Guía de Planificación"
         },
         "csta_standards_mapping/coursec/2021": {
           "name": "Normas de la CSTA",
@@ -792,13 +823,16 @@
           "url": "https://www.youtube.com/watch?v=vgkahOzFH2Q"
         },
         "artist_introduction/express/2021": {
-          "name": "Introducción a Artista"
+          "name": "Introducción a Artista",
+          "url": "https://www.youtube.com/watch?v=MUavAHn-QUg"
         },
         "turns_angles/express/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://www.youtube.com/watch?v=sPKXZBL_Yvs"
         },
         "turns_angles_1/express/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://docs.google.com/document/d/1JDeb07W7myaLu7Wjd-fPM8whSaO8aw37m9SJ_7B4Su4/edit"
         },
         "sprite_lab_documentation/express/2021": {
           "name": "Documentación del Laboratorio de sprites",
@@ -888,7 +922,8 @@
           "url": "https://studio.code.org/s/pre-express-2021/standards"
         },
         "course_vocabulary/pre-express/2021": {
-          "name": "Vocabulario del curso\t"
+          "name": "Vocabulario del curso\t",
+          "url": "https://studio.code.org/s/pre-express-2021/vocab"
         },
         "teacher_forum_1/pre-express/2021": {
           "name": "Foro de profesores"
@@ -923,10 +958,12 @@
           "url": "https://docs.google.com/document/d/1YZCCjahQ9_3jYaCeZU4J4-Y_e7_6xP_XMJ7bNw1au1w/edit?usp=sharing"
         },
         "csf-turns-angles-doc/coursee/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://docs.google.com/document/d/1JDeb07W7myaLu7Wjd-fPM8whSaO8aw37m9SJ_7B4Su4/edit"
         },
         "csf-turns-angles-video/coursee/2021": {
-          "name": "Giros & Ángulos"
+          "name": "Giros & Ángulos",
+          "url": "https://www.youtube.com/watch?v=sPKXZBL_Yvs"
         },
         "unplugged-video-songwriting-functions/coursee/2021": {
           "name": "Componer Canciones con Funciones",
