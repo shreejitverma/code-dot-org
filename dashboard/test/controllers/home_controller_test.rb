@@ -7,10 +7,6 @@ class HomeControllerTest < ActionController::TestCase
   setup do
     # stub properties so we don't try to hit pegasus db
     Properties.stubs(:get).returns nil
-
-    # ensure consistent query counts by calling Scripts.all_scripts to populate
-    # the script cache here
-    _ = Script.all_scripts
   end
 
   test "teacher without progress or assigned course/script redirected to index" do
@@ -317,6 +313,17 @@ class HomeControllerTest < ActionController::TestCase
     assert_select '#thank-donors-modal', true
   end
 
+  test "teacher visiting homepage gets expected cookies set" do
+    teacher = create :teacher
+    sign_in teacher
+    get :home
+
+    cookie_header = @response.header['Set-Cookie']
+    assert cookie_header.include?("teacher_account_age_in_years")
+    assert cookie_header.include?("teacher_within_us")
+    assert cookie_header.include?("teacher_has_attended_pd")
+  end
+
   test 'student on second login does not get thank donors dialog' do
     # Devise does not run callbacks (eg, increment sign in count)
     # when using sign_in.
@@ -366,7 +373,7 @@ class HomeControllerTest < ActionController::TestCase
   # TODO: remove this test when workshop_organizer is deprecated
   test 'workshop organizers see dashboard links' do
     sign_in create(:workshop_organizer, :with_terms_of_service)
-    query_count = 13
+    query_count = 15
     assert_queries query_count do
       get :home
     end
@@ -375,7 +382,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'program managers see dashboard links' do
     sign_in create(:program_manager, :with_terms_of_service)
-    query_count = 15
+    query_count = 17
     assert_queries query_count do
       get :home
     end
@@ -384,7 +391,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'workshop admins see dashboard links' do
     sign_in create(:workshop_admin, :with_terms_of_service)
-    query_count = 12
+    query_count = 14
     assert_queries query_count do
       get :home
     end
@@ -394,7 +401,7 @@ class HomeControllerTest < ActionController::TestCase
   test 'facilitators see dashboard links' do
     facilitator = create(:facilitator, :with_terms_of_service)
     sign_in facilitator
-    query_count = 13
+    query_count = 15
     assert_queries query_count do
       get :home
     end
@@ -403,7 +410,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'teachers cannot see dashboard links' do
     sign_in create(:terms_of_service_teacher)
-    query_count = 11
+    query_count = 13
     assert_queries query_count do
       get :home
     end
@@ -412,7 +419,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'workshop admins see application dashboard links' do
     sign_in create(:workshop_admin, :with_terms_of_service)
-    query_count = 12
+    query_count = 14
     assert_queries query_count do
       get :home
     end
@@ -423,7 +430,7 @@ class HomeControllerTest < ActionController::TestCase
   # TODO: remove this test when workshop_organizer is deprecated
   test 'workshop organizers who are regional partner program managers see application dashboard links' do
     sign_in create(:workshop_organizer, :as_regional_partner_program_manager, :with_terms_of_service)
-    query_count = 15
+    query_count = 17
     assert_queries query_count do
       get :home
     end
@@ -433,7 +440,7 @@ class HomeControllerTest < ActionController::TestCase
 
   test 'program managers see application dashboard links' do
     sign_in create(:program_manager, :with_terms_of_service)
-    query_count = 15
+    query_count = 17
     assert_queries query_count do
       get :home
     end
@@ -444,7 +451,7 @@ class HomeControllerTest < ActionController::TestCase
   # TODO: remove this test when workshop_organizer is deprecated
   test 'workshop organizers who are not regional partner program managers do not see application dashboard links' do
     sign_in create(:workshop_organizer, :with_terms_of_service)
-    query_count = 13
+    query_count = 15
     assert_queries query_count do
       get :home
     end

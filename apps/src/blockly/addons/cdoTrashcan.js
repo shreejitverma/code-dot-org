@@ -1,4 +1,5 @@
 import GoogleBlockly from 'blockly/core';
+import {ToolboxType} from '../constants';
 
 export default class CdoTrashcan extends GoogleBlockly.Trashcan {
   /** Use our trash png and add circle with line through it for undeletable blocks
@@ -49,12 +50,12 @@ export default class CdoTrashcan extends GoogleBlockly.Trashcan {
     this.notAllowed_ = null;
   }
 
-  /** Position over the toolbox instead of the bottom corner
+  /** Position over the toolbox area instead of the bottom corner.
    * @override
    */
   position() {
     // Not yet initialized.
-    if (!this.verticalSpacing_) {
+    if (!this.initialized_) {
       return;
     }
     var metrics = this.workspace_.getMetrics();
@@ -63,8 +64,21 @@ export default class CdoTrashcan extends GoogleBlockly.Trashcan {
       return;
     }
 
-    this.left_ = Math.round(metrics.flyoutWidth / 2 - this.WIDTH_ / 2);
-    this.top_ = this.verticalSpacing_;
+    let toolboxWidth;
+    switch (this.workspace_.getToolboxType()) {
+      case ToolboxType.CATEGORIZED:
+        toolboxWidth = this.workspace_.toolbox_.width_;
+        break;
+      case ToolboxType.UNCATEGORIZED:
+        toolboxWidth = metrics.flyoutWidth;
+        break;
+      case ToolboxType.NONE:
+        toolboxWidth = 0;
+        break;
+    }
+
+    this.left_ = Math.round(toolboxWidth / 2 - this.WIDTH_ / 2);
+    this.top_ = this.MARGIN_VERTICAL_ * 2;
 
     this.svgGroup_.setAttribute(
       'transform',

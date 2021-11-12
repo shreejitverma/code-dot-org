@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from '../../../util/deprecatedChai';
+import {expect} from '../../../util/reconfiguredChai';
 const msg = require('@cdo/locale');
 import {
   WarningLabel,
@@ -28,7 +28,9 @@ describe('AnimationPickerBody', function() {
     defaultQuery: {
       categoryQuery: '',
       searchQuery: ''
-    }
+    },
+    selectedAnimations: [],
+    onAnimationSelectionComplete: emptyFunction
   };
 
   describe('upload warning', function() {
@@ -59,7 +61,7 @@ describe('AnimationPickerBody', function() {
         <AnimationPickerBody {...defaultProps} is13Plus={true} />
       );
       const warnings = body.find(WarningLabel);
-      expect(warnings).not.to.exist;
+      expect(warnings).to.have.length(0);
     });
   });
 
@@ -67,7 +69,7 @@ describe('AnimationPickerBody', function() {
     it('fetches next results if scrolled through 90% of content', () => {
       const mockEvent = {
         target: {
-          scrollTop: 30,
+          scrollTop: 450,
           scrollHeight: 500
         }
       };

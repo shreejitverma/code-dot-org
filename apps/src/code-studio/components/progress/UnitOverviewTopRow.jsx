@@ -75,6 +75,7 @@ class UnitOverviewTopRow extends React.Component {
 
   compilePdfDropdownOptions = () => {
     const {scriptOverviewPdfUrl, scriptResourcesPdfUrl} = this.props;
+
     const options = [];
     if (scriptOverviewPdfUrl) {
       options.push({
@@ -115,6 +116,8 @@ class UnitOverviewTopRow extends React.Component {
       weeklyInstructionalMinutes,
       isMigrated
     } = this.props;
+
+    const useMigratedTeacherResources = isMigrated && !teacherResources.length;
 
     const pdfDropdownOptions = this.compilePdfDropdownOptions();
 
@@ -158,13 +161,14 @@ class UnitOverviewTopRow extends React.Component {
         <div style={styles.resourcesRow}>
           {!professionalLearningCourse &&
             viewAs === ViewType.Teacher &&
-            ((!isMigrated && teacherResources.length > 0) ||
-              (isMigrated && migratedTeacherResources.length > 0)) && (
+            ((!useMigratedTeacherResources && teacherResources.length > 0) ||
+              (useMigratedTeacherResources &&
+                migratedTeacherResources.length > 0)) && (
               <ResourcesDropdown
                 resources={teacherResources}
                 migratedResources={migratedTeacherResources}
                 unitId={scriptId}
-                useMigratedResources={isMigrated}
+                useMigratedResources={useMigratedTeacherResources}
               />
             )}
           {pdfDropdownOptions.length > 0 && viewAs === ViewType.Teacher && (
@@ -204,6 +208,7 @@ class UnitOverviewTopRow extends React.Component {
             courseId={currentCourseId}
             scriptId={scriptId}
             forceReload={true}
+            buttonLocationAnalytics={'unit-overview-top'}
           />
         )}
         <div style={isRtl ? styles.left : styles.right}>

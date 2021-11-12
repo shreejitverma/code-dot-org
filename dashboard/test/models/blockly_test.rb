@@ -472,7 +472,7 @@ XML
   end
 
   test 'localizes authored hints' do
-    test_locale = :"te-ST"
+    test_locale = :"es-MX"
     level_name = 'test_localize_authored_hints'
 
     I18n.locale = test_locale
@@ -491,7 +491,7 @@ XML
 
     level = Level.create(
       name: level_name,
-      user: create(:user),
+      level_num: 'custom',
       type: 'Maze',
       authored_hints: JSON.generate(
         [
@@ -504,10 +504,10 @@ XML
     localized_hints = JSON.parse(level.localized_authored_hints)
 
     assert_equal localized_hints[0]["hint_markdown"], "first test markdown"
-    assert_equal localized_hints[0]["tts_url"], "https://tts.code.org/sharon22k/180/100/1889ea7b2140fc1aef28a2145df32fbb/test_localize_authored_hints.mp3"
+    assert_equal localized_hints[0]["tts_url"], "https://tts.code.org/rosa22k/180/100/1889ea7b2140fc1aef28a2145df32fbb/test_localize_authored_hints.mp3"
 
     assert_equal localized_hints[1]["hint_markdown"], "second test markdown"
-    assert_equal localized_hints[1]["tts_url"], "https://tts.code.org/sharon22k/180/100/62885e459602efbd236f324c4796acc9/test_localize_authored_hints.mp3"
+    assert_equal localized_hints[1]["tts_url"], "https://tts.code.org/rosa22k/180/100/62885e459602efbd236f324c4796acc9/test_localize_authored_hints.mp3"
   end
 
   test 'localized_blocks_with_placeholder_texts' do
@@ -645,5 +645,52 @@ XML
     summary = level.summarize_for_lesson_show(false)
     assert_equal 'translated long instructions', summary[:longInstructions]
     assert_equal 'translated short instructions', summary[:shortInstructions]
+  end
+
+  test 'remove_counter_mutations' do
+    counter_mutation_xml = <<XML
+<xml>
+  <block type="category">
+    <title name="CATEGORY">Category1</title>
+  </block>
+  <block type="controls_for_counter" inline="true">
+    <mutation counter="counter"/>
+    <value name="FROM">
+      <block type="math_number">
+        <title name="NUM">1</title>
+      </block>
+    </value>
+    <value name="TO">
+      <block type="math_number">
+        <title name="NUM">100</title>
+      </block>
+    </value>
+    <value name="BY">
+      <block type="math_number">
+        <title name="NUM">10</title>
+      </block>
+    </value>
+  </block>
+</xml>
+XML
+    updated_xml_string = Blockly.remove_counter_mutations(counter_mutation_xml)
+    updated_xml = Nokogiri::XML(updated_xml_string, &:noblanks)
+    assert_equal updated_xml.xpath('//mutation').count, 0
+  end
+
+  test 'other mutation blocks are not removed' do
+    counter_mutation_xml = <<XML
+<xml>
+  <block type="category">
+    <title name="CATEGORY">Category1</title>
+  </block>
+  <block type="procedures_callnoreturn">
+    <mutation name="draw pinwheel"/>
+  </block>
+</xml>
+XML
+    updated_xml_string = Blockly.remove_counter_mutations(counter_mutation_xml)
+    updated_xml = Nokogiri::XML(updated_xml_string, &:noblanks)
+    assert_equal updated_xml.xpath('//mutation').count, 1
   end
 end

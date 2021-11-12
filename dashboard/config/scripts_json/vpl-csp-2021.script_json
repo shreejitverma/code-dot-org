@@ -5,9 +5,9 @@
     "login_required": false,
     "properties": {
       "hideable_lessons": true,
-      "student_detail_progress_view": true,
-      "version_year": "2021",
+      "is_course": true,
       "pilot_experiment": "20-21-virtual-AYW-CSP",
+      "student_detail_progress_view": true,
       "teacher_resources": [
         [
           "curriculum",
@@ -21,12 +21,16 @@
           "curriculumGuide",
           "https://docs.google.com/document/d/1k0wytFCORchnEg4G214yVFMZXJcUa2PoKaw-TrxtLjI/edit?usp=sharing"
         ]
-      ]
+      ],
+      "version_year": "unversioned"
     },
     "new_name": null,
-    "family_name": null,
-    "serialized_at": "2021-08-03 22:48:05 UTC",
+    "family_name": "vpl-csp-2021",
+    "serialized_at": "2021-11-10 21:47:51 UTC",
     "published_state": "pilot",
+    "instruction_type": "teacher_led",
+    "instructor_audience": "teacher",
+    "participant_audience": "student",
     "seeding_key": {
       "script.name": "vpl-csp-2021"
     }
@@ -71,6 +75,96 @@
       },
       "seeding_key": {
         "lesson.key": "Module 2",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 3",
+      "name": "Module 3",
+      "absolute_position": 3,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 3,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 4",
+      "name": "Module 4",
+      "absolute_position": 4,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 4,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 5",
+      "name": "Module 5: Unit 7 and Understanding Functions with Parameters and Return",
+      "absolute_position": 5,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 5,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 6",
+      "name": "Module 6: Introduction to the Create Performance Task",
+      "absolute_position": 6,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 6,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 7",
+      "name": "Module 7: Tools and Structure in Unit 9 - Data",
+      "absolute_position": 7,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 7,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "key": "Module 8",
+      "name": "Module 8: Building Community and Preparing Students for the AP Exam",
+      "absolute_position": 8,
+      "lockable": false,
+      "has_lesson_plan": false,
+      "relative_position": 8,
+      "properties": {
+      },
+      "seeding_key": {
+        "lesson.key": "Module 8",
         "lesson_group.key": "",
         "script.name": "vpl-csp-2021"
       }
@@ -260,7 +354,7 @@
         "level_keys": [
           "CSP - Module 1 Wrap Up"
         ],
-        "progression": "Module 1 Asynchronous wrap-up (~10 minutes)"
+        "progression": "Module 1 Asynchronous Wrap Up (~10 minutes)"
       },
       "bonus": false,
       "seeding_key": {
@@ -692,7 +786,7 @@
         "level_keys": [
           "CSP - Module 2 Wrap Up"
         ],
-        "progression": "Module 2 Asynchronous wrap-up (~10 minutes)"
+        "progression": "Module 2 Asynchronous Wrap Up (~10 minutes)"
       },
       "bonus": false,
       "seeding_key": {
@@ -705,6 +799,1278 @@
       },
       "level_keys": [
         "CSP - Module 2 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 27,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL AYWS3 Workshop Overview"
+        ],
+        "progression": "Module 3 Overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL AYWS3 Workshop Overview"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL AYWS3 Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 28,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Understanding the context for the Model Lesson overview"
+        ],
+        "progression": "Understanding the Context for Lists (~55 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Understanding the context for the Model Lesson overview"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Understanding the context for the Model Lesson overview"
+      ]
+    },
+    {
+      "chapter": 29,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Synch3 - Reflection 1"
+        ],
+        "progression": "Understanding the Context for Lists (~55 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Synch3 - Reflection 1"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Synch3 - Reflection 1"
+      ]
+    },
+    {
+      "chapter": 30,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Synch3 - Reflection 2"
+        ],
+        "progression": "Understanding the Context for Lists (~55 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Synch3 - Reflection 2"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Synch3 - Reflection 2"
+      ]
+    },
+    {
+      "chapter": 31,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch3 - Intro to CI"
+        ],
+        "progression": "Broadening, Labeling, and Recognizing CS Skills in the Classroom (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Intro to CI"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch3 - Intro to CI"
+      ]
+    },
+    {
+      "chapter": 32,
+      "position": 6,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch3 - Broadening the def"
+        ],
+        "progression": "Broadening, Labeling, and Recognizing CS Skills in the Classroom (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Broadening the def"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch3 - Broadening the def"
+      ]
+    },
+    {
+      "chapter": 33,
+      "position": 7,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch3 - Feedback in CI"
+        ],
+        "progression": "Broadening, Labeling, and Recognizing CS Skills in the Classroom (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Feedback in CI"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch3 - Feedback in CI"
+      ]
+    },
+    {
+      "chapter": 34,
+      "position": 8,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch3 - Practice feedback"
+        ],
+        "progression": "Broadening, Labeling, and Recognizing CS Skills in the Classroom (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Practice feedback"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch3 - Practice feedback"
+      ]
+    },
+    {
+      "chapter": 35,
+      "position": 9,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 3 Wrap Up"
+        ],
+        "progression": "Module 3 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 3 Wrap Up"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 3 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 36,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL AYWA4 Workshop Overview"
+        ],
+        "progression": "Module 4 Overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL AYWA4 Workshop Overview"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL AYWA4 Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 37,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Understanding the content of the Lists EIPM sequence"
+        ],
+        "progression": "Content of the Lists EIPM sequence (~25 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Understanding the content of the Lists EIPM sequence"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Understanding the content of the Lists EIPM sequence"
+      ]
+    },
+    {
+      "chapter": 38,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Lists EIPM reflection"
+        ],
+        "progression": "Content of the Lists EIPM sequence (~25 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Lists EIPM reflection"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Lists EIPM reflection"
+      ]
+    },
+    {
+      "chapter": 39,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP AYW4 - Mental Models in Unit 5"
+        ],
+        "progression": "Mental models in Unit 5 (~35 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP AYW4 - Mental Models in Unit 5"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP AYW4 - Mental Models in Unit 5"
+      ]
+    },
+    {
+      "chapter": 40,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch4 - Intro to Traversals"
+        ],
+        "progression": "Traversals and datasets (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch4 - Intro to Traversals"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch4 - Intro to Traversals"
+      ]
+    },
+    {
+      "chapter": 41,
+      "position": 6,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch 4 - U5 Traversals Investigate Mile Tracker Modify"
+        ],
+        "progression": "Traversals and datasets (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch 4 - U5 Traversals Investigate Mile Tracker Modify"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch 4 - U5 Traversals Investigate Mile Tracker Modify"
+      ]
+    },
+    {
+      "chapter": 42,
+      "position": 7,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch4 - U5L10 Traversals Investigate"
+        ],
+        "progression": "Traversals and datasets (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch4 - U5L10 Traversals Investigate"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch4 - U5L10 Traversals Investigate"
+      ]
+    },
+    {
+      "chapter": 43,
+      "position": 8,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Asynch4 -U5 Traversals Investigate Dog Finder Modify"
+        ],
+        "progression": "Traversals and datasets (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Asynch4 -U5 Traversals Investigate Dog Finder Modify"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Asynch4 -U5 Traversals Investigate Dog Finder Modify"
+      ]
+    },
+    {
+      "chapter": 44,
+      "position": 9,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP AYW4 - Reflection on datasets"
+        ],
+        "progression": "Traversals and datasets (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP AYW4 - Reflection on datasets"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP AYW4 - Reflection on datasets"
+      ]
+    },
+    {
+      "chapter": 45,
+      "position": 10,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 4 Wrap Up"
+        ],
+        "progression": "Module 4 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 4 Wrap Up"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 4 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 46,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL Module 5 - Workshop Overview"
+        ],
+        "progression": "Module 5 Overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL Module 5 - Workshop Overview"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL Module 5 - Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 47,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M5 - Intro to Unit 7"
+        ],
+        "progression": "Understanding Unit 7 (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M5 - Intro to Unit 7"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M5 - Intro to Unit 7"
+      ]
+    },
+    {
+      "chapter": 48,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M5 - Param Explore"
+        ],
+        "progression": "Digging into the \"Parameters and Return Explore\" lesson (~25 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Explore"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M5 - Param Explore"
+      ]
+    },
+    {
+      "chapter": 49,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M5 - Param Prac 1"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Prac 1"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M5 - Param Prac 1"
+      ]
+    },
+    {
+      "chapter": 50,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Return Practice Part 1"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 1"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Return Practice Part 1"
+      ]
+    },
+    {
+      "chapter": 51,
+      "position": 6,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Return Practice Part 2"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 2"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Return Practice Part 2"
+      ]
+    },
+    {
+      "chapter": 52,
+      "position": 7,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Return Practice Part 4"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 4"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Return Practice Part 4"
+      ]
+    },
+    {
+      "chapter": 53,
+      "position": 8,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Return Practice Part 3"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 3"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Return Practice Part 3"
+      ]
+    },
+    {
+      "chapter": 54,
+      "position": 9,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Return Practice Part 5"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 5"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Return Practice Part 5"
+      ]
+    },
+    {
+      "chapter": 55,
+      "position": 10,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Investigate Calculator App"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Investigate Calculator App"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Investigate Calculator App"
+      ]
+    },
+    {
+      "chapter": 56,
+      "position": 11,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "PL U7 Param Practice App 2"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "PL U7 Param Practice App 2"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "PL U7 Param Practice App 2"
+      ]
+    },
+    {
+      "chapter": 57,
+      "position": 12,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M5 - Param Prac 10"
+        ],
+        "progression": "Digging into the \"Parameters and Return Practice\" lesson (~30 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Prac 10"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M5 - Param Prac 10"
+      ]
+    },
+    {
+      "chapter": 58,
+      "position": 13,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M5 - Inclusive Classrooms"
+        ],
+        "progression": "Creating inclusive classrooms (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M5 - Inclusive Classrooms"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M5 - Inclusive Classrooms"
+      ]
+    },
+    {
+      "chapter": 59,
+      "position": 14,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 5 Wrap Up"
+        ],
+        "progression": "Module 5 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 5 Wrap Up"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 5 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 60,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL Module 6 - Workshop Overview"
+        ],
+        "progression": "Module 6 overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL Module 6 - Workshop Overview"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL Module 6 - Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 61,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M6 - Create PT Reqs"
+        ],
+        "progression": "Requirements of the Create Performance Task (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M6 - Create PT Reqs"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M6 - Create PT Reqs"
+      ]
+    },
+    {
+      "chapter": 62,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M6 - Survival Guide"
+        ],
+        "progression": "Digging into the Create Performance Task Survival Guide (~40 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M6 - Survival Guide"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M6 - Survival Guide"
+      ]
+    },
+    {
+      "chapter": 63,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M6 - Role of teacher"
+        ],
+        "progression": "Role of the teacher during the Create Performance Task (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M6 - Role of teacher"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M6 - Role of teacher"
+      ]
+    },
+    {
+      "chapter": 64,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 6 Wrap Up"
+        ],
+        "progression": "Module 6 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 6 Wrap Up"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 6 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 65,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL Module 7 - Workshop Overview"
+        ],
+        "progression": "Module 7 Overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL Module 7 - Workshop Overview"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL Module 7 - Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 66,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Unit 9 Overview"
+        ],
+        "progression": "Overview of Unit 9 - Data (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Unit 9 Overview"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Unit 9 Overview"
+      ]
+    },
+    {
+      "chapter": 67,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Google Trends"
+        ],
+        "progression": "Using the Google Trends Tool (~20 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Google Trends"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Google Trends"
+      ]
+    },
+    {
+      "chapter": 68,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Data Viz 1"
+        ],
+        "progression": "Using the Data Visualizer Tool (~45 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 1"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Data Viz 1"
+      ]
+    },
+    {
+      "chapter": 69,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Data Viz 2"
+        ],
+        "progression": "Using the Data Visualizer Tool (~45 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 2"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Data Viz 2"
+      ]
+    },
+    {
+      "chapter": 70,
+      "position": 6,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Data Viz 3"
+        ],
+        "progression": "Using the Data Visualizer Tool (~45 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 3"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Data Viz 3"
+      ]
+    },
+    {
+      "chapter": 71,
+      "position": 7,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M7 - Data Viz 4"
+        ],
+        "progression": "Using the Data Visualizer Tool (~45 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 4"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M7 - Data Viz 4"
+      ]
+    },
+    {
+      "chapter": 72,
+      "position": 8,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 7 Wrap Up"
+        ],
+        "progression": "Module 7 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 7 Wrap Up"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 7 Wrap Up"
+      ]
+    },
+    {
+      "chapter": 73,
+      "position": 1,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL Module 8 - Workshop Overview"
+        ],
+        "progression": "Module 8 Overview (~5 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL Module 8 - Workshop Overview"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL Module 8 - Workshop Overview"
+      ]
+    },
+    {
+      "chapter": 74,
+      "position": 2,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M8 - Community 1"
+        ],
+        "progression": "Connecting to the CS Community (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M8 - Community 1"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M8 - Community 1"
+      ]
+    },
+    {
+      "chapter": 75,
+      "position": 3,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M8 - Community 2"
+        ],
+        "progression": "Connecting to the CS Community (~15 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M8 - Community 2"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M8 - Community 2"
+      ]
+    },
+    {
+      "chapter": 76,
+      "position": 4,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M8 - MC Exam 1"
+        ],
+        "progression": "Preparing students for the AP Multiple Choice Exam (~60 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M8 - MC Exam 1"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M8 - MC Exam 1"
+      ]
+    },
+    {
+      "chapter": 77,
+      "position": 5,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M8 - Exam 2"
+        ],
+        "progression": "Preparing students for the AP Multiple Choice Exam (~60 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M8 - Exam 2"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M8 - Exam 2"
+      ]
+    },
+    {
+      "chapter": 78,
+      "position": 6,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP-PL M8 - Exam 3"
+        ],
+        "progression": "Preparing students for the AP Multiple Choice Exam (~60 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP-PL M8 - Exam 3"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP-PL M8 - Exam 3"
+      ]
+    },
+    {
+      "chapter": 79,
+      "position": 7,
+      "activity_section_position": null,
+      "assessment": false,
+      "properties": {
+        "level_keys": [
+          "CSP - Module 8 Wrap Up"
+        ],
+        "progression": "Module 8 Asynchronous Wrap Up (~10 minutes)"
+      },
+      "bonus": false,
+      "seeding_key": {
+        "script_level.level_keys": [
+          "CSP - Module 8 Wrap Up"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      },
+      "level_keys": [
+        "CSP - Module 8 Wrap Up"
       ]
     }
   ],
@@ -991,6 +2357,589 @@
           "CSP - Module 2 Wrap Up"
         ],
         "lesson.key": "Module 2",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL AYWS3 Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL AYWS3 Workshop Overview"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Understanding the context for the Model Lesson overview",
+        "script_level.level_keys": [
+          "CSP - Understanding the context for the Model Lesson overview"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Synch3 - Reflection 1",
+        "script_level.level_keys": [
+          "CSP - Synch3 - Reflection 1"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Synch3 - Reflection 2",
+        "script_level.level_keys": [
+          "CSP - Synch3 - Reflection 2"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch3 - Intro to CI",
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Intro to CI"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch3 - Broadening the def",
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Broadening the def"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch3 - Feedback in CI",
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Feedback in CI"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch3 - Practice feedback",
+        "script_level.level_keys": [
+          "CSP - Asynch3 - Practice feedback"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 3 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 3 Wrap Up"
+        ],
+        "lesson.key": "Module 3",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL AYWA4 Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL AYWA4 Workshop Overview"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Understanding the content of the Lists EIPM sequence",
+        "script_level.level_keys": [
+          "CSP - Understanding the content of the Lists EIPM sequence"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Lists EIPM reflection",
+        "script_level.level_keys": [
+          "CSP - Lists EIPM reflection"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP AYW4 - Mental Models in Unit 5",
+        "script_level.level_keys": [
+          "CSP AYW4 - Mental Models in Unit 5"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch4 - Intro to Traversals",
+        "script_level.level_keys": [
+          "CSP - Asynch4 - Intro to Traversals"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch 4 - U5 Traversals Investigate Mile Tracker Modify",
+        "script_level.level_keys": [
+          "CSP - Asynch 4 - U5 Traversals Investigate Mile Tracker Modify"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch4 - U5L10 Traversals Investigate",
+        "script_level.level_keys": [
+          "CSP - Asynch4 - U5L10 Traversals Investigate"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Asynch4 -U5 Traversals Investigate Dog Finder Modify",
+        "script_level.level_keys": [
+          "CSP - Asynch4 -U5 Traversals Investigate Dog Finder Modify"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP AYW4 - Reflection on datasets",
+        "script_level.level_keys": [
+          "CSP AYW4 - Reflection on datasets"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 4 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 4 Wrap Up"
+        ],
+        "lesson.key": "Module 4",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL Module 5 - Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL Module 5 - Workshop Overview"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M5 - Intro to Unit 7",
+        "script_level.level_keys": [
+          "CSP-PL M5 - Intro to Unit 7"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M5 - Param Explore",
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Explore"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M5 - Param Prac 1",
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Prac 1"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Return Practice Part 1",
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 1"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Return Practice Part 2",
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 2"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Return Practice Part 4",
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 4"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Return Practice Part 3",
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 3"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Return Practice Part 5",
+        "script_level.level_keys": [
+          "PL U7 Param Return Practice Part 5"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Investigate Calculator App",
+        "script_level.level_keys": [
+          "PL U7 Param Investigate Calculator App"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "PL U7 Param Practice App 2",
+        "script_level.level_keys": [
+          "PL U7 Param Practice App 2"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M5 - Param Prac 10",
+        "script_level.level_keys": [
+          "CSP-PL M5 - Param Prac 10"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M5 - Inclusive Classrooms",
+        "script_level.level_keys": [
+          "CSP-PL M5 - Inclusive Classrooms"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 5 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 5 Wrap Up"
+        ],
+        "lesson.key": "Module 5",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL Module 6 - Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL Module 6 - Workshop Overview"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M6 - Create PT Reqs",
+        "script_level.level_keys": [
+          "CSP-PL M6 - Create PT Reqs"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M6 - Survival Guide",
+        "script_level.level_keys": [
+          "CSP-PL M6 - Survival Guide"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M6 - Role of teacher",
+        "script_level.level_keys": [
+          "CSP-PL M6 - Role of teacher"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 6 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 6 Wrap Up"
+        ],
+        "lesson.key": "Module 6",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL Module 7 - Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL Module 7 - Workshop Overview"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Unit 9 Overview",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Unit 9 Overview"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Google Trends",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Google Trends"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Data Viz 1",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 1"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Data Viz 2",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 2"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Data Viz 3",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 3"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M7 - Data Viz 4",
+        "script_level.level_keys": [
+          "CSP-PL M7 - Data Viz 4"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 7 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 7 Wrap Up"
+        ],
+        "lesson.key": "Module 7",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL Module 8 - Workshop Overview",
+        "script_level.level_keys": [
+          "CSP-PL Module 8 - Workshop Overview"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M8 - Community 1",
+        "script_level.level_keys": [
+          "CSP-PL M8 - Community 1"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M8 - Community 2",
+        "script_level.level_keys": [
+          "CSP-PL M8 - Community 2"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M8 - MC Exam 1",
+        "script_level.level_keys": [
+          "CSP-PL M8 - MC Exam 1"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M8 - Exam 2",
+        "script_level.level_keys": [
+          "CSP-PL M8 - Exam 2"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP-PL M8 - Exam 3",
+        "script_level.level_keys": [
+          "CSP-PL M8 - Exam 3"
+        ],
+        "lesson.key": "Module 8",
+        "lesson_group.key": "",
+        "script.name": "vpl-csp-2021"
+      }
+    },
+    {
+      "seeding_key": {
+        "level.key": "CSP - Module 8 Wrap Up",
+        "script_level.level_keys": [
+          "CSP - Module 8 Wrap Up"
+        ],
+        "lesson.key": "Module 8",
         "lesson_group.key": "",
         "script.name": "vpl-csp-2021"
       }

@@ -192,10 +192,10 @@ endvariants
   end
 
   test 'serialize variants with experiment-based swap' do
-    level = create :maze, name: 'maze 1', level_num: 'custom'
-    level2 = create :maze, name: 'maze 2', level_num: 'custom'
-    level3 = create :maze, name: 'maze 3', level_num: 'custom'
-    script = create :script
+    level = create :maze, name: 'maze 1'
+    level2 = create :maze, name: 'maze 2'
+    level3 = create :maze, name: 'maze 3'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: "", script: script, user_facing: false
     lesson = create :lesson, name: 'Lesson 1', key: 'Lesson 1', script: script, lesson_group: lesson_group, has_lesson_plan: true
     script_level = create(
@@ -462,7 +462,7 @@ endvariants
   end
 
   test 'serialize editor_experiment' do
-    script = create :script, editor_experiment: 'editors'
+    script = create :script, is_migrated: false, editor_experiment: 'editors'
     script_text = ScriptDSL.serialize_to_string(script)
     expected = <<~UNIT
       published_state 'beta'
@@ -669,8 +669,8 @@ level 'Level 3'
   end
 
   test 'serialize visible after for lesson' do
-    level = create :maze, name: 'maze 1', level_num: 'custom'
-    script = create :script
+    level = create :maze, name: 'maze 1'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: "", script: script, user_facing: false
     lesson = create :lesson, name: 'Lesson 1', key: 'Lesson 1', script: script, lesson_group: lesson_group, visible_after: '2020-04-01 08:00:00 -0800', has_lesson_plan: true
     script_level = create :script_level, levels: [level], lesson: lesson, script: script
@@ -711,7 +711,8 @@ level 'Level 3'
                 {levels: [{name: "Level 2"}]},
               ]
             }
-          ]
+          ],
+          user_facing: true,
         ]
       }
     )
@@ -753,6 +754,7 @@ level 'Level 3'
                 ]
               }
             ],
+            user_facing: true,
             description: 'This is a description',
           },
           {
@@ -760,6 +762,7 @@ level 'Level 3'
             display_name: "empty lesson group",
             big_questions: "empty lesson group questions",
             lessons: [],
+            user_facing: true,
             description: "empty lesson group description"
           },
           {
@@ -774,7 +777,8 @@ level 'Level 3'
                   {levels: [{name: "Level 2"}]},
                 ]
               }
-            ]
+            ],
+            user_facing: true,
           }
         ]
       }
@@ -785,8 +789,8 @@ level 'Level 3'
   end
 
   test 'serialize lesson_group for lesson' do
-    level = create :maze, name: 'maze 1', level_num: 'custom'
-    script = create :script
+    level = create :maze, name: 'maze 1'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: 'content', script: script, properties: {display_name: "Content"}
     lesson = create :lesson, name: 'lesson 1', key: 'L1', script: script, lesson_group: lesson_group, has_lesson_plan: true
     script_level = create :script_level, levels: [level], lesson: lesson, script: script
@@ -803,8 +807,8 @@ level 'Level 3'
   end
 
   test 'serialize script with lesson groups that have no lessons in them' do
-    level = create :maze, name: 'maze 1', level_num: 'custom'
-    script = create :script
+    level = create :maze, name: 'maze 1'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: '', script: script, user_facing: false
     create :lesson_group, key: 'required', script: script
     create :lesson_group, key: 'practice', script: script
@@ -822,10 +826,10 @@ level 'Level 3'
   end
 
   test 'serialize lesson groups in the correct order' do
-    script = create :script
+    script = create :script, is_migrated: false
 
-    level1 = create :maze, name: 'maze 1', level_num: 'custom'
-    level2 = create :maze, name: 'maze 2', level_num: 'custom'
+    level1 = create :maze, name: 'maze 1'
+    level2 = create :maze, name: 'maze 2'
 
     # intentionally made in the opposite order of how we want them to show to test
     lesson_group2 = create :lesson_group, key: 'content2', script: script, position: 2, properties: {display_name: "Content2"}
@@ -866,7 +870,7 @@ level 'Level 3'
   end
 
   test 'serialize project_sharing' do
-    script = create :script, project_sharing: true
+    script = create :script, is_migrated: false, project_sharing: true
     script_text = ScriptDSL.serialize_to_string(script)
     expected = <<~UNIT
       published_state 'beta'
@@ -891,7 +895,7 @@ level 'Level 3'
   end
 
   test 'serialize curriculum_umbrella' do
-    script = create :script, curriculum_umbrella: 'CSP'
+    script = create :script, is_migrated: false, curriculum_umbrella: 'CSP'
     script_text = ScriptDSL.serialize_to_string(script)
     expected = <<~UNIT
       published_state 'beta'
@@ -942,6 +946,7 @@ level 'Level 3'
   test 'serialize new_name, family_name, version_year, tts, is_course, published_state' do
     script = create :script,
       {
+        is_migrated: false,
         new_name: 'new name',
         family_name: 'family name',
         version_year: '2001',
@@ -979,10 +984,10 @@ level 'Level 3'
   end
 
   test 'serialize named_level' do
-    level1 = create :maze, name: 'maze 1', level_num: 'custom'
-    level2 = create :maze, name: 'maze 2', level_num: 'custom', display_name: 'Maze Two'
-    level3 = create :maze, name: 'maze 3', level_num: 'custom', display_name: 'ignored'
-    script = create :script
+    level1 = create :maze, name: 'maze 1'
+    level2 = create :maze, name: 'maze 2', display_name: 'Maze Two'
+    level3 = create :maze, name: 'maze 3', display_name: 'ignored'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: "", script: script, user_facing: false
     lesson = create :lesson, name: 'Lesson 1', key: 'Lesson 1', script: script, lesson_group: lesson_group, has_lesson_plan: true
     create(
@@ -1022,7 +1027,7 @@ level 'Level 3'
   end
 
   test 'serialize unplugged lesson' do
-    script = create :script
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: "", script: script, user_facing: false
     create :lesson, name: 'Lesson 1', key: 'Lesson 1', script: script, lesson_group: lesson_group, has_lesson_plan: true, unplugged: true
 
@@ -1062,8 +1067,8 @@ level 'Level 3'
   end
 
   test 'serialize assessment' do
-    level = create :maze, name: 'maze 1', level_num: 'custom'
-    script = create :script
+    level = create :maze, name: 'maze 1'
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: "", script: script, user_facing: false
     lesson = create :lesson, name: 'Lesson 1', key: 'Lesson 1', script: script, lesson_group: lesson_group, has_lesson_plan: true
     script_level = create(
@@ -1143,7 +1148,8 @@ level 'Level 3'
                 {levels: [{name: 'Level 2'}]},
               ]
             }
-          ]
+          ],
+          user_facing: true,
         ]
       }
     )
@@ -1167,10 +1173,10 @@ level 'Level 3'
   end
 
   test 'serialize lesson group and properties' do
-    script = create :script
+    script = create :script, is_migrated: false
     lesson_group = create :lesson_group, key: 'content1', script: script, position: 1, properties: {display_name: "Content", description: 'This is a description', big_questions: 'Q1 Q2'}
     lesson1 = create :lesson, key: 'l-1', name: 'lesson 1', script: script, lesson_group: lesson_group, absolute_position: 1, has_lesson_plan: true
-    level1 = create :maze, name: 'maze 1', level_num: 'custom'
+    level1 = create :maze, name: 'maze 1'
     create :script_level, levels: [level1], lesson: lesson1, script: script
 
     script_text = ScriptDSL.serialize_to_string(script)
@@ -1188,10 +1194,10 @@ level 'Level 3'
   end
 
   test 'serialize lessons in lesson groups in the correct order' do
-    script = create :script
+    script = create :script, is_migrated: false
 
-    level1 = create :maze, name: 'maze 1', level_num: 'custom'
-    level2 = create :maze, name: 'maze 2', level_num: 'custom'
+    level1 = create :maze, name: 'maze 1'
+    level2 = create :maze, name: 'maze 2'
 
     lesson_group = create :lesson_group, key: 'content1', script: script, position: 1, properties: {display_name: "Content"}
 

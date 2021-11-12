@@ -71,7 +71,7 @@ class AnimationLibraryApi < Sinatra::Base
       body = request.body
       key = "level_animations/#{animation_name}"
 
-      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body)
+      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body, content_type: request.content_type)
     else
       bad_request
     end
@@ -149,11 +149,11 @@ class AnimationLibraryApi < Sinatra::Base
   end
 
   #
-  # GET /api/v1/animation-library/level-animations/
+  # GET /api/v1/animation-library/level-animations-filenames/
   #
-  # Retrieve files from the level-animations bucket
-  get %r{/api/v1/animation-library/level-animations} do
-    animations_by_name = {}
+  # Retrieve filenames from the level-animations bucket
+  get %r{/api/v1/animation-library/level-animations-filenames} do
+    animations_by_name = []
     prefix = 'level_animations'
     bucket = Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET)
     bucket.objects({prefix: prefix}).each do |object_summary|
@@ -172,7 +172,6 @@ class AnimationLibraryApi < Sinatra::Base
       end
       animations_by_name[animation_name][extension] = {key: object_summary.key, last_modified: object_summary.last_modified, version_id: object_summary.object.version_id, source_size: calculated_source_size}
     end
-    animations_by_name.to_json
   end
 
   #
@@ -185,7 +184,7 @@ class AnimationLibraryApi < Sinatra::Base
       body = request.body.string
       key = ANIMATION_DEFAULT_MANIFEST_LEVELBUILDER
 
-      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body)
+      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body, content_type: request.content_type)
     else
       bad_request
     end
@@ -201,7 +200,7 @@ class AnimationLibraryApi < Sinatra::Base
       body = request.body.string
       key = ANIMATION_DEFAULT_MANIFEST_JSON_LEVELBUILDER
 
-      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body)
+      Aws::S3::Bucket.new(ANIMATION_LIBRARY_BUCKET).put_object(key: key, body: body, content_type: request.content_type)
     else
       bad_request
     end

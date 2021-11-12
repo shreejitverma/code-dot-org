@@ -68,7 +68,7 @@ class LessonsControllerTest < ActionController::TestCase
 
     @levelbuilder = create :levelbuilder
 
-    @in_development_unit = create :script, name: 'in-development-unit', published_state: SharedConstants::PUBLISHED_STATE.in_development, is_migrated: true, include_student_lesson_plans: true
+    @in_development_unit = create :script, name: 'in-development-unit', published_state: SharedCourseConstants::PUBLISHED_STATE.in_development, is_migrated: true, include_student_lesson_plans: true
     in_development_lesson_group = create :lesson_group, script: @in_development_unit
     @in_development_lesson = create(
       :lesson,
@@ -163,6 +163,19 @@ class LessonsControllerTest < ActionController::TestCase
   test_user_gets_response_for :show, response: :success, user: :levelbuilder,
                               params: -> {{script_id: @pilot_script.name, position: @pilot_lesson.relative_position}}, name: 'levelbuilder can view pilot lesson'
 
+  # also limit access to lesson plans in pilots when showing lesson by id
+  test_user_gets_response_for :show_by_id, response: :redirect, user: nil,
+                              params: -> {{id: @pilot_lesson.id}},
+                              name: 'signed out user cannot view pilot lesson by id'
+
+  test_user_gets_response_for :show_by_id, response: :forbidden, user: :teacher,
+                              params: -> {{id: @pilot_lesson.id}},
+                              name: 'teacher without pilot access cannot view pilot lesson by id'
+
+  test_user_gets_response_for :show_by_id, response: :success, user: :levelbuilder,
+                              params: -> {{id: @pilot_lesson.id}},
+                              name: 'levelbuilder can view pilot lesson by id'
+
   # limit access to student lesson plans in pilots
   test_user_gets_response_for :student_lesson_plan, response: :not_found, user: nil,
                               params: -> {{script_id: @pilot_script.name, lesson_position: @pilot_lesson.relative_position}},
@@ -226,7 +239,7 @@ class LessonsControllerTest < ActionController::TestCase
 
   test 'can not show lesson when lesson is in a non-migrated script' do
     sign_in @levelbuilder
-    script2 = create :script, name: 'unmigrated-course'
+    script2 = create :script, name: 'unmigrated-course', is_migrated: false
     lesson_group2 = create :lesson_group, script: script2
     unmigrated_lesson = create(
       :lesson,
@@ -249,9 +262,9 @@ class LessonsControllerTest < ActionController::TestCase
   test 'show lesson when lesson is the only lesson in script' do
     script = create :script, name: 'one-lesson-script', is_migrated: true
     lesson_group = create :lesson_group, script: script
-    @solo_lesson_in_script = create(
+    solo_lesson_in_script = create(
       :lesson,
-      name: 'lesson display name',
+      name: @lesson_name,
       script_id: script.id,
       lesson_group_id: lesson_group.id,
       has_lesson_plan: true,
@@ -265,10 +278,10 @@ class LessonsControllerTest < ActionController::TestCase
       'data' => {
         'script' => {
           'name' => {
-            @solo_lesson_in_script.script.name => {
+            script.name => {
               'title' => @script_title,
               'lessons' => {
-                @lesson.name => {
+                solo_lesson_in_script.key => {
                   'name' => @lesson_name
                 }
               }
@@ -279,19 +292,17 @@ class LessonsControllerTest < ActionController::TestCase
     }
 
     I18n.backend.store_translations 'en-US', custom_i18n
-    assert_equal @script_title, @solo_lesson_in_script.script.localized_title
-
-    # a bit weird, but this is what happens when there is only one lesson.
-    assert_equal @script_title, @solo_lesson_in_script.localized_name
+    assert_equal @lesson_name, solo_lesson_in_script.localized_name
 
     get :show, params: {
       script_id: script.name,
-      position: @solo_lesson_in_script.relative_position
+      position: solo_lesson_in_script.relative_position
     }
     assert_response :ok
     assert(@response.body.include?(@script_title))
-    assert(@response.body.include?(@solo_lesson_in_script.overview))
-    assert(@response.body.include?(script_lesson_path(@solo_lesson_in_script.script, @solo_lesson_in_script)))
+    assert(@response.body.include?(@lesson_name))
+    assert(@response.body.include?(solo_lesson_in_script.overview))
+    assert(@response.body.include?(script_lesson_path(solo_lesson_in_script.script, solo_lesson_in_script)))
   end
 
   test 'show lesson when script has multiple lessons' do
@@ -842,9 +853,8 @@ class LessonsControllerTest < ActionController::TestCase
   end
 
   test 'update lesson with new resources' do
-    course_version = create :course_version
+    course_version = create :course_version, content_root: @lesson.script
     resource = create :resource, course_version: course_version
-    @lesson.script.course_version = course_version
 
     sign_in @levelbuilder
     new_update_params = @update_params.merge({resources: [resource.key].to_json})
@@ -854,11 +864,10 @@ class LessonsControllerTest < ActionController::TestCase
   end
 
   test 'update lesson removing and adding resources' do
-    course_version = create :course_version
+    course_version = create :course_version, content_root: @lesson.script
     resource_to_keep = create :resource, course_version: course_version
     resource_to_add = create :resource, course_version: course_version
     resource_to_remove = create :resource, course_version: course_version
-    @lesson.script.course_version = course_version
 
     @lesson.resources << resource_to_keep
     @lesson.resources << resource_to_remove
@@ -874,16 +883,16 @@ class LessonsControllerTest < ActionController::TestCase
   end
 
   test 'update lesson by removing and adding vocabularies' do
-    course_version = create :course_version
+    course_version = create :course_version, content_root: @lesson.script
     vocab_to_keep = create :vocabulary, course_version: course_version
     vocab_to_remove = create :vocabulary, course_version: course_version
     vocab_to_add = create :vocabulary, course_version: course_version
-    @lesson.script.course_version = course_version
     @lesson.vocabularies = [vocab_to_keep, vocab_to_remove]
 
     sign_in @levelbuilder
     new_update_params = @update_params.merge({vocabularies: [vocab_to_keep.key, vocab_to_add.key].to_json})
     put :update, params: new_update_params
+    assert_response 200
     @lesson.reload
 
     assert_equal 2, @lesson.vocabularies.count
@@ -1032,7 +1041,7 @@ class LessonsControllerTest < ActionController::TestCase
     assert_equal ['level-to-add'], script_level.levels.map(&:name)
   end
 
-  test 'cannot add duplicate level via lesson update' do
+  test 'cannot add new duplicate level to unit via lesson update' do
     sign_in @levelbuilder
     activity = create :lesson_activity, lesson: @lesson
     create :activity_section, lesson_activity: activity
@@ -1047,7 +1056,6 @@ class LessonsControllerTest < ActionController::TestCase
     activities_data.first[:activitySections].first[:scriptLevels].push(
       activitySectionPosition: 1,
       activeId: existing_level.id,
-      assessment: true,
       levels: [{id: existing_level.id, name: existing_level.name}]
     )
 
@@ -1057,6 +1065,32 @@ class LessonsControllerTest < ActionController::TestCase
       put :update, params: @update_params
     end
     assert_includes error.message, 'duplicate levels detected'
+  end
+
+  test 'can update lesson when duplicate levels already exist in unit' do
+    sign_in @levelbuilder
+    activity = create :lesson_activity, lesson: @lesson
+    section = create :activity_section, lesson_activity: activity
+    existing_level = create :maze, name: 'existing-level'
+    create :script_level, activity_section: section, activity_section_position: 1, lesson: @lesson, script: @script, levels: [existing_level]
+
+    activity2 = create :lesson_activity, lesson: @lesson2
+    section2 = create :activity_section, lesson_activity: activity2
+    create :script_level, activity_section: section2, activity_section_position: 2, lesson: @lesson2, script: @script, levels: [existing_level]
+
+    @lesson.reload
+    new_level = create :level
+    activities_data = @lesson.summarize_for_lesson_edit[:activities]
+    activities_data.first[:activitySections].first[:scriptLevels].push(
+      activitySectionPosition: 2,
+      activeId: new_level.id,
+      levels: [{id: new_level.id, name: new_level.name}]
+    )
+
+    @update_params['activities'] = activities_data.to_json
+
+    put :update, params: @update_params
+    assert_response :success
   end
 
   test 'add anonymous survey level via lesson update' do
@@ -1317,6 +1351,54 @@ class LessonsControllerTest < ActionController::TestCase
     assert_equal [1, 2], section.script_levels.map(&:position)
   end
 
+  test 'lesson update preserves level variants' do
+    sign_in @levelbuilder
+    activity = create :lesson_activity, lesson: @lesson
+    section = create :activity_section, lesson_activity: activity
+    inactive_level = create :level, name: 'inactive-level'
+    active_level = create :level, name: 'active-level'
+    script_level = create :script_level, activity_section: section, activity_section_position: 1, lesson: @lesson, script: @script, levels: [inactive_level]
+    script_level.add_variant(active_level)
+    assert_equal active_level, script_level.oldest_active_level
+    assert_equal [inactive_level, active_level], script_level.levels
+
+    @lesson.reload
+    activities_data = @lesson.summarize_for_lesson_edit[:activities]
+    @update_params['activities'] = activities_data.to_json
+    put :update, params: @update_params
+    assert_response :success
+
+    script_level.reload
+    assert_equal active_level, script_level.oldest_active_level
+    assert_equal [inactive_level, active_level], script_level.levels
+  end
+
+  test 'legacy lesson clone fails if destination course does not use code studio lessons' do
+    sign_in @levelbuilder
+    Rails.application.config.stubs(:levelbuilder_mode).returns true
+
+    destination_script = create :script, use_legacy_lesson_plans: true
+    original_script = create :script, use_legacy_lesson_plans: false
+    lesson = create :lesson, script: original_script
+    put :clone, params: {id: lesson.id, 'destinationUnitName': destination_script.name}
+
+    assert_response :not_acceptable
+    assert @response.body.include?('error')
+  end
+
+  test 'legacy lesson clone fails if origin course does not use code studio lessons' do
+    sign_in @levelbuilder
+    Rails.application.config.stubs(:levelbuilder_mode).returns true
+
+    destination_script = create :script, use_legacy_lesson_plans: false
+    original_script = create :script, use_legacy_lesson_plans: true
+    lesson = create :lesson, script: original_script
+    put :clone, params: {id: lesson.id, 'destinationUnitName': destination_script.name}
+
+    assert_response :not_acceptable
+    assert @response.body.include?('error')
+  end
+
   test 'lesson clone fails if script cannot be found' do
     sign_in @levelbuilder
     Rails.application.config.stubs(:levelbuilder_mode).returns true
@@ -1331,11 +1413,29 @@ class LessonsControllerTest < ActionController::TestCase
     sign_in @levelbuilder
     Rails.application.config.stubs(:levelbuilder_mode).returns true
 
-    script = create :script
+    script = create :script, use_legacy_lesson_plans: false
     create :course_version, content_root: script, key: '2021'
-    original_script = create :script
+    original_script = create :script, use_legacy_lesson_plans: false
     lesson = create :lesson, script: original_script
     create :course_version, content_root: original_script, key: '2021'
+    cloned_lesson = create :lesson, script: script
+    Lesson.any_instance.stubs(:copy_to_unit).returns(cloned_lesson)
+    put :clone, params: {id: lesson.id, 'destinationUnitName': script.name}
+
+    assert_response 200
+    assert @response.body.include?('editLessonUrl')
+    assert @response.body.include?('editScriptUrl')
+  end
+
+  test 'lesson clone is successful between version years' do
+    sign_in @levelbuilder
+    Rails.application.config.stubs(:levelbuilder_mode).returns true
+
+    script = create :script, use_legacy_lesson_plans: false
+    create :course_version, content_root: script, key: '2021'
+    original_script = create :script, use_legacy_lesson_plans: false
+    lesson = create :lesson, script: original_script
+    create :course_version, content_root: original_script, key: '2020'
     cloned_lesson = create :lesson, script: script
     Lesson.any_instance.stubs(:copy_to_unit).returns(cloned_lesson)
     put :clone, params: {id: lesson.id, 'destinationUnitName': script.name}

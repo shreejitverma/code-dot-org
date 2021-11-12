@@ -90,7 +90,7 @@ class P5LabVisualizationColumn extends React.Component {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Use jQuery to turn on and off the grid since it lives in a protected div
     if (nextProps.showGrid !== this.props.showGrid) {
       if (nextProps.showGrid) {
@@ -172,6 +172,7 @@ class P5LabVisualizationColumn extends React.Component {
               onPointerMove={this.pickerPointerMove}
               onPointerUp={this.pickerPointerUp}
               elementRef={el => (this.divGameLab = el)}
+              onMouseUp={this.pickerPointerUp}
             />
             <VisualizationOverlay
               width={APP_WIDTH}

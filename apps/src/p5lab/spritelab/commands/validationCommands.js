@@ -38,6 +38,14 @@ export const commands = {
     return this.promptVars;
   },
 
+  getSoundLog() {
+    return this.soundLog;
+  },
+
+  getSpeechForSpriteId(spriteId) {
+    return this.getLastSpeechBubbleForSpriteId(spriteId)?.text;
+  },
+
   getSpriteIdsInUse() {
     return this.getSpriteIdsInUse();
   },
@@ -47,5 +55,12 @@ export const commands = {
       title: this.screenText.title,
       subtitle: this.screenText.subtitle
     };
+  },
+
+  spriteSpeechRenderedThisFrame(spriteId) {
+    return (
+      this.getLastSpeechBubbleForSpriteId(spriteId)?.renderFrame ===
+      this.currentFrame()
+    );
   }
 };

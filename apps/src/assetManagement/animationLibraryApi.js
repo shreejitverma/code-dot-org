@@ -168,7 +168,7 @@ export function buildCategoryMap(animationMetadata) {
 
 // Generates the json animation manifest for the level_animations folder
 export function generateLevelAnimationsManifest() {
-  return getLevelAnimationsFiles().then(files => {
+  return getLevelAnimationsFilenames().then(files => {
     return buildAnimationMetadata(files).then(animationMetadata => {
       let aliasMap = buildAliasMap(animationMetadata);
 
@@ -277,8 +277,8 @@ export function uploadMetadataToAnimationLibrary(destination, jsonData) {
     });
 }
 
-export function getLevelAnimationsFiles() {
-  return fetch(`/api/v1/animation-library/level-animations`).then(response =>
-    response.json()
+export function getLevelAnimationsFilenames() {
+  return fetch('/api/v1/animation-library/level-animations-filenames').then(
+    response => response.json()
   );
 }

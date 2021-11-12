@@ -89,6 +89,9 @@ Dashboard::Application.routes.draw do
         post 'leave'
         post 'update_sharing_disabled'
         get 'student_script_ids'
+        get 'code_review_groups'
+        post 'code_review_groups', to: 'sections#set_code_review_groups'
+        post 'code_review_enabled', to: 'sections#set_code_review_enabled'
       end
       collection do
         get 'membership'
@@ -298,6 +301,7 @@ Dashboard::Application.routes.draw do
 
   resources :lessons, only: [:edit, :update] do
     member do
+      get :show, to: 'lessons#show_by_id'
       post :clone
     end
   end
@@ -314,7 +318,7 @@ Dashboard::Application.routes.draw do
     end
   end
 
-  resources :programming_expressions, only: [] do
+  resources :programming_expressions, only: [:new, :create, :edit, :update, :show] do
     collection do
       get :search
     end
@@ -430,6 +434,7 @@ Dashboard::Application.routes.draw do
   post '/admin/pilots/', to: 'admin_search#create_pilot', as: 'create_pilot'
   get '/admin/pilots/:pilot_name', to: 'admin_search#show_pilot', as: 'show_pilot'
   post '/admin/add_to_pilot', to: 'admin_search#add_to_pilot', as: 'add_to_pilot'
+  post '/admin/remove_from_pilot', to: 'admin_search#remove_from_pilot', as: 'remove_from_pilot'
 
   # internal engineering dashboards
   get '/admin/dynamic_config', to: 'dynamic_config#show', as: 'dynamic_config_state'
@@ -453,6 +458,8 @@ Dashboard::Application.routes.draw do
   post '/admin/studio_person_split', to: 'admin_users#studio_person_split', as: 'studio_person_split'
   post '/admin/studio_person_add_email_to_emails', to: 'admin_users#studio_person_add_email_to_emails', as: 'studio_person_add_email_to_emails'
   get '/admin/user_progress', to: 'admin_users#user_progress_form', as: 'user_progress_form'
+  get '/admin/delete_progress', to: 'admin_users#delete_progress_form', as: 'delete_progress_form'
+  post '/admin/delete_progress', to: 'admin_users#delete_progress', as: 'delete_progress'
   get '/census/review', to: 'census_reviewers#review_reported_inaccuracies', as: 'review_reported_inaccuracies'
   post '/census/review', to: 'census_reviewers#create'
 
@@ -596,6 +603,7 @@ Dashboard::Application.routes.draw do
 
   get '/dashboardapi/v1/regional_partners/find', to: 'api/v1/regional_partners#find'
   get '/dashboardapi/v1/regional_partners/show/:partner_id', to: 'api/v1/regional_partners#show'
+  get '/dashboardapi/v1/pd/application/applications_closed', to: 'pd/professional_learning_landing#applications_closed'
   post '/dashboardapi/v1/pd/regional_partner_mini_contacts', to: 'api/v1/pd/regional_partner_mini_contacts#create'
   post '/dashboardapi/v1/amazon_future_engineer_submit', to: 'api/v1/amazon_future_engineer#submit'
 
@@ -714,10 +722,11 @@ Dashboard::Application.routes.draw do
   get '/dashboardapi/script_standards/:script', to: 'api#script_standards'
   get '/api/section_progress/:section_id', to: 'api#section_progress', as: 'section_progress'
   get '/api/teacher_panel_progress/:section_id', to: 'api#teacher_panel_progress'
+  get '/api/teacher_panel_section', to: 'api#teacher_panel_section'
   get '/dashboardapi/section_level_progress/:section_id', to: 'api#section_level_progress', as: 'section_level_progress'
   get '/api/user_progress/:script', to: 'api#user_progress', as: 'user_progress'
-  get '/api/user_progress/:script/:lesson_position/:level_position', to: 'api#user_progress_for_lesson', as: 'user_progress_for_lesson'
-  get '/api/user_progress/:script/:lesson_position/:level_position/:level', to: 'api#user_progress_for_lesson', as: 'user_progress_for_lesson_and_level'
+  get '/api/user_app_options/:script/:lesson_position/:level_position/:level', to: 'api#user_app_options', as: 'user_app_options'
+  get '/api/example_solutions/:script_level_id/:level_id', to: 'api#example_solutions'
   put '/api/firehose_unreachable', to: 'api#firehose_unreachable'
   namespace :api do
     api_methods.each do |action|
@@ -745,6 +754,7 @@ Dashboard::Application.routes.draw do
       get 'users/:user_id/using_text_mode', to: 'users#get_using_text_mode'
       get 'users/:user_id/display_theme', to: 'users#get_display_theme'
       get 'users/:user_id/contact_details', to: 'users#get_contact_details'
+      get 'users/current', to: 'users#current'
       get 'users/:user_id/school_name', to: 'users#get_school_name'
       get 'users/:user_id/school_donor_name', to: 'users#get_school_donor_name'
 

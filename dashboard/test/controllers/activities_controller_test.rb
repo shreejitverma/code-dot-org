@@ -97,10 +97,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   end
 
   test "logged in milestone" do
-    # Configure a fake slogger to verify that the correct data is logged.
-    slogger = FakeSlogger.new
-    CDO.set_slogger_for_test(slogger)
-
     # do all the logging
     @controller.expects :log_milestone
 
@@ -125,18 +121,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # created activity and userlevel with the correct script
     assert_equal @script_level.script, UserLevel.last.script
-
-    assert_equal(
-      [{
-        application: :dashboard,
-        tag: 'activity_finish',
-        script_level_id: @script_level.id,
-        level_id: @script_level.level.id,
-        user_agent: 'Rails Testing',
-        locale: :'en-US'
-      }],
-      slogger.records
-    )
   end
 
   test "successful milestone does not require script_level_id" do
@@ -231,7 +215,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   test "logged in milestone with existing userlevel with script" do
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     UserScript.create(user: @user, script: @script_level.script)
     UserLevel.create(level: @script_level.level, user: @user, script: @script_level.script)
@@ -252,7 +235,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     assert_creates(Activity, UserLevel, UserScript) do
       assert_does_not_create(LevelSource) do
@@ -281,7 +263,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   test "logged in milestone with panda does not crash" do
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     assert_creates(Activity, UserLevel, UserScript, LevelSource) do
       assert_difference('@user.reload.total_lines', 20) do # update total lines
@@ -303,7 +284,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
   test "logged in milestone does not allow negative lines of code" do
     expect_controller_logs_milestone_regexp(/-20/)
-    @controller.expects :slog
 
     assert_creates(LevelSource, Activity, UserLevel, UserScript) do
       assert_no_difference('@user.reload.total_lines') do # update total lines
@@ -326,8 +306,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
   test "logged in milestone does not allow unreasonably high lines of code" do
     expect_controller_logs_milestone_regexp(/9999999/)
-
-    @controller.expects :slog
 
     assert_creates(LevelSource, Activity, UserLevel, UserScript) do
       assert_difference('@user.reload.total_lines', 1000) do # update total lines
@@ -395,7 +373,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   test "logged in milestone with image" do
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     expect_s3_upload
 
@@ -430,7 +407,6 @@ class ActivitiesControllerTest < ActionController::TestCase
   test "logged in milestone with existing level source and level source image" do
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     program = "<whatever>"
 
@@ -575,20 +551,16 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     # some Mocha shenanigans to simulate throwing a duplicate entry
     # error and then succeeding by returning the existing userlevel
-
-    user_level_finder = mock('user_level_finder')
-    user_level_finder.stubs(:first).returns(nil)
+    # (assumes that the only call to first_or_initialize when handling
+    # a milestone post is the call in User#track_level_progress)
     existing_user_level = UserLevel.create(user: @user, level: @script_level.level, script: @script_level.script)
-    user_level_finder.stubs(:first_or_initialize).
+    ActiveRecord::Relation.stubs(:first_or_initialize).
       raises(ActiveRecord::RecordNotUnique.new(Mysql2::Error.new("Duplicate entry '1208682-37' for key 'index_user_levels_on_user_id_and_level_id'"))).
       then.
       returns(existing_user_level)
-
-    UserLevel.stubs(:where).returns(user_level_finder)
 
     assert_creates(LevelSource, Activity) do
       assert_does_not_create(UserLevel) do
@@ -638,7 +610,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     assert_creates(LevelSource) do
       assert_does_not_create(Activity, UserLevel) do
@@ -662,7 +633,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     assert_creates(LevelSource) do
       assert_does_not_create(Activity, UserLevel) do
@@ -709,7 +679,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     expect_s3_upload
 
@@ -739,7 +708,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
     # do all the logging
     @controller.expects :log_milestone
-    @controller.expects :slog
 
     expect_s3_upload_failure
 
@@ -798,7 +766,6 @@ class ActivitiesControllerTest < ActionController::TestCase
     # allow sharing when there's an error, slog so it's possible to look up and review later
 
     ProfanityFilter.stubs(:find_potential_profanity).raises(OpenURI::HTTPError.new('something broke', 'fake io'))
-    @controller.expects(:slog).with(:tag) {|params| params[:tag] == 'activity_finish'}
 
     assert_creates(LevelSource) do
       post :milestone,
@@ -819,9 +786,6 @@ class ActivitiesControllerTest < ActionController::TestCase
 
   test 'sharing program with IO::EAGAINWaitReadable error logs' do
     ProfanityFilter.stubs(:find_potential_profanity).raises(IO::EAGAINWaitReadable)
-    # allow sharing when there's an error, slog so it's possible to look up and review later
-
-    @controller.expects(:slog).with(:tag) {|params| params[:tag] == 'activity_finish'}
 
     assert_creates(LevelSource) do
       post :milestone,
@@ -1023,7 +987,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_equal 100, existing_navigator_user_level.best_result
     assert_equal 20, existing_navigator_user_level.time_spent
 
-    assert_equal [@user], existing_navigator_user_level.driver_user_levels.map(&:user)
+    assert_equal @user, existing_navigator_user_level.driver
   end
 
   test "milestone with pairings updates navigator's existing user level" do
@@ -1045,7 +1009,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     assert_equal 100, existing_driver_user_level.best_result
     assert_equal 20, existing_driver_user_level.time_spent
 
-    assert_equal [pairing], existing_driver_user_level.navigator_user_levels.map(&:user)
+    assert_equal [pairing.name], existing_driver_user_level.partner_names
   end
 
   test "milestone with pairings stops updating levels when pairing is disabled" do
@@ -1067,7 +1031,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     existing_driver_user_level.reload
     assert_equal 100, existing_driver_user_level.best_result
 
-    assert_equal [], existing_driver_user_level.navigator_user_levels.map(&:user)
+    assert_nil existing_driver_user_level.partner_names
   end
 
   test "milestone fails to update locked/readonly level" do
@@ -1122,7 +1086,7 @@ class ActivitiesControllerTest < ActionController::TestCase
     post :milestone, params: milestone_params
     assert_response 403
 
-    user_level.delete
+    user_level.really_destroy!
     # explicity create a user_level that is readonly_answers
     create :user_level, user: student_1, script: script, level: level, submitted: true, locked: true, readonly_answers: true
     post :milestone, params: milestone_params

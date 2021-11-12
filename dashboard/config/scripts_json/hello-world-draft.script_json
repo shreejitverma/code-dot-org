@@ -5,13 +5,13 @@
     "login_required": false,
     "properties": {
       "is_migrated": true,
-      "version_year": "unversioned",
-      "is_course": true
+      "version_year": "unversioned"
     },
     "new_name": null,
     "family_name": "poster",
-    "serialized_at": "2021-08-17 18:01:37 UTC",
+    "serialized_at": "2021-10-25 22:54:54 UTC",
     "published_state": "beta",
+    "instruction_type": null,
     "seeding_key": {
       "script.name": "hello-world-draft"
     }
