@@ -70,8 +70,12 @@ export const NeighborhoodExceptionType = makeEnum(
 );
 
 export const TheaterSignalType = {
+  // This message contains the url to an audio element
   AUDIO_URL: 'AUDIO_URL',
-  VISUAL_URL: 'VISUAL_URL'
+  // This message contains the url to a visual element
+  VISUAL_URL: 'VISUAL_URL',
+  // Get an image from the user via Prompter
+  GET_IMAGE: 'GET_IMAGE'
 };
 
 export const StatusMessageType = {
@@ -79,12 +83,21 @@ export const StatusMessageType = {
   COMPILATION_SUCCESSFUL: 'COMPILATION_SUCCESSFUL',
   RUNNING: 'RUNNING',
   GENERATING_RESULTS: 'GENERATING_RESULTS',
+  TIMEOUT_WARNING: 'TIMEOUT_WARNING',
+  TIMEOUT: 'TIMEOUT',
   EXITED: 'EXITED'
 };
 
 export const InputMessageType = {
   SYSTEM_IN: 'SYSTEM_IN',
-  PLAYGROUND: 'PLAYGROUND'
+  PLAYGROUND: 'PLAYGROUND',
+  THEATER: 'THEATER'
+};
+
+export const InputMessage = {
+  // Theater-specific messages
+  UPLOAD_SUCCESS: 'UPLOAD_SUCCESS',
+  UPLOAD_ERROR: 'UPLOAD_ERROR'
 };
 
 export const SoundExceptionType = makeEnum(
