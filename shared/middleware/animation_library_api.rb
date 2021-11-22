@@ -8,6 +8,7 @@ require_relative '../../lib/cdo/png_utils'
 ANIMATION_LIBRARY_BUCKET = 'cdo-animation-library'.freeze
 ANIMATION_DEFAULT_MANIFEST_LEVELBUILDER = 'animation-manifests/manifests-levelbuilder/defaults.json'.freeze
 ANIMATION_DEFAULT_MANIFEST_JSON_LEVELBUILDER = 'animation-manifests/manifests-levelbuilder/defaultSprites.json'.freeze
+ANIMATION_DEFAULT_MANIFEST_JSON = 'animation-manifests/manifests/defaultSprites.json'.freeze
 
 #
 # Provides limited access to the cdo-animation-library S3 bucket, which contains
@@ -188,6 +189,22 @@ class AnimationLibraryApi < Sinatra::Base
     else
       bad_request
     end
+  end
+
+  #
+  # GET /api/v1/animation-library/default-spritelab-metadata/
+  #
+  # Retrieve the metadata for the default sprite list from S3
+  get %r{/api/v1/animation-library/default-spritelab-metadata} do
+    result = Aws::S3::Bucket.
+      new(ANIMATION_LIBRARY_BUCKET, client: AWS::S3.create_client).
+      object(ANIMATION_DEFAULT_MANIFEST_JSON).
+      get
+    content_type 'application/json'
+    cache_for 3600
+    result.body
+  rescue
+    not_found
   end
 
   #
