@@ -12,7 +12,6 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
 
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": ["ms-azuretools.vscode-docker"],
 
@@ -20,7 +19,15 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "BUNDLE_GEMFILE=Gemfile.docker bundle install && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake install:hooks && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake install && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake build && cd dashboard && BUNDLE_GEMFILE=Gemfile.docker bundle install"
+	"postCreateCommand": "rm -rf .bundle && BUNDLE_GEMFILE=Gemfile.docker bundle install && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake install:hooks && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake install && BUNDLE_GEMFILE=Gemfile.docker bundle exec rake build && cd dashboard && BUNDLE_GEMFILE=Gemfile.docker bundle install",
+
+	// Mount the AWS credentials folder from the host
+	"runArgs": ["-v", "${env:HOME}/.aws/credentials:/root/.aws/credentials"],
+
+	// Pass host-based env variables to container.
+	"containerEnv": {
+		"AWS_PROFILE": "${env:AWS_PROFILE}"
+	}
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	//"remoteUser": "vscode"
